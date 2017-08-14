@@ -46,7 +46,7 @@ public class loginScreen extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(102, 102, 102));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sign In");
         jButton1.setBorder(null);
         jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
@@ -65,7 +65,7 @@ public class loginScreen extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 153, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(102, 102, 102));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Clear");
         jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton2.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
@@ -92,7 +92,7 @@ public class loginScreen extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(0, 153, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(102, 102, 102));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Back");
         jButton3.setBorder(null);
         jButton3.setDebugGraphicsOptions(javax.swing.DebugGraphics.LOG_OPTION);
@@ -182,12 +182,10 @@ public class loginScreen extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Theme mi = new Theme();
-        mi.setExtendedState(Theme.MAXIMIZED_BOTH);
-        mi.setVisible(true);
-
-        // Theme.main(null);
-        //this.dispose();
+        mainFunctions mf = new mainFunctions();
+        mf.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
+        mf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
