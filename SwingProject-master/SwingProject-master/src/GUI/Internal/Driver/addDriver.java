@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Internal.Driverl;
+package GUI.Internal.Driver;
+
+import Coding.Driver;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -11,11 +15,12 @@ package GUI.Internal.Driverl;
  */
 public class addDriver extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form addDriver
-     */
+   
+    
     public addDriver() {
         initComponents();
+        
+        
     }
 
     /**
@@ -39,24 +44,27 @@ public class addDriver extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        fnametxt = new javax.swing.JTextField();
+        lnametxt = new javax.swing.JTextField();
+        NICtxt = new javax.swing.JTextField();
+        drvlicencetxt = new javax.swing.JTextField();
+        tptxt = new javax.swing.JTextField();
+        addresstxt = new javax.swing.JTextField();
+        emailtxt = new javax.swing.JTextField();
+        daybox = new javax.swing.JComboBox<>();
+        monthbox = new javax.swing.JComboBox<>();
+        yearbox = new javax.swing.JComboBox<>();
+        addBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(76, 77, 78));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         setTitle("Add Driver");
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(76, 77, 78));
@@ -163,84 +171,84 @@ public class addDriver extends javax.swing.JInternalFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 21;
-        gridBagConstraints.ipadx = 518;
-        gridBagConstraints.ipady = 9;
+        gridBagConstraints.ipadx = 517;
+        gridBagConstraints.ipady = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 76, 0, 81);
+        gridBagConstraints.insets = new java.awt.Insets(9, 76, 0, 0);
         jPanel1.add(jSeparator1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridwidth = 22;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 369;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(35, 45, 0, 81);
-        jPanel1.add(jTextField1, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(35, 45, 0, 0);
+        jPanel1.add(fnametxt, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridwidth = 22;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 369;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 81);
-        jPanel1.add(jTextField2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 0);
+        jPanel1.add(lnametxt, gridBagConstraints);
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        NICtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                NICtxtActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridwidth = 22;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 369;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 81);
-        jPanel1.add(jTextField3, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 0);
+        jPanel1.add(NICtxt, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridwidth = 22;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 369;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 45, 0, 81);
-        jPanel1.add(jTextField5, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(9, 45, 0, 0);
+        jPanel1.add(drvlicencetxt, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridwidth = 22;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 369;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 81);
-        jPanel1.add(jTextField6, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 0);
+        jPanel1.add(tptxt, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 14;
-        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridwidth = 22;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 369;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 81);
-        jPanel1.add(jTextField7, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 0);
+        jPanel1.add(addresstxt, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 14;
+        gridBagConstraints.gridwidth = 22;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 369;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 81);
-        jPanel1.add(jTextField8, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 0);
+        jPanel1.add(emailtxt, gridBagConstraints);
 
-        jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        daybox.setBackground(new java.awt.Color(204, 204, 204));
+        daybox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        daybox.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 10;
@@ -249,11 +257,11 @@ public class addDriver extends javax.swing.JInternalFrame {
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 45, 0, 0);
-        jPanel1.add(jComboBox1, gridBagConstraints);
+        jPanel1.add(daybox, gridBagConstraints);
 
-        jComboBox2.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
-        jComboBox2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        monthbox.setBackground(new java.awt.Color(204, 204, 204));
+        monthbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        monthbox.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 17;
         gridBagConstraints.gridy = 10;
@@ -262,11 +270,11 @@ public class addDriver extends javax.swing.JInternalFrame {
         gridBagConstraints.ipadx = 78;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
-        jPanel1.add(jComboBox2, gridBagConstraints);
+        jPanel1.add(monthbox, gridBagConstraints);
 
-        jComboBox3.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", " " }));
-        jComboBox3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        yearbox.setBackground(new java.awt.Color(204, 204, 204));
+        yearbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", " " }));
+        yearbox.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 19;
         gridBagConstraints.gridy = 10;
@@ -274,11 +282,16 @@ public class addDriver extends javax.swing.JInternalFrame {
         gridBagConstraints.ipadx = 31;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 20, 0, 0);
-        jPanel1.add(jComboBox3, gridBagConstraints);
+        jPanel1.add(yearbox, gridBagConstraints);
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Done");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        addBtn.setBackground(new java.awt.Color(204, 204, 204));
+        addBtn.setText("Add");
+        addBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 18;
@@ -286,42 +299,89 @@ public class addDriver extends javax.swing.JInternalFrame {
         gridBagConstraints.ipadx = 39;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 45, 62, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(18, 45, 0, 0);
+        jPanel1.add(addBtn, gridBagConstraints);
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Clear");
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        clearBtn.setBackground(new java.awt.Color(204, 204, 204));
+        clearBtn.setText("Clear");
+        clearBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 17;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.ipadx = 39;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 18, 62, 0);
-        jPanel1.add(jButton2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 0);
+        jPanel1.add(clearBtn, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(41, 40, 0, 0);
         getContentPane().add(jPanel1, gridBagConstraints);
+
+        jTable1.setBackground(new java.awt.Color(204, 204, 204));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "DriverID", "First Name", "Last Name", "NIC No.", "Driver Licence No.", "Day", "Month", "Year", "Telephone No.", "Address", "Email"
+            }
+        ));
+        jTable1.setCellSelectionEnabled(true);
+        jScrollPane1.setViewportView(jTable1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 636;
+        gridBagConstraints.ipady = 98;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(18, 40, 75, 39);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void NICtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NICtxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_NICtxtActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        
+        Driver driver = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,daybox.getSelectedItem().toString()+"-"+monthbox.getSelectedItem().toString()+"-"+ yearbox.getSelectedItem().toString() ,monthbox.getSelectedItem().toString() ,yearbox.getSelectedItem().toString() ,tptxt.getText() ,addresstxt.getText() ,emailtxt.getText() );
+  
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clearBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JTextField NICtxt;
+    private javax.swing.JButton addBtn;
+    private javax.swing.JTextField addresstxt;
+    private javax.swing.JButton clearBtn;
+    private javax.swing.JComboBox<String> daybox;
+    private javax.swing.JTextField drvlicencetxt;
+    private javax.swing.JTextField emailtxt;
+    private javax.swing.JTextField fnametxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -332,13 +392,12 @@ public class addDriver extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField lnametxt;
+    private javax.swing.JComboBox<String> monthbox;
+    private javax.swing.JTextField tptxt;
+    private javax.swing.JComboBox<String> yearbox;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import GUI.Internal.Driverl.addDriver;
+import GUI.Internal.Driver.addDriver;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
