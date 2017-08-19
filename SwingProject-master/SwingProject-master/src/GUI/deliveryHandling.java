@@ -19,9 +19,7 @@ import javax.swing.JPanel;
  */
 public class deliveryHandling extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Theme
-     */
+    int windowCount=0;
     public deliveryHandling() {
         initComponents();
     }
@@ -383,8 +381,12 @@ public class deliveryHandling extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void addDriverBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDriverBtnMouseClicked
-        addDriver addD = new addDriver();
-        DesktopPane.add(addD).setVisible(true);
+        if(windowCount==0)
+        {
+            addDriver addD = new addDriver();
+            DesktopPane.add(addD).setVisible(true);
+            windowCount++;
+        }
     }//GEN-LAST:event_addDriverBtnMouseClicked
 
     public void setColor(JPanel panel)
