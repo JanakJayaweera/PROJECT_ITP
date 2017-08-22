@@ -109,7 +109,7 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 78;
         gridBagConstraints.ipady = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(6, 30, 0, 0);
         mainCategories.add(jButton4, gridBagConstraints);
 
         jButton5.setBackground(new java.awt.Color(255, 102, 153));
@@ -138,7 +138,7 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(103, 101, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(103, 91, 0, 0);
         mainCategories.add(jLabel1, gridBagConstraints);
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));

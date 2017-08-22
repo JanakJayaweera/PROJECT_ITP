@@ -35,7 +35,6 @@ public class deliveryHandling extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         addDriverBtn = new javax.swing.JButton();
-        editDriverBtn = new javax.swing.JButton();
         rmvDriverBtn = new javax.swing.JButton();
         viewDriverBtn = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -78,7 +77,7 @@ public class deliveryHandling extends javax.swing.JFrame {
         addDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
         addDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
-        addDriverBtn.setText("Add Driver");
+        addDriverBtn.setText("Add / Update Driver");
         addDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         addDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
         addDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -88,15 +87,6 @@ public class deliveryHandling extends javax.swing.JFrame {
                 addDriverBtnMouseClicked(evt);
             }
         });
-
-        editDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
-        editDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        editDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
-        editDriverBtn.setText("Edit Driver");
-        editDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        editDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
-        editDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
-        editDriverBtn.setPreferredSize(new java.awt.Dimension(53, 25));
 
         rmvDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
         rmvDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -241,7 +231,6 @@ public class deliveryHandling extends javax.swing.JFrame {
                             .addContainerGap()
                             .addComponent(jLabel2))
                         .addComponent(addDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                        .addComponent(editDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(rmvDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(viewDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -268,7 +257,7 @@ public class deliveryHandling extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        sidePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addDriverBtn, editDriverBtn, jButton10, jButton11, jButton12, jButton13, jButton14, jButton5, jButton6, jButton7, jButton8, jButton9, rmvDriverBtn, viewDriverBtn});
+        sidePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addDriverBtn, jButton10, jButton11, jButton12, jButton13, jButton14, jButton5, jButton6, jButton7, jButton8, jButton9, rmvDriverBtn, viewDriverBtn});
 
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,8 +268,6 @@ public class deliveryHandling extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(addDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(editDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(rmvDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -454,7 +441,6 @@ public class deliveryHandling extends javax.swing.JFrame {
     private javax.swing.JButton addDriverBtn;
     private javax.swing.JPanel background;
     private javax.swing.JLabel backgroundImage;
-    private javax.swing.JButton editDriverBtn;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
