@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import GUI.Finance.SidePane;
+
 /**
  *
  * @author USER
@@ -33,7 +35,7 @@ public class mainFunctions extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        finance = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -97,10 +99,15 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(12, 6, 0, 150);
         mainCategories.add(jButton3, gridBagConstraints);
 
-        jButton4.setBackground(new java.awt.Color(255, 51, 51));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(51, 51, 51));
-        jButton4.setText("Finance Management");
+        finance.setBackground(new java.awt.Color(255, 51, 51));
+        finance.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        finance.setForeground(new java.awt.Color(51, 51, 51));
+        finance.setText("Finance Management");
+        finance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                financeActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -109,7 +116,7 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.ipady = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 2, 0, 0);
-        mainCategories.add(jButton4, gridBagConstraints);
+        mainCategories.add(finance, gridBagConstraints);
 
         jButton5.setBackground(new java.awt.Color(51, 255, 102));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -262,6 +269,13 @@ public class mainFunctions extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton7MouseClicked
 
+    private void financeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_financeActionPerformed
+        SidePane sp = new SidePane();
+        sp.setExtendedState(SidePane.MAXIMIZED_BOTH);
+        sp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_financeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -298,10 +312,10 @@ public class mainFunctions extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton finance;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
