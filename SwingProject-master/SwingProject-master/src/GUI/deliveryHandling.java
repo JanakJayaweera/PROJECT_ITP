@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import GUI.Internal.Driverl.addDriver;
+import GUI.Internal.Driver.addDriver;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,9 +19,7 @@ import javax.swing.JPanel;
  */
 public class deliveryHandling extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Theme
-     */
+    int windowCount=0;
     public deliveryHandling() {
         initComponents();
     }
@@ -36,10 +34,10 @@ public class deliveryHandling extends javax.swing.JFrame {
         background = new javax.swing.JPanel();
         sidePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        addDriverBtn = new javax.swing.JButton();
+        editDriverBtn = new javax.swing.JButton();
+        rmvDriverBtn = new javax.swing.JButton();
+        viewDriverBtn = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -54,6 +52,10 @@ public class deliveryHandling extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
         DesktopPane = new javax.swing.JDesktopPane();
         backgroundImage = new javax.swing.JLabel();
 
@@ -61,10 +63,10 @@ public class deliveryHandling extends javax.swing.JFrame {
 
         background.setBackground(new java.awt.Color(76, 77, 78));
 
-        sidePanel.setBackground(new java.awt.Color(54, 33, 89));
+        sidePanel.setBackground(new java.awt.Color(0, 204, 153));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Log out");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,153 +75,165 @@ public class deliveryHandling extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(54, 33, 89));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Add Driver");
-        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton1.setMaximumSize(new java.awt.Dimension(53, 25));
-        jButton1.setMinimumSize(new java.awt.Dimension(53, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(53, 25));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
+        addDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
+        addDriverBtn.setText("Add Driver");
+        addDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        addDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
+        addDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
+        addDriverBtn.setPreferredSize(new java.awt.Dimension(53, 25));
+        addDriverBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                addDriverBtnMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addDriverBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addDriverBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(54, 33, 89));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Edit Driver");
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton2.setMaximumSize(new java.awt.Dimension(53, 25));
-        jButton2.setMinimumSize(new java.awt.Dimension(53, 25));
-        jButton2.setPreferredSize(new java.awt.Dimension(53, 25));
+        editDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
+        editDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        editDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
+        editDriverBtn.setText("Edit Driver");
+        editDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        editDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
+        editDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
+        editDriverBtn.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton3.setBackground(new java.awt.Color(54, 33, 89));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(204, 204, 204));
-        jButton3.setText("Remove Driver");
-        jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton3.setMaximumSize(new java.awt.Dimension(53, 25));
-        jButton3.setMinimumSize(new java.awt.Dimension(53, 25));
-        jButton3.setPreferredSize(new java.awt.Dimension(53, 25));
+        rmvDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
+        rmvDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rmvDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
+        rmvDriverBtn.setText("Remove Driver");
+        rmvDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        rmvDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
+        rmvDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
+        rmvDriverBtn.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton4.setBackground(new java.awt.Color(54, 33, 89));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(204, 204, 204));
-        jButton4.setText("View Driver");
-        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton4.setMaximumSize(new java.awt.Dimension(53, 25));
-        jButton4.setMinimumSize(new java.awt.Dimension(53, 25));
-        jButton4.setPreferredSize(new java.awt.Dimension(53, 25));
+        viewDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
+        viewDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        viewDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
+        viewDriverBtn.setText("View Driver");
+        viewDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        viewDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
+        viewDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
+        viewDriverBtn.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton5.setBackground(new java.awt.Color(54, 33, 89));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(204, 204, 204));
+        jButton5.setBackground(new java.awt.Color(7, 191, 145));
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(51, 51, 51));
         jButton5.setText("Add Vehicle");
         jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton5.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton5.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton5.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton6.setBackground(new java.awt.Color(54, 33, 89));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(204, 204, 204));
+        jButton6.setBackground(new java.awt.Color(7, 191, 145));
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(51, 51, 51));
         jButton6.setText("Edit Vehicle");
         jButton6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton6.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton6.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton6.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton7.setBackground(new java.awt.Color(54, 33, 89));
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(204, 204, 204));
+        jButton7.setBackground(new java.awt.Color(7, 191, 145));
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(51, 51, 51));
         jButton7.setText("Remove Vehicle");
         jButton7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton7.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton7.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton7.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton8.setBackground(new java.awt.Color(54, 33, 89));
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(204, 204, 204));
+        jButton8.setBackground(new java.awt.Color(7, 191, 145));
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(51, 51, 51));
         jButton8.setText("View Vehicle");
         jButton8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton8.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton8.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton8.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton9.setBackground(new java.awt.Color(54, 33, 89));
-        jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(204, 204, 204));
+        jButton9.setBackground(new java.awt.Color(7, 191, 145));
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(51, 51, 51));
         jButton9.setText("Service Vehicle");
         jButton9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton9.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton9.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton9.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton10.setBackground(new java.awt.Color(54, 33, 89));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(204, 204, 204));
+        jButton10.setBackground(new java.awt.Color(7, 191, 145));
+        jButton10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(51, 51, 51));
         jButton10.setText("Do a Delivery");
         jButton10.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton10.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton10.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton10.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton11.setBackground(new java.awt.Color(54, 33, 89));
-        jButton11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(204, 204, 204));
+        jButton11.setBackground(new java.awt.Color(7, 191, 145));
+        jButton11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(51, 51, 51));
         jButton11.setText("Update Delivery");
         jButton11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton11.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton11.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton11.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton12.setBackground(new java.awt.Color(54, 33, 89));
-        jButton12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(204, 204, 204));
+        jButton12.setBackground(new java.awt.Color(7, 191, 145));
+        jButton12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(51, 51, 51));
         jButton12.setText("Delivery Reports");
         jButton12.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton12.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton12.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton12.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton13.setBackground(new java.awt.Color(54, 33, 89));
-        jButton13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(204, 204, 204));
+        jButton13.setBackground(new java.awt.Color(7, 191, 145));
+        jButton13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(51, 51, 51));
         jButton13.setText("List of Drivers");
         jButton13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton13.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton13.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton13.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton14.setBackground(new java.awt.Color(54, 33, 89));
-        jButton14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(204, 204, 204));
+        jButton14.setBackground(new java.awt.Color(7, 191, 145));
+        jButton14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(51, 51, 51));
         jButton14.setText("List of Vehicles");
         jButton14.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton14.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton14.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton14.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Manage Drivers");
 
-        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Manage Vehicle");
 
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Manage Delivey");
 
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Generate Reports");
+
+        jSeparator1.setBackground(new java.awt.Color(102, 102, 102));
+
+        jSeparator2.setBackground(new java.awt.Color(102, 102, 102));
+
+        jSeparator3.setBackground(new java.awt.Color(102, 102, 102));
+
+        jSeparator4.setBackground(new java.awt.Color(102, 102, 102));
 
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
@@ -227,48 +241,60 @@ public class deliveryHandling extends javax.swing.JFrame {
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidePanelLayout.createSequentialGroup()
                 .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(sidePanelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel2))
+                        .addComponent(addDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                        .addComponent(editDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rmvDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator1)
+                        .addComponent(jSeparator2)
+                        .addComponent(jSeparator3)
+                        .addComponent(jSeparator4))
                     .addGroup(sidePanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                        .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))))
                 .addGap(19, 19, 19))
         );
 
-        sidePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton10, jButton11, jButton12, jButton13, jButton14, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8, jButton9});
+        sidePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addDriverBtn, editDriverBtn, jButton10, jButton11, jButton12, jButton13, jButton14, jButton5, jButton6, jButton7, jButton8, jButton9, rmvDriverBtn, viewDriverBtn});
 
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sidePanelLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel1)
                 .addGap(5, 5, 5)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(addDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rmvDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addComponent(viewDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel3)
                 .addGap(5, 5, 5)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,15 +304,19 @@ public class deliveryHandling extends javax.swing.JFrame {
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel4)
                 .addGap(5, 5, 5)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel5)
                 .addGap(5, 5, 5)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,14 +385,22 @@ public class deliveryHandling extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        addDriver addD = new addDriver();
-        DesktopPane.add(addD).setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void addDriverBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDriverBtnMouseClicked
+        if(windowCount==0)
+        {
+            addDriver addD = new addDriver();
+            DesktopPane.add(addD).setVisible(true);
+            windowCount++;
+        }
+    }//GEN-LAST:event_addDriverBtnMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void addDriverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDriverBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addDriverBtnActionPerformed
 
     public void setColor(JPanel panel)
     {
@@ -426,17 +464,15 @@ public class deliveryHandling extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DesktopPane;
+    private javax.swing.JButton addDriverBtn;
     private javax.swing.JPanel background;
     private javax.swing.JLabel backgroundImage;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton editDriverBtn;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -447,6 +483,12 @@ public class deliveryHandling extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JButton rmvDriverBtn;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JButton viewDriverBtn;
     // End of variables declaration//GEN-END:variables
 }

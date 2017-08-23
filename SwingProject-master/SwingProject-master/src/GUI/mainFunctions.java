@@ -35,7 +35,7 @@ public class mainFunctions extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        finance = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -53,9 +53,9 @@ public class mainFunctions extends javax.swing.JFrame {
         mainCategories.setBackground(new java.awt.Color(76, 77, 78));
         mainCategories.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setBackground(new java.awt.Color(0, 204, 153));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Sales & Marketing Management");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -66,61 +66,62 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 8;
         gridBagConstraints.ipady = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 91, 0, 0);
         mainCategories.add(jButton1, gridBagConstraints);
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
+        jButton2.setBackground(new java.awt.Color(102, 153, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Stock Management");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 76;
+        gridBagConstraints.ipadx = 92;
         gridBagConstraints.ipady = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 91, 0, 0);
         mainCategories.add(jButton2, gridBagConstraints);
 
-        jButton3.setBackground(new java.awt.Color(153, 51, 255));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(51, 51, 51));
+        jButton3.setBackground(new java.awt.Color(153, 102, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Production Management");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 42;
+        gridBagConstraints.ipadx = 54;
         gridBagConstraints.ipady = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 6, 0, 150);
+        gridBagConstraints.insets = new java.awt.Insets(12, 6, 0, 154);
         mainCategories.add(jButton3, gridBagConstraints);
 
-        finance.setBackground(new java.awt.Color(255, 51, 51));
-        finance.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        finance.setForeground(new java.awt.Color(51, 51, 51));
-        finance.setText("Finance Management");
-        finance.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(0, 153, 153));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Finance Management");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                financeActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 66;
+        gridBagConstraints.ipadx = 78;
         gridBagConstraints.ipady = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 2, 0, 0);
-        mainCategories.add(finance, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(6, 20, 0, 0);
+        mainCategories.add(jButton4, gridBagConstraints);
 
-        jButton5.setBackground(new java.awt.Color(51, 255, 102));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(51, 51, 51));
+        jButton5.setBackground(new java.awt.Color(255, 102, 153));
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Human Resource Management");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,20 +132,20 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.ipadx = 8;
+        gridBagConstraints.ipadx = 12;
         gridBagConstraints.ipady = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 150);
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 154);
         mainCategories.add(jButton5, gridBagConstraints);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Select a category...");
+        jLabel1.setText("Select a category");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(50, 101, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(103, 101, 0, 0);
         mainCategories.add(jLabel1, gridBagConstraints);
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
@@ -152,8 +153,8 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.ipadx = 457;
-        gridBagConstraints.ipady = 11;
+        gridBagConstraints.ipadx = 456;
+        gridBagConstraints.ipady = 12;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 91, 0, 0);
         mainCategories.add(jSeparator1, gridBagConstraints);
@@ -169,7 +170,7 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(34, 23, 23, 0);
+        gridBagConstraints.insets = new java.awt.Insets(34, 29, 76, 0);
         mainCategories.add(jLabel2, gridBagConstraints);
 
         jPanel1.add(mainCategories, "card2");
@@ -177,9 +178,9 @@ public class mainFunctions extends javax.swing.JFrame {
         salesNmarketing.setBackground(new java.awt.Color(76, 77, 78));
         salesNmarketing.setLayout(new java.awt.GridBagLayout());
 
-        jButton6.setBackground(new java.awt.Color(51, 102, 255));
+        jButton6.setBackground(new java.awt.Color(0, 153, 153));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(51, 51, 51));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Order Handling");
         jButton6.setMaximumSize(new java.awt.Dimension(139, 23));
         jButton6.setMinimumSize(new java.awt.Dimension(139, 23));
@@ -193,9 +194,9 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(140, 165, 0, 0);
         salesNmarketing.add(jButton6, gridBagConstraints);
 
-        jButton7.setBackground(new java.awt.Color(255, 51, 51));
+        jButton7.setBackground(new java.awt.Color(0, 153, 102));
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(51, 51, 51));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Delivery Handling");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -269,12 +270,12 @@ public class mainFunctions extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton7MouseClicked
 
-    private void financeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_financeActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         SidePane sp = new SidePane();
         sp.setExtendedState(SidePane.MAXIMIZED_BOTH);
         sp.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_financeActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,10 +313,10 @@ public class mainFunctions extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton finance;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
