@@ -5,8 +5,8 @@
  */
 package GUI;
 
-import GUI.Internal.Driver.addDriver;
-import GUI.Internal.Driver.viewDriver;
+import GUI.Internal.Driver.addUpdateDriver;
+import GUI.Internal.Driver.viewRemoveDriver;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,8 +19,7 @@ import javax.swing.JPanel;
  * @author lahir
  */
 public class deliveryHandling extends javax.swing.JFrame {
-    int addDrvwindowCount=0;
-    int viewDrvwindowCount=0;
+    
     public deliveryHandling() {
         initComponents();
     }
@@ -36,7 +35,6 @@ public class deliveryHandling extends javax.swing.JFrame {
         sidePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         addDriverBtn = new javax.swing.JButton();
-        rmvDriverBtn = new javax.swing.JButton();
         viewDriverBtn = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -89,19 +87,10 @@ public class deliveryHandling extends javax.swing.JFrame {
             }
         });
 
-        rmvDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
-        rmvDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        rmvDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
-        rmvDriverBtn.setText("Remove Driver");
-        rmvDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        rmvDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
-        rmvDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
-        rmvDriverBtn.setPreferredSize(new java.awt.Dimension(53, 25));
-
         viewDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
         viewDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         viewDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
-        viewDriverBtn.setText("View Driver");
+        viewDriverBtn.setText("View / Remove Driver");
         viewDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         viewDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
         viewDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -237,7 +226,6 @@ public class deliveryHandling extends javax.swing.JFrame {
                             .addContainerGap()
                             .addComponent(jLabel2))
                         .addComponent(addDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                        .addComponent(rmvDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(viewDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -263,7 +251,7 @@ public class deliveryHandling extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        sidePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addDriverBtn, jButton10, jButton11, jButton12, jButton13, jButton14, jButton5, jButton6, jButton7, jButton8, jButton9, rmvDriverBtn, viewDriverBtn});
+        sidePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addDriverBtn, jButton10, jButton11, jButton12, jButton13, jButton14, jButton5, jButton6, jButton7, jButton8, jButton9, viewDriverBtn});
 
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,10 +263,8 @@ public class deliveryHandling extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(addDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(rmvDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(viewDriverBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel3)
                 .addGap(5, 5, 5)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -375,22 +361,21 @@ public class deliveryHandling extends javax.swing.JFrame {
 
     private void addDriverBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDriverBtnMouseClicked
         
-        if(addDrvwindowCount==0)
-        {
-            addDriver addD = new addDriver();
+            DesktopPane.removeAll();
+            addUpdateDriver addD = new addUpdateDriver();
             DesktopPane.add(addD).setVisible(true);
-            addDrvwindowCount++;
-        }
+            
+            
+        
     }//GEN-LAST:event_addDriverBtnMouseClicked
 
     private void viewDriverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDriverBtnActionPerformed
         
-        if(viewDrvwindowCount==0)
-        {
-            viewDriver viewD = new viewDriver();
+            DesktopPane.removeAll();
+            viewRemoveDriver viewD = new viewRemoveDriver();
             DesktopPane.add(viewD).setVisible(true);
-            viewDrvwindowCount++;
-        }
+            
+        
     }//GEN-LAST:event_viewDriverBtnActionPerformed
 
     public void setColor(JPanel panel)
@@ -477,7 +462,6 @@ public class deliveryHandling extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JButton rmvDriverBtn;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JButton viewDriverBtn;
     // End of variables declaration//GEN-END:variables

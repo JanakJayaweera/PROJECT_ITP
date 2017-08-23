@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
-import GUI.Internal.Driver.addDriver;
+import GUI.Internal.Driver.addUpdateDriver;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Driver {
         
@@ -20,6 +22,34 @@ public class Driver {
         ResultSet rs = null;
         
         
+        
+        public Driver(int pid, String pfname, String plname)
+        {
+            
+            //Constructor for remove driver part
+            
+            con = DBconnect.connect();
+            
+            id = pid;
+            fname = pfname;
+            lname = plname;
+            removeDriver(pid);
+        }
+        
+        public void removeDriver(int pid){
+        
+            try 
+            {
+                String sql = "UPDATE driver SET employment = 0 WHERE driverID = '"+pid+"' ";
+                pst = con.prepareStatement(sql);
+                pst.execute();
+            } 
+            catch (Exception e) 
+            {
+                System.out.println(e);
+            }
+                
+        }
         
         
         public Driver(String pfname,String plname,String pNIC,String pdrvlicence,String pDOB,String ptelephone,String paddress,String pemail, int pid, int presult){
@@ -84,7 +114,11 @@ public class Driver {
             catch (SQLException e) {
                 System.out.println(e);
             }
-        }        
+        }
+        
+        
+
+        
         
         
         
