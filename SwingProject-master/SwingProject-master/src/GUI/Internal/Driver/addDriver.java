@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 import Coding.interfaceControl;
+import DB.DBconnect;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,14 +23,34 @@ import javax.swing.JOptionPane;
  */
 public class addDriver extends javax.swing.JInternalFrame {
 
-   
+   Connection con = null;
+   PreparedStatement pst = null;
+   ResultSet rs = null;
     
     public addDriver() {
+        con = DBconnect.connect();
         initComponents();
+        tableLoad();
+        
         
         
     }
     
+    public void tableLoad()
+        {           
+            
+            try{
+            
+                String sql = "SELECT driverID,fname,lname,nic,licenceno,DOB,telephone,address,email FROM driver";
+                pst = con.prepareStatement(sql);
+                rs = pst.executeQuery();
+                Table1.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+            
+            catch(SQLException e){
+                System.out.println(e);
+            }
+        }
 
     
     @SuppressWarnings("unchecked")
@@ -61,7 +82,7 @@ public class addDriver extends javax.swing.JInternalFrame {
         clearBtn = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table1 = new javax.swing.JTable();
 
@@ -118,11 +139,11 @@ public class addDriver extends javax.swing.JInternalFrame {
 
         daybox.setBackground(new java.awt.Color(102, 102, 102));
         daybox.setForeground(new java.awt.Color(255, 255, 255));
-        daybox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        daybox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
         monthbox.setBackground(new java.awt.Color(102, 102, 102));
         monthbox.setForeground(new java.awt.Color(255, 255, 255));
-        monthbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        monthbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         yearbox.setBackground(new java.awt.Color(102, 102, 102));
         yearbox.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,13 +175,13 @@ public class addDriver extends javax.swing.JInternalFrame {
         idLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         idLabel.setText("Driver ID will assign automatically");
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Update");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        updateBtn.setBackground(new java.awt.Color(102, 102, 102));
+        updateBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                updateBtnActionPerformed(evt);
             }
         });
 
@@ -172,32 +193,27 @@ public class addDriver extends javax.swing.JInternalFrame {
                 .addGap(220, 220, 220)
                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(updateBtn)
                 .addGap(18, 18, 18)
                 .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addComponent(jLabel2)
                         .addGap(87, 87, 87)
                         .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addComponent(jLabel3)
                         .addGap(102, 102, 102)
                         .addComponent(NICtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addComponent(jLabel4)
                         .addGap(45, 45, 45)
                         .addComponent(drvlicencetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addComponent(jLabel7)
                         .addGap(74, 74, 74)
                         .addComponent(daybox, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,27 +222,20 @@ public class addDriver extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(yearbox, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addComponent(jLabel5)
                         .addGap(62, 62, 62)
                         .addComponent(tptxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addComponent(jLabel8)
                         .addGap(101, 101, 101)
                         .addComponent(addresstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addComponent(jLabel6)
                         .addGap(66, 66, 66)
                         .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
                         .addComponent(jLabel1)
                         .addGap(87, 87, 87)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +244,7 @@ public class addDriver extends javax.swing.JInternalFrame {
                 .addGap(0, 79, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {clearBtn, jButton1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {clearBtn, updateBtn});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,11 +310,11 @@ public class addDriver extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
+                    .addComponent(updateBtn)
                     .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {clearBtn, jButton1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {clearBtn, updateBtn});
 
         Table1.setAutoCreateRowSorter(true);
         Table1.setBackground(new java.awt.Color(204, 204, 204));
@@ -360,7 +369,7 @@ public class addDriver extends javax.swing.JInternalFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         
         Driver driver = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,daybox.getSelectedItem().toString()+"-"+monthbox.getSelectedItem().toString()+"-"+ yearbox.getSelectedItem().toString() , tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(),Table1 );
-        
+        tableLoad();
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
@@ -404,42 +413,18 @@ public class addDriver extends javax.swing.JInternalFrame {
         tptxt.setText(telephone);
         addresstxt.setText(address);
         emailtxt.setText(email);
+        daybox.setSelectedItem(DOB.subSequence(0, 2));
+        monthbox.setSelectedItem(DOB.subSequence(3, 5));
+        yearbox.setSelectedItem(DOB.subSequence(6, 10));
         
     }//GEN-LAST:event_Table1MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure updating with new details?");
+        Driver d1 = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,daybox.getSelectedItem().toString()+"-"+monthbox.getSelectedItem().toString()+"-"+ yearbox.getSelectedItem().toString() , tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(), Integer.parseInt(idLabel.getText()), result);
+        tableLoad();
         
-        Connection con = null;
-        PreparedStatement pst = null;
-        ResultSet rs = null;
-        
-        int x = JOptionPane.showConfirmDialog(null, "Are you sure updating with new details?");
-        
-        if(x==0){
-            String fname = fnametxt.getText();
-            String lname = lnametxt.getText();
-            String nic = NICtxt.getText();
-            String licenceno = drvlicencetxt.getText();
-            String day = daybox.getSelectedItem().toString();
-            String month = monthbox.getSelectedItem().toString();
-            String year = yearbox.getSelectedItem().toString();
-            int telephone = Integer.parseInt(tptxt.getText());
-            String address = addresstxt.getText();
-            String email = emailtxt.getText();
-            int id = Integer.parseInt(idLabel.getText());
-            
-            String sql = "UPDATE driver SET fname = '"+fname+"',lname = '"+lname+"',nic = '"+nic+"', licenceno = '"+licenceno+"', DOB = '"+day+"', telephone = '"+telephone+"', address = '"+address+"', email = '"+email+"' where driverID = '"+id+"' " ;
-        
-            try {
-                pst = con.prepareStatement(sql);
-                pst.execute();
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-            
-        }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_updateBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -453,7 +438,6 @@ public class addDriver extends javax.swing.JInternalFrame {
     private javax.swing.JTextField emailtxt;
     private javax.swing.JTextField fnametxt;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -470,6 +454,7 @@ public class addDriver extends javax.swing.JInternalFrame {
     private javax.swing.JTextField lnametxt;
     private javax.swing.JComboBox<String> monthbox;
     private javax.swing.JTextField tptxt;
+    private javax.swing.JButton updateBtn;
     private javax.swing.JComboBox<String> yearbox;
     // End of variables declaration//GEN-END:variables
 }

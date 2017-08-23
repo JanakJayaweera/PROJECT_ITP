@@ -6,6 +6,7 @@
 package GUI;
 
 import GUI.Internal.Driver.addDriver;
+import GUI.Internal.Driver.viewDriver;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -18,8 +19,8 @@ import javax.swing.JPanel;
  * @author lahir
  */
 public class deliveryHandling extends javax.swing.JFrame {
-
-    int windowCount=0;
+    int addDrvwindowCount=0;
+    int viewDrvwindowCount=0;
     public deliveryHandling() {
         initComponents();
     }
@@ -105,6 +106,11 @@ public class deliveryHandling extends javax.swing.JFrame {
         viewDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
         viewDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
         viewDriverBtn.setPreferredSize(new java.awt.Dimension(53, 25));
+        viewDriverBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewDriverBtnActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(7, 191, 145));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -368,13 +374,24 @@ public class deliveryHandling extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void addDriverBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDriverBtnMouseClicked
-        if(windowCount==0)
+        
+        if(addDrvwindowCount==0)
         {
             addDriver addD = new addDriver();
             DesktopPane.add(addD).setVisible(true);
-            windowCount++;
+            addDrvwindowCount++;
         }
     }//GEN-LAST:event_addDriverBtnMouseClicked
+
+    private void viewDriverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDriverBtnActionPerformed
+        
+        if(viewDrvwindowCount==0)
+        {
+            viewDriver viewD = new viewDriver();
+            DesktopPane.add(viewD).setVisible(true);
+            viewDrvwindowCount++;
+        }
+    }//GEN-LAST:event_viewDriverBtnActionPerformed
 
     public void setColor(JPanel panel)
     {
