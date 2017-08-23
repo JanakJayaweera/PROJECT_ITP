@@ -6,7 +6,9 @@
 package GUI;
 
 import GUI.Internal.Driver.addUpdateDriver;
+import GUI.Internal.Driver.addUpdateVehicle;
 import GUI.Internal.Driver.viewRemoveDriver;
+import GUI.Internal.Driver.viewRemoveVehicle;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -37,9 +39,7 @@ public class deliveryHandling extends javax.swing.JFrame {
         addDriverBtn = new javax.swing.JButton();
         viewDriverBtn = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
@@ -104,38 +104,30 @@ public class deliveryHandling extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(7, 191, 145));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton5.setForeground(new java.awt.Color(51, 51, 51));
-        jButton5.setText("Add Vehicle");
+        jButton5.setText("Add / Update Vehicle");
         jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton5.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton5.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton5.setPreferredSize(new java.awt.Dimension(53, 25));
-
-        jButton6.setBackground(new java.awt.Color(7, 191, 145));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(51, 51, 51));
-        jButton6.setText("Edit Vehicle");
-        jButton6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton6.setMaximumSize(new java.awt.Dimension(53, 25));
-        jButton6.setMinimumSize(new java.awt.Dimension(53, 25));
-        jButton6.setPreferredSize(new java.awt.Dimension(53, 25));
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(7, 191, 145));
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton7.setForeground(new java.awt.Color(51, 51, 51));
-        jButton7.setText("Remove Vehicle");
+        jButton7.setText("View / Remove Vehicle");
         jButton7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton7.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton7.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton7.setPreferredSize(new java.awt.Dimension(53, 25));
-
-        jButton8.setBackground(new java.awt.Color(7, 191, 145));
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(51, 51, 51));
-        jButton8.setText("View Vehicle");
-        jButton8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton8.setMaximumSize(new java.awt.Dimension(53, 25));
-        jButton8.setMinimumSize(new java.awt.Dimension(53, 25));
-        jButton8.setPreferredSize(new java.awt.Dimension(53, 25));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton9.setBackground(new java.awt.Color(7, 191, 145));
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -228,9 +220,7 @@ public class deliveryHandling extends javax.swing.JFrame {
                         .addComponent(addDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                         .addComponent(viewDriverBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -251,7 +241,7 @@ public class deliveryHandling extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        sidePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addDriverBtn, jButton10, jButton11, jButton12, jButton13, jButton14, jButton5, jButton6, jButton7, jButton8, jButton9, viewDriverBtn});
+        sidePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {addDriverBtn, jButton10, jButton11, jButton12, jButton13, jButton14, jButton5, jButton7, jButton9, viewDriverBtn});
 
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,11 +261,7 @@ public class deliveryHandling extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
@@ -378,6 +364,19 @@ public class deliveryHandling extends javax.swing.JFrame {
         
     }//GEN-LAST:event_viewDriverBtnActionPerformed
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+            DesktopPane.removeAll();
+            addUpdateVehicle addV = new addUpdateVehicle();
+            DesktopPane.add(addV).setVisible(true);
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+            DesktopPane.removeAll();
+            viewRemoveVehicle vrV = new viewRemoveVehicle();
+            DesktopPane.add(vrV).setVisible(true);
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     public void setColor(JPanel panel)
     {
         panel.setBackground(new Color(54,33,89));
@@ -449,9 +448,7 @@ public class deliveryHandling extends javax.swing.JFrame {
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

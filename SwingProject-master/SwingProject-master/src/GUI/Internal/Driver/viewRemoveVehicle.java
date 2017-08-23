@@ -5,7 +5,8 @@
  */
 package GUI.Internal.Driver;
 
-import Coding.Driver;
+
+import Coding.Vehicle;
 import DB.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,14 +19,14 @@ import net.proteanit.sql.DbUtils;
  *
  * @author USER
  */
-public class viewRemoveDriver extends javax.swing.JInternalFrame {
+public class viewRemoveVehicle extends javax.swing.JInternalFrame {
 
    Connection con = null;
    PreparedStatement pst = null;
    ResultSet rs = null;
    
    
-    public viewRemoveDriver() {
+    public viewRemoveVehicle() {
         con = DBconnect.connect();
         initComponents();
         tableLoad();
@@ -36,7 +37,7 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
             
             try{
             
-                String sql = "SELECT driverID,fname,lname,nic,licenceno,DOB,telephone,address,email, availability, employment FROM driver ";
+                String sql = "SELECT vehicleID,name,type,number,serviceKM,fuelConsumption,cMeterReading,availability,status FROM vehicle";
                 pst = con.prepareStatement(sql);
                 rs = pst.executeQuery();
                 TableView.setModel(DbUtils.resultSetToTableModel(rs));
@@ -47,13 +48,13 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
             }
         }
     
-    public void tableLoad2(int pid)
+    public void tableLoad2(int vid)
         //For view part
         {           
             
             try{
             
-                String sql = "SELECT driverID,fname,lname,nic,licenceno,DOB,telephone,address,email, availability, employment FROM driver WHERE driverID = '"+pid+"' ";
+                String sql = "SELECT vehicleID,name,type,number,serviceKM,fuelConsumption,cMeterReading,availability,status FROM vehicle WHERE vehicleID = '"+vid+"' ";
                 pst = con.prepareStatement(sql);
                 rs = pst.executeQuery();
                 TableView.setModel(DbUtils.resultSetToTableModel(rs));
@@ -80,13 +81,13 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
         TableView = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        driverIDR = new javax.swing.JLabel();
-        driverFNameR = new javax.swing.JLabel();
+        vehicleIDR = new javax.swing.JLabel();
+        vehicleNameR = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        driverLNameR = new javax.swing.JLabel();
+        vehicleNumberR = new javax.swing.JLabel();
 
         setTitle("View Driver");
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -100,7 +101,7 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("DriverID");
+        jLabel1.setText("Vehicle ID");
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -127,13 +128,13 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
 
         TableView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "DriverID", "First Name", "Last Name", "NIC", "Licence No.", "Date of Birth", "Contact No.", "Address", "Email", "Availability", "Employment Status"
+                "VehicleID", "Vehicle Name", "Type", "Number", "Fuel Consumption", "Service Distance", "Meter Reading", "Availability", "Operational Status"
             }
         ));
         TableView.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,19 +146,19 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Set Driver not Employeed to the Factory (Remove)");
+        jLabel2.setText("Set Vehicle not Operational to the Factory (Remove)");
 
-        driverIDR.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        driverIDR.setText("Selected Driver's ID will appear here");
+        vehicleIDR.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        vehicleIDR.setText("Selected Vehicle's ID will appear here");
 
-        driverFNameR.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        driverFNameR.setText("Selected Driver's First name will appear here");
+        vehicleNameR.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        vehicleNameR.setText("Selected Vehicle's name will appear here");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Driver ID");
+        jLabel5.setText("Vehicle ID");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("Driver First Name");
+        jLabel6.setText("Vehicle Name");
 
         jButton4.setBackground(new java.awt.Color(102, 102, 102));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -170,10 +171,10 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("Driver Last Name");
+        jLabel7.setText("Vehicle Number");
 
-        driverLNameR.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        driverLNameR.setText("Selected Driver's Last Name will appear here");
+        vehicleNumberR.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        vehicleNumberR.setText("Selected Vehicle's number will appear here");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,7 +195,7 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
                                 .addComponent(searchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1055, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -209,9 +210,9 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel7))
                                     .addGap(31, 31, 31)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(driverFNameR)
-                                        .addComponent(driverIDR)
-                                        .addComponent(driverLNameR)))))))
+                                        .addComponent(vehicleNameR)
+                                        .addComponent(vehicleIDR)
+                                        .addComponent(vehicleNumberR)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -224,7 +225,7 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(searchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
@@ -236,19 +237,19 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(driverIDR)
+                    .addComponent(vehicleIDR)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(driverFNameR)
+                    .addComponent(vehicleNameR)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(driverLNameR))
-                .addGap(33, 33, 33)
+                    .addComponent(vehicleNumberR))
+                .addGap(39, 39, 39)
                 .addComponent(donebtn)
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton4});
@@ -258,20 +259,20 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1264, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int id = Integer.parseInt(searchtxt.getText());
-        tableLoad2(id);
+        int vid = Integer.parseInt(searchtxt.getText());
+        tableLoad2(vid);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -286,14 +287,14 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
         String fname = TableView.getValueAt(row, 1).toString();
         String lname = TableView.getValueAt(row, 2).toString();
         
-        driverIDR.setText(id);
-        driverFNameR.setText(fname);
-        driverLNameR.setText(lname);
+        vehicleIDR.setText(id);
+        vehicleNameR.setText(fname);
+        vehicleNumberR.setText(lname);
     }//GEN-LAST:event_TableViewMouseClicked
 
     private void donebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donebtnActionPerformed
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to set the driver as not employed?\nYou can use add driver option if you want to add later");
-        Driver d4 = new Driver(Integer.parseInt(driverIDR.getText()),driverFNameR.getText(),driverLNameR.getText());
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to set the Vehicle as not operational?\nYou can use add vehicle option if you want to add later");
+        Vehicle v4 = new Vehicle(Integer.parseInt(vehicleIDR.getText()),vehicleNameR.getText(),vehicleNumberR.getText());
         tableLoad();
     }//GEN-LAST:event_donebtnActionPerformed
 
@@ -301,9 +302,6 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableView;
     private javax.swing.JButton donebtn;
-    private javax.swing.JLabel driverFNameR;
-    private javax.swing.JLabel driverIDR;
-    private javax.swing.JLabel driverLNameR;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -315,5 +313,8 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField searchtxt;
+    private javax.swing.JLabel vehicleIDR;
+    private javax.swing.JLabel vehicleNameR;
+    private javax.swing.JLabel vehicleNumberR;
     // End of variables declaration//GEN-END:variables
 }

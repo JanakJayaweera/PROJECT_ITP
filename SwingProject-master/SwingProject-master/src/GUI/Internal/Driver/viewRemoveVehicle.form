@@ -32,14 +32,14 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" pref="1086" max="32767" attributes="0"/>
+              <Component id="jPanel1" pref="1264" max="32767" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="915" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -82,7 +82,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="1055" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="921" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
@@ -99,9 +99,9 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="driverFNameR" min="-2" max="-2" attributes="0"/>
-                                          <Component id="driverIDR" min="-2" max="-2" attributes="0"/>
-                                          <Component id="driverLNameR" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vehicleNameR" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vehicleIDR" min="-2" max="-2" attributes="0"/>
+                                          <Component id="vehicleNumberR" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -120,7 +120,7 @@
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="searchtxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton1" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton4" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,22 +133,22 @@
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="driverIDR" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vehicleIDR" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="driverFNameR" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vehicleNameR" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="driverLNameR" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="vehicleNumberR" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="donebtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="328" max="32767" attributes="0"/>
+                  <EmptySpace pref="116" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -162,7 +162,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="DriverID"/>
+            <Property name="text" type="java.lang.String" value="Vehicle ID"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="searchtxt">
@@ -220,18 +220,16 @@
             <Component class="javax.swing.JTable" name="TableView">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="11" rowCount="4">
-                    <Column editable="true" title="DriverID" type="java.lang.Object"/>
-                    <Column editable="true" title="First Name" type="java.lang.Object"/>
-                    <Column editable="true" title="Last Name" type="java.lang.Object"/>
-                    <Column editable="true" title="NIC" type="java.lang.Object"/>
-                    <Column editable="true" title="Licence No." type="java.lang.Object"/>
-                    <Column editable="true" title="Date of Birth" type="java.lang.Object"/>
-                    <Column editable="true" title="Contact No." type="java.lang.Object"/>
-                    <Column editable="true" title="Address" type="java.lang.Object"/>
-                    <Column editable="true" title="Email" type="java.lang.Object"/>
+                  <Table columnCount="9" rowCount="4">
+                    <Column editable="true" title="VehicleID" type="java.lang.Object"/>
+                    <Column editable="true" title="Vehicle Name" type="java.lang.Object"/>
+                    <Column editable="true" title="Type" type="java.lang.Object"/>
+                    <Column editable="true" title="Number" type="java.lang.Object"/>
+                    <Column editable="true" title="Fuel Consumption" type="java.lang.Object"/>
+                    <Column editable="true" title="Service Distance" type="java.lang.Object"/>
+                    <Column editable="true" title="Meter Reading" type="java.lang.Object"/>
                     <Column editable="true" title="Availability" type="java.lang.Object"/>
-                    <Column editable="true" title="Employment Status" type="java.lang.Object"/>
+                    <Column editable="true" title="Operational Status" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
@@ -249,25 +247,25 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Set Driver not Employeed to the Factory (Remove)"/>
+            <Property name="text" type="java.lang.String" value="Set Vehicle not Operational to the Factory (Remove)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
-        <Component class="javax.swing.JLabel" name="driverIDR">
+        <Component class="javax.swing.JLabel" name="vehicleIDR">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Selected Driver&apos;s ID will appear here"/>
+            <Property name="text" type="java.lang.String" value="Selected Vehicle&apos;s ID will appear here"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="driverFNameR">
+        <Component class="javax.swing.JLabel" name="vehicleNameR">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Selected Driver&apos;s First name will appear here"/>
+            <Property name="text" type="java.lang.String" value="Selected Vehicle&apos;s name will appear here"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -275,7 +273,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Driver ID"/>
+            <Property name="text" type="java.lang.String" value="Vehicle ID"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -283,7 +281,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Driver First Name"/>
+            <Property name="text" type="java.lang.String" value="Vehicle Name"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
@@ -308,15 +306,15 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Driver Last Name"/>
+            <Property name="text" type="java.lang.String" value="Vehicle Number"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="driverLNameR">
+        <Component class="javax.swing.JLabel" name="vehicleNumberR">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Selected Driver&apos;s Last Name will appear here"/>
+            <Property name="text" type="java.lang.String" value="Selected Vehicle&apos;s number will appear here"/>
           </Properties>
         </Component>
       </SubComponents>
