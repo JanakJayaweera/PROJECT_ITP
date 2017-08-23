@@ -7,6 +7,7 @@ package GUI;
 
 import GUI.Internal.Driver.addUpdateDriver;
 import GUI.Internal.Driver.addUpdateVehicle;
+import GUI.Internal.Driver.serviceVehicle;
 import GUI.Internal.Driver.viewRemoveDriver;
 import GUI.Internal.Driver.viewRemoveVehicle;
 import java.awt.Color;
@@ -137,6 +138,11 @@ public class deliveryHandling extends javax.swing.JFrame {
         jButton9.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton9.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton9.setPreferredSize(new java.awt.Dimension(53, 25));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setBackground(new java.awt.Color(7, 191, 145));
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -376,6 +382,12 @@ public class deliveryHandling extends javax.swing.JFrame {
             DesktopPane.add(vrV).setVisible(true);
         
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+            DesktopPane.removeAll();
+            serviceVehicle sv = new serviceVehicle();
+            DesktopPane.add(sv).setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     public void setColor(JPanel panel)
     {
