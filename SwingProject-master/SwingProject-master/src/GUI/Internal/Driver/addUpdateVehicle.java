@@ -14,7 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 import DB.DBconnect;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  *
@@ -30,6 +32,7 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
         con = DBconnect.connect();
         initComponents();
         tableLoad();
+        nonMove();
         
         
         
@@ -66,6 +69,16 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
                 System.out.println(e);
             }
     }
+    
+    public final void nonMove()
+        {
+            //make the jframe non-movable
+        BasicInternalFrameUI frame = ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI());
+        for(MouseListener listener: frame.getNorthPane().getMouseListeners())
+        {
+            frame.getNorthPane().removeMouseListener(listener);
+        }
+        }
 
     
     @SuppressWarnings("unchecked")

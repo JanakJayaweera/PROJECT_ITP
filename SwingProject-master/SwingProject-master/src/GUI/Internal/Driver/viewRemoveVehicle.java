@@ -8,11 +8,13 @@ package GUI.Internal.Driver;
 
 import Coding.Vehicle;
 import DB.DBconnect;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -30,6 +32,7 @@ public class viewRemoveVehicle extends javax.swing.JInternalFrame {
         con = DBconnect.connect();
         initComponents();
         tableLoad();
+        nonMove();
     }
     
     public void tableLoad()
@@ -63,6 +66,16 @@ public class viewRemoveVehicle extends javax.swing.JInternalFrame {
             catch(SQLException e){
                 System.out.println(e);
             }
+        }
+    
+    public final void nonMove()
+        {
+            //make the jframe non-movable
+        BasicInternalFrameUI frame = ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI());
+        for(MouseListener listener: frame.getNorthPane().getMouseListeners())
+        {
+            frame.getNorthPane().removeMouseListener(listener);
+        }
         }
     
     

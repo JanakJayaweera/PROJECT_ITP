@@ -5,6 +5,9 @@
  */
 package GUI.Internal.Driver;
 
+import java.awt.event.MouseListener;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author USER
@@ -16,7 +19,18 @@ public class removeDriver extends javax.swing.JInternalFrame {
      */
     public removeDriver() {
         initComponents();
+        nonMove();
     }
+    
+    public final void nonMove()
+        {
+            //make the jframe non-movable
+        BasicInternalFrameUI frame = ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI());
+        for(MouseListener listener: frame.getNorthPane().getMouseListeners())
+        {
+            frame.getNorthPane().removeMouseListener(listener);
+        }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
