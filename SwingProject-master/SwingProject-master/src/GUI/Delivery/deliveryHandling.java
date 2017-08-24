@@ -7,7 +7,9 @@ package GUI.Delivery;
 
 import GUI.Internal.Driver.addUpdateDriver;
 import GUI.Internal.Driver.addUpdateVehicle;
+import GUI.Internal.Driver.doDelivery;
 import GUI.Internal.Driver.serviceVehicle;
+import GUI.Internal.Driver.updateDelivery;
 import GUI.Internal.Driver.viewRemoveDriver;
 import GUI.Internal.Driver.viewRemoveVehicle;
 import java.awt.Color;
@@ -157,6 +159,11 @@ public class deliveryHandling extends javax.swing.JFrame {
         jButton10.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton10.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton10.setPreferredSize(new java.awt.Dimension(53, 25));
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setBackground(new java.awt.Color(7, 191, 145));
         jButton11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -166,6 +173,11 @@ public class deliveryHandling extends javax.swing.JFrame {
         jButton11.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton11.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton11.setPreferredSize(new java.awt.Dimension(53, 25));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setBackground(new java.awt.Color(7, 191, 145));
         jButton12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -398,6 +410,18 @@ public class deliveryHandling extends javax.swing.JFrame {
     private void addDriverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDriverBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addDriverBtnActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+            DesktopPane.removeAll();
+            doDelivery dd = new doDelivery();
+            DesktopPane.add(dd).setVisible(true);      
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+            DesktopPane.removeAll();
+            updateDelivery ud = new updateDelivery();
+            DesktopPane.add(ud).setVisible(true);
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     public void setColor(JPanel panel)
     {

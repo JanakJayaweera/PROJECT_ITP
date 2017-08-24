@@ -139,6 +139,7 @@ public class viewRemoveVehicle extends javax.swing.JInternalFrame {
             }
         });
 
+        TableView.setBackground(new java.awt.Color(204, 204, 204));
         TableView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
