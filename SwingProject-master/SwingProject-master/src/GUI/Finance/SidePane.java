@@ -7,6 +7,7 @@ package GUI.Finance;
 
 import java.awt.Color;
 import javax.swing.JPanel;
+import GUI.*;
 
 /**
  *
@@ -29,87 +30,75 @@ public class SidePane extends javax.swing.JFrame {
     private void initComponents() {
 
         pane = new javax.swing.JPanel();
-        checkBtn = new javax.swing.JPanel();
-        checkBtnImage = new javax.swing.JLabel();
-        checkBtnLabel = new javax.swing.JLabel();
+        chequeBtn = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
         bgImage = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pane.setBackground(new java.awt.Color(54, 33, 89));
+        pane.setBackground(new java.awt.Color(0, 153, 153));
         pane.setPreferredSize(new java.awt.Dimension(284, 605));
         pane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        checkBtn.setBackground(new java.awt.Color(85, 65, 118));
-
-        checkBtnImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Check_Book_50px.png"))); // NOI18N
-
-        checkBtnLabel.setBackground(new java.awt.Color(85, 65, 118));
-        checkBtnLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        checkBtnLabel.setForeground(new java.awt.Color(255, 255, 255));
-        checkBtnLabel.setText("Process Cheques");
-        checkBtnLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                checkBtnLabelMouseClicked(evt);
+        chequeBtn.setBackground(new java.awt.Color(30, 232, 232));
+        chequeBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        chequeBtn.setForeground(new java.awt.Color(51, 51, 51));
+        chequeBtn.setText("Add Cheques");
+        chequeBtn.setPreferredSize(new java.awt.Dimension(53, 25));
+        chequeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chequeBtnActionPerformed(evt);
             }
         });
+        pane.add(chequeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 290, -1));
 
-        javax.swing.GroupLayout checkBtnLayout = new javax.swing.GroupLayout(checkBtn);
-        checkBtn.setLayout(checkBtnLayout);
-        checkBtnLayout.setHorizontalGroup(
-            checkBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(checkBtnLayout.createSequentialGroup()
-                .addComponent(checkBtnImage, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checkBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
-        );
-        checkBtnLayout.setVerticalGroup(
-            checkBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(checkBtnImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(checkBtnLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        logoutLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        logoutLabel.setForeground(new java.awt.Color(51, 51, 51));
+        logoutLabel.setText("Log out");
+        logoutLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutLabelMouseClicked(evt);
+            }
+        });
+        pane.add(logoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, -1, -1));
 
-        pane.add(checkBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 278, -1, -1));
+        getContentPane().add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 720));
 
         bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FirstInterface.jpg"))); // NOI18N
+        getContentPane().add(bgImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 0, 1290, -1));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1279, Short.MAX_VALUE)
+            .addGap(0, 1280, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 720, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bgImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 289, Short.MAX_VALUE)
-                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(bgImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jDesktopPane1))
-        );
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void chequeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chequeBtnActionPerformed
+        Cheques ch = new Cheques();
+        jDesktopPane1.add(ch).setVisible(true);
+    }//GEN-LAST:event_chequeBtnActionPerformed
+
+    private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMouseClicked
+        this.dispose();
+        loginScreen ls = new loginScreen();
+        ls.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
+        ls.setVisible(true);
+    }//GEN-LAST:event_logoutLabelMouseClicked
 
     public void setColor(JPanel panel)
     {
@@ -121,16 +110,6 @@ public class SidePane extends javax.swing.JFrame {
         panel.setBackground(new Color(64,43,100));
     }
     
-    private void checkBtnLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkBtnLabelMouseClicked
-        setColor(checkBtn);
-        
-        Cheques ch = new Cheques();
-        jDesktopPane1.removeAll();
-        ch.setSize(jDesktopPane1.getWidth(), jDesktopPane1.getHeight());
-        ch.setLocation(0, 0);
-        jDesktopPane1.add(ch).setVisible(true);
-    }//GEN-LAST:event_checkBtnLabelMouseClicked
-
     
     /**
      * @param args the command line arguments
@@ -173,10 +152,9 @@ public class SidePane extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgImage;
-    private javax.swing.JPanel checkBtn;
-    private javax.swing.JLabel checkBtnImage;
-    private javax.swing.JLabel checkBtnLabel;
+    private javax.swing.JButton chequeBtn;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel pane;
     // End of variables declaration//GEN-END:variables
 }

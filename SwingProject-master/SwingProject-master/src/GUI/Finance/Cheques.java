@@ -24,6 +24,8 @@ public class Cheques extends javax.swing.JInternalFrame {
         initComponents();
         nonMove();
         
+        //this.getRootPane().setWindowDecorationStyle(8);
+        //UImanager.put("this.active");
     }
 
     /**
@@ -32,44 +34,48 @@ public class Cheques extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
+        paidCheques = new javax.swing.JButton();
+        receivedCheques = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(76, 77, 78));
         setBorder(null);
         setTitle("Cheques");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(1279, 720));
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameClosing(evt);
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-        });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Test 1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 150, 70));
+        paidCheques.setBackground(new java.awt.Color(0, 112, 112));
+        paidCheques.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        paidCheques.setText("Paid Cheques");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 44;
+        gridBagConstraints.ipady = 45;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(180, 70, 182, 180);
+        getContentPane().add(paidCheques, gridBagConstraints);
+
+        receivedCheques.setBackground(new java.awt.Color(24, 150, 150));
+        receivedCheques.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        receivedCheques.setText("Recieved Cheques");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipady = 45;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(180, 190, 182, 0);
+        getContentPane().add(receivedCheques, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formInternalFrameClosing
-
     public final void nonMove()
         {
+            //make the jframe non-movable
         BasicInternalFrameUI frame = ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI());
         for(MouseListener listener: frame.getNorthPane().getMouseListeners())
         {
@@ -79,6 +85,7 @@ public class Cheques extends javax.swing.JInternalFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton paidCheques;
+    private javax.swing.JButton receivedCheques;
     // End of variables declaration//GEN-END:variables
 }
