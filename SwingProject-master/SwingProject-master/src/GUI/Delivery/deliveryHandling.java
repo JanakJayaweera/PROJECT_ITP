@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package GUI.Delivery;
 
 import GUI.Internal.Driver.addUpdateDriver;
 import GUI.Internal.Driver.addUpdateVehicle;
@@ -85,6 +85,11 @@ public class deliveryHandling extends javax.swing.JFrame {
         addDriverBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addDriverBtnMouseClicked(evt);
+            }
+        });
+        addDriverBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDriverBtnActionPerformed(evt);
             }
         });
 
@@ -349,11 +354,7 @@ public class deliveryHandling extends javax.swing.JFrame {
         mf.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
         mf.setVisible(true);
         this.dispose();
-        /*loginScreen ls = new loginScreen();
-        ls.setExtendedState(loginScreen.MAXIMIZED_BOTH);
-        ls.setVisible(true);
-        this.dispose();
-        */
+        
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void addDriverBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDriverBtnMouseClicked
@@ -393,6 +394,10 @@ public class deliveryHandling extends javax.swing.JFrame {
             serviceVehicle sv = new serviceVehicle();
             DesktopPane.add(sv).setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void addDriverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDriverBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addDriverBtnActionPerformed
 
     public void setColor(JPanel panel)
     {

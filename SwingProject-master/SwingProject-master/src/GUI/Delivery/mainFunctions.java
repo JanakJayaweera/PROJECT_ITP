@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package GUI.Delivery;
+
+import GUI.Finance.SidePane;
 
 /**
  *
@@ -102,6 +104,11 @@ public class mainFunctions extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Finance Management");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -262,6 +269,14 @@ public class mainFunctions extends javax.swing.JFrame {
         dh.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        SidePane sp = new SidePane();
+        sp.setExtendedState(SidePane.MAXIMIZED_BOTH);
+        sp.setTitle("Finance Management");
+        sp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
