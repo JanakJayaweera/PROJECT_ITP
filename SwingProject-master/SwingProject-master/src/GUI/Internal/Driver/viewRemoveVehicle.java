@@ -285,11 +285,11 @@ public class viewRemoveVehicle extends javax.swing.JInternalFrame {
         
         String id = TableView.getValueAt(row, 0).toString();
         String fname = TableView.getValueAt(row, 1).toString();
-        String lname = TableView.getValueAt(row, 2).toString();
+        String vnumber = TableView.getValueAt(row, 3).toString();
         
         vehicleIDR.setText(id);
         vehicleNameR.setText(fname);
-        vehicleNumberR.setText(lname);
+        vehicleNumberR.setText(vnumber);
     }//GEN-LAST:event_TableViewMouseClicked
 
     private void donebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donebtnActionPerformed

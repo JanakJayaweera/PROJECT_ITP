@@ -66,7 +66,7 @@ public class deliveryHandling extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Log out");
+        jLabel2.setText("Go to Main functions window");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -345,10 +345,15 @@ public class deliveryHandling extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 
-        loginScreen ls = new loginScreen();
+        mainFunctions mf = new mainFunctions();
+        mf.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
+        mf.setVisible(true);
+        this.dispose();
+        /*loginScreen ls = new loginScreen();
         ls.setExtendedState(loginScreen.MAXIMIZED_BOTH);
         ls.setVisible(true);
         this.dispose();
+        */
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void addDriverBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDriverBtnMouseClicked
