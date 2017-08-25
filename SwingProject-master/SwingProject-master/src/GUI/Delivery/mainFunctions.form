@@ -110,6 +110,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Production Management"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
                   <GridBagConstraints gridX="4" gridY="2" gridWidth="7" gridHeight="1" fill="0" ipadX="54" ipadY="53" insetsTop="12" insetsLeft="6" insetsBottom="0" insetsRight="154" anchor="18" weightX="0.0" weightY="0.0"/>
