@@ -5,15 +5,18 @@
  */
 package GUI.Finance;
 
-import Coding.RecievedChq;
+import Class.RecievedChq;
 import DB.DBconnect;
 import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
 
@@ -32,16 +35,11 @@ public class Cheques extends javax.swing.JInternalFrame {
     ResultSet rs = null;
     
     public Cheques() {
+        con = DBconnect.connect();
         initComponents();
         nonMove();
         showDate();
-//        con = DBconnect.connect();
-//        RecievedChq rc = new RecievedChq();
-//        rc.tableLoad();
-        
-        
-        //this.getRootPane().setWindowDecorationStyle(8);
-        //UImanager.put("this.active");
+        recChqTableLoad();
     }
 
     /**
@@ -50,7 +48,6 @@ public class Cheques extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         recievedChqPane = new javax.swing.JPanel();
@@ -67,10 +64,10 @@ public class Cheques extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         recDate = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        recChqTable = new javax.swing.JTable();
         addBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
+        clearBtn = new javax.swing.JButton();
         paidChqPane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -103,7 +100,9 @@ public class Cheques extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Recieved Date(YYYY-MM-DD)");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        recDate.setDateFormatString("YYYY-MM-d");
+
+        recChqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -128,7 +127,12 @@ public class Cheques extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        recChqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recChqTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(recChqTable);
 
         addBtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addBtn.setText("Add");
@@ -138,9 +142,16 @@ public class Cheques extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        updateBtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        updateBtn.setText("Update");
 
-        jButton2.setText("jButton2");
+        clearBtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        clearBtn.setText("Clear");
+        clearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout recievedChqPaneLayout = new javax.swing.GroupLayout(recievedChqPane);
         recievedChqPane.setLayout(recievedChqPaneLayout);
@@ -178,9 +189,9 @@ public class Cheques extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(addBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(updateBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))))
+                        .addComponent(clearBtn))))
         );
         recievedChqPaneLayout.setVerticalGroup(
             recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,8 +234,8 @@ public class Cheques extends javax.swing.JInternalFrame {
                     .addGroup(recievedChqPaneLayout.createSequentialGroup()
                         .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addBtn)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
+                            .addComponent(updateBtn)
+                            .addComponent(clearBtn))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -246,10 +257,46 @@ public class Cheques extends javax.swing.JInternalFrame {
 
         double num = Double.parseDouble(amtTF.getText());
  
-        RecievedChq rc = new RecievedChq(recFromTF.getText(), recDate.getDate().toString(), postDate.getDate().toString(), num, jTable1);
-        
+        RecievedChq rc = new RecievedChq(recFromTF.getText(), recDate.getDate().toString(), postDate.getDate().toString(), num, recChqTable);
+        recChqTableLoad();
         
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        recFromTF.setText("");
+        amtTF.setText("");
+        recDate.setCalendar(null);
+        postDate.setCalendar(null);
+        idLbl.setText("Cheque ID will assign automatically");
+    }//GEN-LAST:event_clearBtnActionPerformed
+
+    private void recChqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recChqTableMouseClicked
+        //getting the selected data from the table to edit
+        int row = recChqTable.getSelectedRow();
+        
+        String id = recChqTable.getValueAt(row, 0).toString();
+        String recName = recChqTable.getValueAt(row, 1).toString();
+        String amt = recChqTable.getValueAt(row, 2).toString();
+        String recDateV = recChqTable.getValueAt(row, 3).toString();
+        String postDateV = recChqTable.getValueAt(row, 4).toString();
+        
+        idLbl.setText(id);
+        recFromTF.setText(recName);
+        amtTF.setText(amt);
+        
+        try {
+            Date date = new SimpleDateFormat("YYYY-MM-d").parse(recDateV);
+            recDate.setDate(date);
+            
+            Date date1 = new SimpleDateFormat("YYYY-MM-d").parse(postDateV);
+            postDate.setDate(date1);
+        } catch (ParseException ex) {
+            Logger.getLogger(Cheques.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Couldn't convert and set date to jdatechooser");
+        }
+        
+        
+    }//GEN-LAST:event_recChqTableMouseClicked
 
     public final void nonMove()
         {
@@ -267,30 +314,30 @@ public class Cheques extends javax.swing.JInternalFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-d");
         dateLbl.setText(sdf.format(d));
     }
-    
-//    public void tableLoad()
-//        {           
-//            
-//            try{
-//            
-//                String sql = "SELECT ID,recName,amt,recDate,postDate FROM recievedchq";
-//                pst = con.prepareStatement(sql);
-//                rs = pst.executeQuery();
-//                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-//            }
-//            
-//            catch(SQLException e){
-//                System.out.println("Could not load from recievedchq");
-//            }
-//        }
+
+    public void recChqTableLoad()
+        {           
+            
+            try{
+            
+                String sql = "SELECT ID,recName,amt,recDate,postDate FROM recievedchq";
+                pst = con.prepareStatement(sql);
+                rs = pst.executeQuery();
+                recChqTable.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+            
+            catch(SQLException e){
+                System.out.println("Could not load from recievedchq");
+            }
+        }   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JTextField amtTF;
+    private javax.swing.JButton clearBtn;
     private javax.swing.JLabel dateLbl;
     private javax.swing.JLabel idLbl;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -300,11 +347,12 @@ public class Cheques extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel paidChqPane;
     private com.toedter.calendar.JDateChooser postDate;
+    private javax.swing.JTable recChqTable;
     private com.toedter.calendar.JDateChooser recDate;
     private javax.swing.JTextField recFromTF;
     private javax.swing.JPanel recievedChqPane;
+    private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
