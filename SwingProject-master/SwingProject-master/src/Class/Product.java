@@ -9,7 +9,9 @@ import DB.DBconnect;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JTable;
+import net.proteanit.sql.DbUtils;
 
 
 /**
@@ -169,5 +171,23 @@ public class Product
             System.out.println(e+"this is method");
         }
     }
+    
+    public void CreateproductTableLoad()
+        {           
+            con = DBconnect.connect();
+            try
+            {
+            
+                String sql = "SELECT PID,Pname,PType,SizeofP,NumberofP,Color,Ftype,FQuantity,BType,BQuantity,WType,WQuantity,Elastic,EQuantity FROM createproduct";
+                ps = con.prepareStatement(sql);
+                rt = ps.executeQuery();
+                CreateProdutT.setModel(DbUtils.resultSetToTableModel(rt));
+            }
+            
+            catch(SQLException e)
+            {
+                System.out.println("Could not load from recievedchq");
+            }
+        }   
     
 }

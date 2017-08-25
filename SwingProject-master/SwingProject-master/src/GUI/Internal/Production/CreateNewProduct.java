@@ -15,6 +15,7 @@ public class CreateNewProduct extends javax.swing.JInternalFrame {
 
    
     Connection con = null;
+    
     public CreateNewProduct() 
     {
         con = DBconnect.connect();
@@ -254,7 +255,7 @@ public class CreateNewProduct extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(254, 254, 254)))
-                .addContainerGap(730, Short.MAX_VALUE))
+                .addContainerGap(729, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,13 +353,13 @@ public class CreateNewProduct extends javax.swing.JInternalFrame {
         ProductTable.setBackground(new java.awt.Color(204, 204, 204));
         ProductTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Product ID", "Product Name", "Type of the Product", "Color", "Fabric Type", "Quantoty", "Button Type", "Quantity", "Wool Type", "Quantity", "Elastic ", "Quantity"
+                "Product ID", "Product Name", "Type of the Product", "Size of the Product", "Number of Products", "Color", "Fabric Type", "Quantoty", "Button Type", "Quantity", "Wool Type", "Quantity", "Elastic ", "Quantity"
             }
         ));
         ProductTable.setCellSelectionEnabled(true);
@@ -378,6 +379,8 @@ public class CreateNewProduct extends javax.swing.JInternalFrame {
             ProductTable.getColumnModel().getColumn(9).setResizable(false);
             ProductTable.getColumnModel().getColumn(10).setResizable(false);
             ProductTable.getColumnModel().getColumn(11).setResizable(false);
+            ProductTable.getColumnModel().getColumn(12).setResizable(false);
+            ProductTable.getColumnModel().getColumn(13).setResizable(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -395,7 +398,7 @@ public class CreateNewProduct extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -410,6 +413,7 @@ public class CreateNewProduct extends javax.swing.JInternalFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         
         Product p = new Product();
+        p.CreateproductTableLoad();
         p.setPID(Integer.parseInt(PIDtxt.getText()));
         p.setPname(Pnametxt.getText());
         p.setTypeofP(TypeofPtxt.getText());
