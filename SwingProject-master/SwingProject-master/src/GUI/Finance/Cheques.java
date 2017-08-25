@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
 
@@ -144,6 +145,11 @@ public class Cheques extends javax.swing.JInternalFrame {
 
         updateBtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         clearBtn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         clearBtn.setText("Clear");
@@ -258,8 +264,17 @@ public class Cheques extends javax.swing.JInternalFrame {
         double num = Double.parseDouble(amtTF.getText());
  
         RecievedChq rc = new RecievedChq(recFromTF.getText(), recDate.getDate().toString(), postDate.getDate().toString(), num, recChqTable);
-        recChqTableLoad();
         
+//        RecievedChq rc = new RecievedChq();
+//        rc.setRecName(recFromTF.getText());
+//        rc.setAmt(num);
+//        rc.setRecDate(recDate.getDate().toString());
+//        rc.setPostDate(postDate.getDate().toString());
+//        rc.addRecChq();
+          
+        
+        recChqTableLoad();
+             
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
@@ -284,19 +299,43 @@ public class Cheques extends javax.swing.JInternalFrame {
         recFromTF.setText(recName);
         amtTF.setText(amt);
         
-        try {
-            Date date = new SimpleDateFormat("YYYY-MM-d").parse(recDateV);
-            recDate.setDate(date);
-            
-            Date date1 = new SimpleDateFormat("YYYY-MM-d").parse(postDateV);
-            postDate.setDate(date1);
-        } catch (ParseException ex) {
-            Logger.getLogger(Cheques.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Couldn't convert and set date to jdatechooser");
-        }
+//        try {
+//            Date date = new SimpleDateFormat("YYYY-MM-d").parse(recDateV);
+//            recDate.setDate(date);
+//            
+//            Date date1 = new SimpleDateFormat("YYYY-MM-d").parse(postDateV);
+//            postDate.setDate(date1);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(Cheques.class.getName()).log(Level.SEVERE, null, ex);
+//            System.out.println("Couldn't convert and set date to jdatechooser");
+//        }
         
         
     }//GEN-LAST:event_recChqTableMouseClicked
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        int x = JOptionPane.showConfirmDialog(null, "Do you really want to update?");
+        
+        if(x == 0)
+        {
+            int id = Integer.parseInt(idLbl.getText());
+            String recName = recFromTF.getText();
+            double amt = Double.parseDouble(amtTF.getText());
+            
+            String recDate1 = recDate.getDate().toString();
+            String postDate1 = postDate.getDate().toString();
+            
+            String sql = "UPDATE recievedchq SET recName = '"+ recName +"', amt = '"+ amt +"', recDate = '"+ recDate1 +"', postDate = '"+ postDate1 +"' WHERE ID = '"+ id +"'";
+            try {
+                pst = con.prepareStatement(sql);
+                pst.execute();
+            } catch (SQLException ex) {
+                Logger.getLogger(Cheques.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Couldn't update values to recievedchq");
+            }
+        }
+        recChqTableLoad();
+    }//GEN-LAST:event_updateBtnActionPerformed
 
     public final void nonMove()
         {

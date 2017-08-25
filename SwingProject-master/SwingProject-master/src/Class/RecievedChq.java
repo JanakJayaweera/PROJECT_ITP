@@ -11,7 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import net.proteanit.sql.DbUtils;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -52,7 +53,9 @@ public class RecievedChq implements Serializable {
     }
 
     public void setRecDate(String recDate) {
-        this.recDate = recDate;
+        DateFormat df = new SimpleDateFormat("YYYY-MM-d");
+        String date = df.format(recDate);
+        this.recDate = date;
     }
 
     public String getPostDate() {
@@ -60,7 +63,9 @@ public class RecievedChq implements Serializable {
     }
 
     public void setPostDate(String postDate) {
-        this.postDate = postDate;
+        DateFormat df = new SimpleDateFormat("YYYY-MM-d");
+        String date = df.format(postDate);
+        this.postDate = date;
     }
 
     public double getAmt() {
@@ -86,6 +91,11 @@ public class RecievedChq implements Serializable {
         addRecChq();
     }
 
+    public RecievedChq() {
+       con = DBconnect.connect();
+       addRecChq();
+    }
+        
     public void addRecChq()
     {
         try
@@ -99,13 +109,5 @@ public class RecievedChq implements Serializable {
         {
             System.out.println("Could not insert data to the recievedchq");
         }       
-    }
-    
-
-    public RecievedChq() {
-       
-    }
-    
-    
-    
+    }  
 }
