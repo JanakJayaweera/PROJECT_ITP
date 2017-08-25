@@ -23,8 +23,8 @@ public class Product
     ResultSet rt = null;
     
     private javax.swing.JTable CreateProdutT;
-    private String PID,Pname,TypeofP,SizeofP,Color,Ftype,Fquantity,Btype,Bquantity,Wtype,Wquantity,Etype,Equantity,NumberofP;
-
+    private String Pname,TypeofP,SizeofP,Color,Ftype,Fquantity,Btype,Bquantity,Wtype,Wquantity,Etype,Equantity,NumberofP;
+    private int PID;
     public String getNumberofP() {
         return NumberofP;
     }
@@ -42,11 +42,11 @@ public class Product
         this.CreateProdutT = CreateProdutT;
     }
 
-    public String getPID() {
+    public int getPID() {
         return PID;
     }
 
-    public void setPID(String PID) {
+    public void setPID(int PID) {
         this.PID = PID;
     }
 

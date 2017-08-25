@@ -9,6 +9,7 @@ import GUI.Delivery.loginScreen;
 import GUI.Delivery.mainFunctions;
 import java.awt.Color;
 import javax.swing.JPanel;
+import GUI.*;
 
 /**
  *
@@ -33,8 +34,8 @@ public class SidePane extends javax.swing.JFrame {
         pane = new javax.swing.JPanel();
         chequeBtn = new javax.swing.JButton();
         logoutLabel = new javax.swing.JLabel();
-        bgImage = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        bgImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
@@ -59,7 +60,7 @@ public class SidePane extends javax.swing.JFrame {
 
         logoutLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         logoutLabel.setForeground(new java.awt.Color(51, 51, 51));
-        logoutLabel.setText("Go to Main functions window");
+        logoutLabel.setText("Log out");
         logoutLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -71,17 +72,28 @@ public class SidePane extends javax.swing.JFrame {
         getContentPane().add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 720));
 
         bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FirstInterface.jpg"))); // NOI18N
-        getContentPane().add(bgImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 0, 1290, -1));
+
+        jDesktopPane1.setLayer(bgImage, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1280, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(bgImage, javax.swing.GroupLayout.PREFERRED_SIZE, 1290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(bgImage)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 0, 1280, 720));
@@ -95,10 +107,10 @@ public class SidePane extends javax.swing.JFrame {
     }//GEN-LAST:event_chequeBtnActionPerformed
 
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMouseClicked
-        mainFunctions mf = new mainFunctions();
-        mf.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
-        mf.setVisible(true);
         this.dispose();
+        loginScreen ls = new loginScreen();
+        ls.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
+        ls.setVisible(true);
     }//GEN-LAST:event_logoutLabelMouseClicked
 
     public void setColor(JPanel panel)

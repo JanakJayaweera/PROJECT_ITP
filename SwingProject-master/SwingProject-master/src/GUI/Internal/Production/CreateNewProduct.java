@@ -5,6 +5,8 @@
  */
 package GUI.Internal.Production;
 import Class.Product;
+import DB.DBconnect;
+import com.mysql.jdbc.Connection;
 /**
  *
  * @author USER
@@ -12,8 +14,10 @@ import Class.Product;
 public class CreateNewProduct extends javax.swing.JInternalFrame {
 
    
-    
-    public CreateNewProduct() {
+    Connection con = null;
+    public CreateNewProduct() 
+    {
+        con = DBconnect.connect();
         initComponents();
                
     }
@@ -406,20 +410,20 @@ public class CreateNewProduct extends javax.swing.JInternalFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         
         Product p = new Product();
-        p.setPID(title);
-        p.setPname(title);
-        p.setTypeofP(title);
-        p.setSizeofP(title);
-        p.setNumberofP(title);
-        p.setColor(title);
-        p.setFtype(title);
-        p.setFquantity(title);
-        p.setBtype(title);
-        p.setBquantity(title);
-        p.setWtype(title);
-        p.setWquantity(title);      
-        p.setEquantity(title);
-        p.setEtype(title);
+        p.setPID(Integer.parseInt(PIDtxt.getText()));
+        p.setPname(Pnametxt.getText());
+        p.setTypeofP(TypeofPtxt.getText());
+        p.setSizeofP(SizeofPtxt.getText());
+        p.setNumberofP(numofPtxt.getText());
+        p.setColor(Colortxt.getText());
+        p.setFtype(Ftypetxt.getText());
+        p.setFquantity(Fquantitytxt.getText());
+        p.setBtype(Btypetxt.getText());
+        p.setBquantity(Bquantitytxt.getText());
+        p.setWtype(Wtypetxt.getText());
+        p.setWquantity(Wquantitytxt.getText());      
+        p.setEquantity(Equantitytxt.getText());
+        p.setEtype(Etypetxt.getText());
         p.setCreateProdutT(ProductTable);
         
         p.createnewProduct();
