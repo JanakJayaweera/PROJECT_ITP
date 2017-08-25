@@ -116,7 +116,7 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 78;
         gridBagConstraints.ipady = 53;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(6, 30, 0, 0);
         mainCategories.add(jButton4, gridBagConstraints);
 
         jButton5.setBackground(new java.awt.Color(255, 102, 153));
@@ -145,7 +145,7 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(103, 101, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(103, 91, 0, 0);
         mainCategories.add(jLabel1, gridBagConstraints);
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
@@ -235,7 +235,7 @@ public class mainFunctions extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 519, Short.MAX_VALUE)
         );
 
         pack();
@@ -273,6 +273,7 @@ public class mainFunctions extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         SidePane sp = new SidePane();
         sp.setExtendedState(SidePane.MAXIMIZED_BOTH);
+        sp.setTitle("Finance Management");
         sp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
