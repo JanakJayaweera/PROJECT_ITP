@@ -5,7 +5,7 @@
  */
 package GUI.Internal.Driver;
 
-import Coding.Vehicle;
+import Class.Vehicle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

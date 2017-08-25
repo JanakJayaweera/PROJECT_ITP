@@ -1,5 +1,5 @@
 
-package Coding;
+package Class;
 
 import DB.DBconnect;
 import java.sql.Connection;
