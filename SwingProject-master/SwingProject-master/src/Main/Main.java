@@ -5,8 +5,8 @@
  */
 package Main;
 
-import GUI.deliveryHandling;
-import GUI.welcome1;
+import GUI.Delivery.deliveryHandling;
+import GUI.Delivery.welcome1;
 import java.awt.IllegalComponentStateException;
 
 /**

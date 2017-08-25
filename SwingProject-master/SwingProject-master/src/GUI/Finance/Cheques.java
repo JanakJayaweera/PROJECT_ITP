@@ -40,6 +40,8 @@ public class Cheques extends javax.swing.JInternalFrame {
 //        rc.tableLoad();
         
         
+        //this.getRootPane().setWindowDecorationStyle(8);
+        //UImanager.put("this.active");
     }
 
     /**
@@ -48,6 +50,7 @@ public class Cheques extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         recievedChqPane = new javax.swing.JPanel();

@@ -5,6 +5,8 @@
  */
 package GUI.Finance;
 
+import GUI.Delivery.loginScreen;
+import GUI.Delivery.mainFunctions;
 import java.awt.Color;
 import javax.swing.JPanel;
 import GUI.*;
