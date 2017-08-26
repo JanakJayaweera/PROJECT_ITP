@@ -70,7 +70,24 @@ public class Cheques extends javax.swing.JInternalFrame {
         updateBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         paidChqPane = new javax.swing.JPanel();
+        recievedChqPane2 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        recFromTF2 = new javax.swing.JTextField();
+        idLbl2 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        amtTF2 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        postDate2 = new com.toedter.calendar.JDateChooser();
+        jLabel17 = new javax.swing.JLabel();
+        dateLbl2 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        recDate2 = new com.toedter.calendar.JDateChooser();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        recChqTable2 = new javax.swing.JTable();
+        addBtn2 = new javax.swing.JButton();
+        updateBtn2 = new javax.swing.JButton();
+        clearBtn2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(76, 77, 78));
         setBorder(null);
@@ -249,8 +266,174 @@ public class Cheques extends javax.swing.JInternalFrame {
 
         paidChqPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("window 2");
-        paidChqPane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Cheque ID");
+
+        jLabel2.setText("Recieved From");
+
+        idLbl2.setText("Cheque ID will assign automatically");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel15.setText("Amount");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel16.setText("Post-Date(YYYY-MM-DD)");
+
+        postDate2.setDateFormatString("YYYY-MM-d");
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel17.setText("Date:");
+
+        dateLbl2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel18.setText("Recieved Date(YYYY-MM-DD)");
+
+        recDate2.setDateFormatString("YYYY-MM-d");
+
+        recChqTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Reciever's Name", "Amount", "Recieved Date", "Post-Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        recChqTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recChqTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(recChqTable2);
+
+        addBtn2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        addBtn2.setText("Add");
+        addBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtn2ActionPerformed(evt);
+            }
+        });
+
+        updateBtn2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        updateBtn2.setText("Update");
+        updateBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtn2ActionPerformed(evt);
+            }
+        });
+
+        clearBtn2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        clearBtn2.setText("Clear");
+        clearBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearBtn2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout recievedChqPane2Layout = new javax.swing.GroupLayout(recievedChqPane2);
+        recievedChqPane2.setLayout(recievedChqPane2Layout);
+        recievedChqPane2Layout.setHorizontalGroup(
+            recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                .addGap(560, 560, 560)
+                .addComponent(jLabel17)
+                .addGap(14, 14, 14)
+                .addComponent(dateLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(159, 159, 159)
+                .addComponent(idLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel2)
+                .addGap(147, 147, 147)
+                .addComponent(recFromTF2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                        .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel18))
+                        .addGap(56, 56, 56)
+                        .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(postDate2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(amtTF2)
+                            .addComponent(recDate2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(addBtn2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updateBtn2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clearBtn2))))
+        );
+        recievedChqPane2Layout.setVerticalGroup(
+            recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(dateLbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(30, 30, 30)
+                .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                        .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(idLbl2)))
+                        .addGap(12, 12, 12)
+                        .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel2))
+                            .addComponent(recFromTF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel15))
+                            .addComponent(amtTF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel18))
+                    .addComponent(recDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                        .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(postDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                    .addGroup(recievedChqPane2Layout.createSequentialGroup()
+                        .addGroup(recievedChqPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addBtn2)
+                            .addComponent(updateBtn2)
+                            .addComponent(clearBtn2))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        paidChqPane.add(recievedChqPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane1.addTab("Paid Cheques", paidChqPane);
 
@@ -337,6 +520,22 @@ public class Cheques extends javax.swing.JInternalFrame {
         recChqTableLoad();
     }//GEN-LAST:event_updateBtnActionPerformed
 
+    private void recChqTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recChqTable2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recChqTable2MouseClicked
+
+    private void addBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addBtn2ActionPerformed
+
+    private void updateBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateBtn2ActionPerformed
+
+    private void clearBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtn2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clearBtn2ActionPerformed
+
     public final void nonMove()
         {
             //make the jframe non-movable
@@ -373,11 +572,21 @@ public class Cheques extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JButton addBtn2;
     private javax.swing.JTextField amtTF;
+    private javax.swing.JTextField amtTF2;
     private javax.swing.JButton clearBtn;
+    private javax.swing.JButton clearBtn2;
     private javax.swing.JLabel dateLbl;
+    private javax.swing.JLabel dateLbl2;
     private javax.swing.JLabel idLbl;
+    private javax.swing.JLabel idLbl2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -385,13 +594,20 @@ public class Cheques extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel paidChqPane;
     private com.toedter.calendar.JDateChooser postDate;
+    private com.toedter.calendar.JDateChooser postDate2;
     private javax.swing.JTable recChqTable;
+    private javax.swing.JTable recChqTable2;
     private com.toedter.calendar.JDateChooser recDate;
+    private com.toedter.calendar.JDateChooser recDate2;
     private javax.swing.JTextField recFromTF;
+    private javax.swing.JTextField recFromTF2;
     private javax.swing.JPanel recievedChqPane;
+    private javax.swing.JPanel recievedChqPane2;
     private javax.swing.JButton updateBtn;
+    private javax.swing.JButton updateBtn2;
     // End of variables declaration//GEN-END:variables
 }

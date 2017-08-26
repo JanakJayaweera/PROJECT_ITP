@@ -109,5 +109,5 @@ public class RecievedChq implements Serializable {
         {
             System.out.println("Could not insert data to the recievedchq");
         }       
-    }  
+    }
 }
