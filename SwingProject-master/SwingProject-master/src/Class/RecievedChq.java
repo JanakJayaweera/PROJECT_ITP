@@ -29,6 +29,7 @@ public class RecievedChq extends Cheques {
         catch(SQLException e)
         {
             System.out.println("Could not insert data to the recievedchq");
+            System.out.println(e);
         }       
     }
 }
