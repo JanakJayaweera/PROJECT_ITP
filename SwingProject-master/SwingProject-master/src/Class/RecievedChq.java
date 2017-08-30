@@ -21,10 +21,10 @@ public class RecievedChq extends Cheques {
         try
         {
             conn = DB.DBconnect.connect();
-            String q = "INSERT INTO recievedchq(recName, amt, recDate, postDate) values('"+ getRecName() +"', '"+ getAmt() +"', '"+ getRecDate() +"', '"+ getPostDate() +"') WHERE '"+ getRecName() +"'and '"+ getAmt() +"'and '"+ getRecDate() +"' IS NOT NULL";
+            String q;
+            q = "INSERT INTO recievedchq(recName, amt, recDate, postDate) values('"+ getRecName() +"', '"+ getAmt() +"', '"+ getRecDate() +"', '"+ getPostDate() +"') WHERE '"+ getRecName() +"' IS NOT NULL;";
             pst = conn.prepareStatement(q);
             pst.execute();
-        
         }
         catch(SQLException e)
         {
