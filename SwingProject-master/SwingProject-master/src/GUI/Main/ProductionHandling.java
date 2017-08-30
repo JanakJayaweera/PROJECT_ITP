@@ -6,7 +6,7 @@
 package GUI.Main;
 
 import GUI.Internal.Driver.addDriver;
-import GUI.Internal.Production.CreateNewProduct;
+import GUI.Internal.Production.CreateNewProduction;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -238,7 +238,7 @@ public class ProductionHandling extends javax.swing.JFrame {
     private void CreateNewProductionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateNewProductionMouseClicked
         if(windowCount==0)
         {
-            CreateNewProduct cnp = new CreateNewProduct();
+            CreateNewProduction cnp = new CreateNewProduction();
             DesktopPane.add(cnp).setVisible(true);
             windowCount++;
         }
