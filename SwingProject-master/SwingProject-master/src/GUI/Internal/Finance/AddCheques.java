@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -98,13 +99,13 @@ public class AddCheques extends javax.swing.JInternalFrame {
         jLabel3.setText("Cheque ID");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Recieved From");
+        jLabel1.setText("Recieved From*");
 
         idLbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         idLbl.setText("Cheque ID will assign automatically");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Amount");
+        jLabel5.setText("Amount*");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Post-Date(YYYY-MM-DD)");
@@ -115,7 +116,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
         dateLbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setText("Recieved Date(YYYY-MM-DD)");
+        jLabel8.setText("Recieved Date(YYYY-MM-DD)*");
 
         recChqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -218,14 +219,13 @@ public class AddCheques extends javax.swing.JInternalFrame {
                         .addComponent(dateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(recievedChqPaneLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159)
-                        .addComponent(idLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel1)
+                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(139, 139, 139)
-                        .addComponent(recFromTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(recFromTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         recievedChqPaneLayout.setVerticalGroup(
@@ -238,11 +238,9 @@ public class AddCheques extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(idLbl)))
+                            .addComponent(idLbl))
                         .addGap(12, 12, 12)
                         .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(recievedChqPaneLayout.createSequentialGroup()
@@ -443,21 +441,26 @@ public class AddCheques extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-
-        double num = Double.parseDouble(amtTF.getText());
- 
-        RecievedChq rc = new RecievedChq(recFromTF.getText(), recDate.getDate().toString(), postDate.getDate().toString(), num, recChqTable);
+        RecievedChq rc = new RecievedChq();
         
-//        RecievedChq rc = new RecievedChq();
-//        rc.setRecName(recFromTF.getText());
-//        rc.setAmt(num);
-//        rc.setRecDate(recDate.getDate().toString());
-//        rc.setPostDate(postDate.getDate().toString());
-//        rc.addRecChq();
-          
+        try
+        {
+            double num = Double.parseDouble(amtTF.getText());
+            
+            rc.setRecName(recFromTF.getText());
+            rc.setAmt(num);
         
-        recChqTableLoad();
-             
+            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+            rc.setRecDate(formatDate.format(recDate.getDate()));
+            rc.setPostDate(formatDate.format(postDate.getDate()));
+        
+            rc.addRecChq();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Please fill-in required fields");
+        }
+        recChqTableLoad();    
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
@@ -470,30 +473,27 @@ public class AddCheques extends javax.swing.JInternalFrame {
 
     private void recChqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recChqTableMouseClicked
         //getting the selected data from the table to edit
+        DefaultTableModel model = (DefaultTableModel)recChqTable.getModel();
         int row = recChqTable.getSelectedRow();
         
         String id = recChqTable.getValueAt(row, 0).toString();
         String recName = recChqTable.getValueAt(row, 1).toString();
         String amt = recChqTable.getValueAt(row, 2).toString();
-        String recDateV = recChqTable.getValueAt(row, 3).toString();
-        String postDateV = recChqTable.getValueAt(row, 4).toString();
+        
+        try {
+            Date rcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 3).toString());
+            Date pcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 4).toString());
+            
+            recDate.setDate(rcDate);
+            postDate.setDate(pcDate);
+        } catch (ParseException ex) {
+            Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Couldn't get the dates from jtable to the fields");
+        }
         
         idLbl.setText(id);
         recFromTF.setText(recName);
-        amtTF.setText(amt);
-        
-//        try {
-//            Date date = new SimpleDateFormat("YYYY-MM-d").parse(recDateV);
-//            recDate.setDate(date);
-//            
-//            Date date1 = new SimpleDateFormat("YYYY-MM-d").parse(postDateV);
-//            postDate.setDate(date1);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
-//            System.out.println("Couldn't convert and set date to jdatechooser");
-//        }
-        
-        
+        amtTF.setText(amt);     
     }//GEN-LAST:event_recChqTableMouseClicked
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
@@ -505,11 +505,13 @@ public class AddCheques extends javax.swing.JInternalFrame {
             String recName = recFromTF.getText();
             double amt = Double.parseDouble(amtTF.getText());
             
-            String recDate1 = recDate.getDate().toString();
-            String postDate1 = postDate.getDate().toString();
+            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+            String recDate1 = formatDate.format(recDate.getDate());
+            String postDate1 = formatDate.format(postDate.getDate());
             
             String sql = "UPDATE recievedchq SET recName = '"+ recName +"', amt = '"+ amt +"', recDate = '"+ recDate1 +"', postDate = '"+ postDate1 +"' WHERE ID = '"+ id +"'";
-            try {
+            
+            try { 
                 pst = con.prepareStatement(sql);
                 pst.execute();
             } catch (SQLException ex) {
@@ -568,8 +570,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
                 System.out.println("Could not load from recievedchq");
             }
         }   
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JButton addBtn2;

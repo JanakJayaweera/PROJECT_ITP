@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Delivery;
-
-import GUI.Internal.Finance.SidePane;
+package GUI.Main;
 
 /**
  *
@@ -281,8 +279,8 @@ public class mainFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        SidePane sp = new SidePane();
-        sp.setExtendedState(SidePane.MAXIMIZED_BOTH);
+        Finance sp = new Finance();
+        sp.setExtendedState(Finance.MAXIMIZED_BOTH);
         sp.setTitle("Finance Management");
         sp.setVisible(true);
         this.dispose();
@@ -290,7 +288,7 @@ public class mainFunctions extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         ProductionHandling p = new ProductionHandling();
-        p.setExtendedState(SidePane.MAXIMIZED_BOTH);
+        p.setExtendedState(Finance.MAXIMIZED_BOTH);
         p.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed

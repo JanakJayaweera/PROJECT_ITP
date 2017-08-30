@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Delivery;
+package GUI.Main;
 
 import GUI.Internal.Driver.addUpdateDriver;
 import GUI.Internal.Driver.addUpdateVehicle;
