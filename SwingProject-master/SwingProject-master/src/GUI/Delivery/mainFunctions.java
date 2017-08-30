@@ -5,7 +5,7 @@
  */
 package GUI.Delivery;
 
-import GUI.Finance.SidePane;
+import GUI.Internal.Finance.SidePane;
 
 /**
  *

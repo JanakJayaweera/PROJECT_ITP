@@ -80,8 +80,6 @@ public class RecievedChq implements Serializable {
         
         con = DBconnect.connect();
         
-        
-        
         this.recName = recName;
         this.recDate = recDate;
         this.postDate = postDate;

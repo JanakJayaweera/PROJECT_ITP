@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Finance;
+package GUI.Internal.Finance;
 
 import GUI.Delivery.loginScreen;
 import GUI.Delivery.mainFunctions;
 import java.awt.Color;
 import javax.swing.JPanel;
-import GUI.*;
 
 /**
  *
@@ -43,16 +42,18 @@ public class SidePane extends javax.swing.JFrame {
         chequeBtn3 = new javax.swing.JButton();
         chequeBtn4 = new javax.swing.JButton();
         chequeBtn5 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         bgImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1550, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pane.setBackground(new java.awt.Color(0, 153, 153));
-        pane.setPreferredSize(new java.awt.Dimension(284, 605));
+        pane.setPreferredSize(new java.awt.Dimension(284, 597));
 
         chequeBtn.setBackground(new java.awt.Color(30, 232, 232));
         chequeBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -138,19 +139,20 @@ public class SidePane extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("Go to main functions window");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout paneLayout = new javax.swing.GroupLayout(pane);
         pane.setLayout(paneLayout);
         paneLayout.setHorizontalGroup(
             paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(paneLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator2))
-                .addContainerGap())
             .addGroup(paneLayout.createSequentialGroup()
                 .addGroup(paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paneLayout.createSequentialGroup()
@@ -166,6 +168,17 @@ public class SidePane extends javax.swing.JFrame {
                     .addComponent(chequeBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chequeBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(paneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator2)
+                    .addGroup(paneLayout.createSequentialGroup()
+                        .addGroup(paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         paneLayout.setVerticalGroup(
             paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +203,9 @@ public class SidePane extends javax.swing.JFrame {
                 .addComponent(chequeBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chequeBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(272, 272, 272)
+                .addGap(209, 209, 209)
+                .addComponent(jLabel3)
+                .addGap(48, 48, 48)
                 .addComponent(logoutLabel))
         );
 
@@ -227,7 +242,7 @@ public class SidePane extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void chequeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chequeBtnActionPerformed
-        Cheques ch = new Cheques();
+        AddCheques ch = new AddCheques();
         jDesktopPane1.add(ch).setVisible(true);
     }//GEN-LAST:event_chequeBtnActionPerformed
 
@@ -257,6 +272,13 @@ public class SidePane extends javax.swing.JFrame {
     private void chequeBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chequeBtn5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chequeBtn5ActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        mainFunctions mf = new mainFunctions();
+        mf.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
+        mf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     public void setColor(JPanel panel)
     {
@@ -319,6 +341,7 @@ public class SidePane extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel logoutLabel;
