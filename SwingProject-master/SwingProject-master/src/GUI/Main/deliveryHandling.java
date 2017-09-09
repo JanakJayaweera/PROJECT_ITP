@@ -187,6 +187,11 @@ public class deliveryHandling extends javax.swing.JFrame {
         jButton12.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton12.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton12.setPreferredSize(new java.awt.Dimension(53, 25));
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton13.setBackground(new java.awt.Color(7, 191, 145));
         jButton13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -422,6 +427,10 @@ public class deliveryHandling extends javax.swing.JFrame {
             updateDelivery ud = new updateDelivery();
             DesktopPane.add(ud).setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+            
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     public void setColor(JPanel panel)
     {

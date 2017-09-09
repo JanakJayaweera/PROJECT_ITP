@@ -96,7 +96,7 @@ public class Vehicle {
         
             try 
             {
-                String sql = "UPDATE vehicle SET status = 0 WHERE vehicleID = '"+pvid+"' ";
+                String sql = "UPDATE vehicle SET status = 0, availability = 0 WHERE vehicleID = '"+pvid+"' ";
                 pst = con.prepareStatement(sql);
                 pst.execute();
             } 

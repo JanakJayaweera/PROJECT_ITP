@@ -40,7 +40,7 @@ public class Driver {
         
             try 
             {
-                String sql = "UPDATE driver SET employment = 0 WHERE driverID = '"+pid+"' ";
+                String sql = "UPDATE driver SET employment = 0, availability= 0 WHERE driverID = '"+pid+"' ";
                 pst = con.prepareStatement(sql);
                 pst.execute();
             } 
