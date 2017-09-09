@@ -15,7 +15,9 @@ import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 import DB.DBconnect;
 import java.awt.event.MouseListener;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -494,7 +496,7 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         String lname = Table1.getValueAt(row, 2).toString();
         String nic = Table1.getValueAt(row, 3).toString();
         String licenceno = Table1.getValueAt(row, 4).toString();
-        String DOB = Table1.getValueAt(row, 5).toString();
+        //String DOB = Table1.getValueAt(row, 5).toString();
         String telephone = Table1.getValueAt(row, 6).toString();
         String address = Table1.getValueAt(row, 7).toString();
         String email = Table1.getValueAt(row, 8).toString();
@@ -508,6 +510,14 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         addresstxt.setText(address);
         emailtxt.setText(email);
         dob.getDate();
+        
+       try {
+           Date DOB = new SimpleDateFormat("dd-MM-yyyy").parse(Table1.getValueAt(row, 5).toString());
+           dob.setDate(DOB);
+       } catch (ParseException ex) {
+           Logger.getLogger(addUpdateDriver.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
         /*daybox.setSelectedItem(DOB.subSequence(0, 2));
         monthbox.setSelectedItem(DOB.subSequence(3, 5));
         yearbox.setSelectedItem(DOB.subSequence(6, 10));
