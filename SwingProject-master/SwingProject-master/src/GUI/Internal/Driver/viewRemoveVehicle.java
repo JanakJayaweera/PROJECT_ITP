@@ -6,7 +6,7 @@
 package GUI.Internal.Driver;
 
 
-import Coding.Vehicle;
+import Class.Vehicle;
 import DB.DBconnect;
 import java.awt.event.MouseListener;
 import java.sql.Connection;

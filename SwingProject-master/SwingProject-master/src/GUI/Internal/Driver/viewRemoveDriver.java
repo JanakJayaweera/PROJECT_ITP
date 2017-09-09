@@ -5,7 +5,7 @@
  */
 package GUI.Internal.Driver;
 
-import Coding.Driver;
+import Class.Driver;
 import DB.DBconnect;
 import java.awt.event.MouseListener;
 import java.sql.Connection;
