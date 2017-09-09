@@ -38,7 +38,7 @@ public class Vehicle {
     public void addVehicle(){
         try 
             {
-                String sql = "INSERT INTO vehicle (name,type,number,serviceKM,fuelConsumption,cMeterReading) VALUES ('"+ vname +"','"+ vtype +"','"+ vnumber +"','"+ fuelConsumption +"','"+ meterReading +"','"+ serviceDistance +"')";
+                String sql = "INSERT INTO vehicle (name,type,number,serviceKM,fuelConsumption,cMeterReading) VALUES ('"+ vname +"','"+ vtype +"','"+ vnumber +"','"+ serviceDistance +"','"+ meterReading +"','"+ fuelConsumption +"')";
                 pst = con.prepareStatement(sql);
                 pst.execute();
                 
