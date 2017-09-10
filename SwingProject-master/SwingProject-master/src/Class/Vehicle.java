@@ -38,10 +38,20 @@ public class Vehicle {
     public void addVehicle(){
         try 
             {
-                String sql = "INSERT INTO vehicle (name,type,number,serviceKM,fuelConsumption,cMeterReading) VALUES ('"+ vname +"','"+ vtype +"','"+ vnumber +"','"+ serviceDistance +"','"+ meterReading +"','"+ fuelConsumption +"')";
+                String sql = "INSERT INTO vehicle (name,type,number,serviceKM,fuelConsumption,cMeterReading) VALUES ('"+ vname +"','"+ vtype +"','"+ vnumber +"','"+ serviceDistance +"','"+ fuelConsumption +"','"+ meterReading +"')";
                 pst = con.prepareStatement(sql);
                 pst.execute();
                 
+                String sql1 = "SELECT vehicleID FROM vehicle WHERE number = '"+vnumber+"' ";
+                pst = con.prepareStatement(sql1);
+                ResultSet rs = pst.executeQuery();
+                rs.next();
+                int vehicleID = Integer.parseInt(rs.getString(1));
+                String n = "NEW";
+                
+                String sql2 = "INSERT INTO serviceinfo (vehicleID,meterReading,serviceCost,serviceDate) VALUES ('"+vehicleID+"','"+meterReading+"','"+0+"','"+n+"')";
+                pst = con.prepareStatement(sql2);
+                pst.execute();
             } 
         
             catch (SQLException e) {

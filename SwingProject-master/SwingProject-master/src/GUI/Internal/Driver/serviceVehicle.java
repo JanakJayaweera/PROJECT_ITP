@@ -2,6 +2,7 @@
 
 package GUI.Internal.Driver;
 
+import Class.vehicleService;
 import DB.DBconnect;
 import java.awt.Color;
 import java.awt.event.MouseListener;
@@ -159,6 +160,11 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Service");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         vidlbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         vidlbl.setForeground(new java.awt.Color(51, 51, 51));
@@ -192,6 +198,11 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
         jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("Reset");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Date");
@@ -381,7 +392,8 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -447,6 +459,26 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_Table1MouseClicked
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        costtxt.setText("");
+        meterReadtxt.setText("");
+        datechoose.setDate(null);
+        statuslbl.setForeground(Color.white);
+        statuslbl.setText("   Status");
+        tableLoad();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int vehicleID = Integer.parseInt(vidlbl.getText());
+        int meterReading = Integer.parseInt(meterReadtxt.getText());
+        int serviceCost = Integer.parseInt(costtxt.getText());
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+        String serviceDate = formatDate.format(datechoose.getDate());
+        
+        vehicleService vs = new vehicleService(vehicleID,meterReading,serviceCost,serviceDate);
+        tableLoad();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
