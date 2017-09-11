@@ -2,18 +2,29 @@
 
 package GUI.Internal.Driver;
 
+import DB.DBconnect;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.ButtonGroup;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import net.proteanit.sql.DbUtils;
 
 
 
 public class updateDelivery extends javax.swing.JInternalFrame {
 
-    
+   Connection con = null;
+   PreparedStatement pst = null;
+   ResultSet rs = null;
+   
     public updateDelivery() {
         initComponents();
         nonMove();
+        con = DBconnect.connect();
+        tableLoad();
+        
     }
 
     public final void nonMove()
@@ -26,6 +37,33 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         }
         }
     
+    public void tableLoad(){
+    //Initial Load table method 
+        try{
+            String sql = "SELECT deliveryID,orderID,driverID,customer,product,quantity,address,driverName,driverTP,vehicleID,vehicleNumber FROM delivery WHERE status = 'Delivering'";
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            Table1.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public void tableLoad2(int pid){
+    //For Search button act
+        
+        try{
+            String sql2 = "SELECT deliveryID,orderID,driverID,customer,product,quantity,address,driverName,driverTP,vehicleID,vehicleNumber FROM delivery WHERE status = 'Delivering' AND deliveryID = '"+pid+"' ";
+            pst = con.prepareStatement(sql2);
+            rs = pst.executeQuery();
+            Table1.setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -33,22 +71,27 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         buttonGroupStatus = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        dIDtxt = new javax.swing.JTextField();
+        search = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Table1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         completedRB = new javax.swing.JRadioButton();
         cancelledRB = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        metertxt = new javax.swing.JTextField();
+        fcosttxt = new javax.swing.JTextField();
         idLabel = new javax.swing.JLabel();
         orderidLabel = new javax.swing.JLabel();
-        destinationLabel = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        deliveryIDlbl = new javax.swing.JLabel();
+        Reset = new javax.swing.JButton();
+        Update = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        orderIDlbl = new javax.swing.JLabel();
+        driverIDlbl = new javax.swing.JLabel();
+        vehicleIDlbl = new javax.swing.JLabel();
 
         setTitle("Update Delivery Status");
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -56,28 +99,41 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1280, 720));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Delivery ID");
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Search");
+        search.setBackground(new java.awt.Color(102, 102, 102));
+        search.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        search.setForeground(new java.awt.Color(255, 255, 255));
+        search.setText("Search");
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Table1.setBackground(new java.awt.Color(204, 204, 204));
+        Table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Delivery ID", "Order ID", "Customer Name", "Product", "Quantity", "Address", "Driver Name", "Driver TP No.", "Vehicle Number"
+                "Delivery ID", "Order ID", "Driver ID", "Customer Name", "Product", "Quantity", "Address", "Driver Name", "Driver TP No.", "Vehicle ID", "Vehicle Number"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Table1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Table1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Select delivery status");
@@ -99,23 +155,38 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         jLabel4.setText("Fuel cost (Rs.)");
 
         idLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        idLabel.setText("Select an ongoing delivery from the table");
+        idLabel.setText("Delivery ID");
 
         orderidLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        orderidLabel.setText("Select an ongoing delivery from the table");
+        orderidLabel.setText("Vehicle ID");
 
-        destinationLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        destinationLabel.setText("Select an ongoing delivery from the table");
+        deliveryIDlbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        deliveryIDlbl.setText("Select an ongoing delivery from the table");
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 102));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Reset");
+        Reset.setBackground(new java.awt.Color(102, 102, 102));
+        Reset.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Reset.setForeground(new java.awt.Color(255, 255, 255));
+        Reset.setText("Reset");
 
-        jButton3.setBackground(new java.awt.Color(102, 102, 102));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Update");
+        Update.setBackground(new java.awt.Color(102, 102, 102));
+        Update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Update.setForeground(new java.awt.Color(255, 255, 255));
+        Update.setText("Update");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("Order ID");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Driver ID");
+
+        orderIDlbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        orderIDlbl.setText("Select an ongoing delivery from the table");
+
+        driverIDlbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        driverIDlbl.setText("Select an ongoing delivery from the table");
+
+        vehicleIDlbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        vehicleIDlbl.setText("Select an ongoing delivery from the table");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,39 +198,46 @@ public class updateDelivery extends javax.swing.JInternalFrame {
                         .addGap(74, 74, 74)
                         .addComponent(jLabel1)
                         .addGap(66, 66, 66)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dIDtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(74, 74, 74)
-                        .addComponent(jButton1))
+                        .addComponent(search))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(Reset)
+                                .addGap(18, 18, 18)
+                                .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(48, 48, 48)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(completedRB, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                        .addComponent(cancelledRB))
-                                    .addComponent(jTextField3)
-                                    .addComponent(jTextField2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(idLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(orderidLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(destinationLabel, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 784, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(70, 70, 70))
+                                .addComponent(completedRB, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(cancelledRB))
+                            .addComponent(fcosttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(metertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(idLabel)
+                            .addComponent(orderidLabel)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(orderIDlbl)
+                            .addComponent(driverIDlbl)
+                            .addComponent(vehicleIDlbl)
+                            .addComponent(deliveryIDlbl)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Reset, Update, search});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelledRB, completedRB});
 
@@ -169,34 +247,53 @@ public class updateDelivery extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(dIDtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(search))
                 .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(completedRB, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cancelledRB))
+                        .addGap(20, 20, 20))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idLabel)
+                            .addComponent(deliveryIDlbl))
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(metertxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(fcosttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(orderIDlbl))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(driverIDlbl))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(orderidLabel)
+                            .addComponent(vehicleIDlbl))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(completedRB, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelledRB)
-                    .addComponent(idLabel))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(orderidLabel))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(destinationLabel))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Update))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Reset, Update, search});
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cancelledRB, completedRB});
 
@@ -214,27 +311,54 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Table1MouseClicked
+
+        int row = Table1.getSelectedRow();
+        
+        String deliveryID = Table1.getValueAt(row, 0).toString();
+        String orderID = Table1.getValueAt(row, 1).toString();
+        String driverID = Table1.getValueAt(row, 2).toString();
+        String vehicleID = Table1.getValueAt(row, 9).toString();
+        
+        deliveryIDlbl.setText(deliveryID);
+        orderIDlbl.setText(orderID);
+        driverIDlbl.setText(driverID);
+        vehicleIDlbl.setText(vehicleID);
+        
+    }//GEN-LAST:event_Table1MouseClicked
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        
+        int dID = Integer.parseInt(dIDtxt.getText());
+        tableLoad2(dID);
+    }//GEN-LAST:event_searchActionPerformed
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Reset;
+    private javax.swing.JTable Table1;
+    private javax.swing.JButton Update;
     private javax.swing.ButtonGroup buttonGroupStatus;
     private javax.swing.JRadioButton cancelledRB;
     private javax.swing.JRadioButton completedRB;
-    private javax.swing.JLabel destinationLabel;
+    private javax.swing.JTextField dIDtxt;
+    private javax.swing.JLabel deliveryIDlbl;
+    private javax.swing.JLabel driverIDlbl;
+    private javax.swing.JTextField fcosttxt;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField metertxt;
+    private javax.swing.JLabel orderIDlbl;
     private javax.swing.JLabel orderidLabel;
+    private javax.swing.JButton search;
+    private javax.swing.JLabel vehicleIDlbl;
     // End of variables declaration//GEN-END:variables
 }

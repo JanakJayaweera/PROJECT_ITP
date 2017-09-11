@@ -39,7 +39,7 @@ public class Delivery {
     
         if(presult==0){
         try{
-            String sql = "INSERT INTO delivery (orderID,customer,product,quantity,address,driverName,driverTP,vehicleNumber) VALUES ('"+orderID+"','"+cName+"','"+product+"','"+quantity+"','"+address+"','"+dName+"','"+dtp+"','"+vnumber+"')";
+            String sql = "INSERT INTO delivery (orderID,customer,product,quantity,address,driverName,driverTP,vehicleNumber,driverID,vehicleID) VALUES ('"+orderID+"','"+cName+"','"+product+"','"+quantity+"','"+address+"','"+dName+"','"+dtp+"','"+vnumber+"','"+driverID+"','"+vehicleID+"')";
             pst = con.prepareStatement(sql);
             pst.execute();
             
@@ -54,16 +54,20 @@ public class Delivery {
             
            
     //Set availability of Driver & vehicle to busy
-            String status = "Busy";
-            
-            String sql3 = "UPDATE driver SET availability = '"+status+"' WHERE driverID = '"+driverID+"' ";
+                                   
+            String sql3 = "UPDATE driver SET availability = 'Busy' WHERE driverID = '"+driverID+"' ";
             pst = con.prepareStatement(sql3);
             pst.execute();
             
-            String sql4 = "UPDATE vehicle SET availability = '"+status+"' WHERE vehicleID = '"+vehicleID+"' ";
+            String sql4 = "UPDATE vehicle SET availability = 'Busy' WHERE vehicleID = '"+vehicleID+"' ";
             pst = con.prepareStatement(sql4);
             pst.execute();
-        
+    
+    //Set order status to Delivering
+            
+            String sql5 = "UPDATE orders SET status = 'Delivering' WHERE orderID = '"+orderID+"' ";
+            pst = con.prepareStatement(sql5);
+            pst.execute();
         }
         catch(Exception e){
             System.out.println(e);
