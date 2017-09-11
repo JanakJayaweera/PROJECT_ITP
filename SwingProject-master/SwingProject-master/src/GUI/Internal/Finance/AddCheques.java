@@ -226,7 +226,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
                         .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(recFromTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 242, Short.MAX_VALUE))
         );
         recievedChqPaneLayout.setVerticalGroup(
             recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +235,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
                 .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(dateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(recievedChqPaneLayout.createSequentialGroup()
                         .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -269,7 +269,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
                             .addComponent(updateBtn)
                             .addComponent(clearBtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Recieved Cheques", recievedChqPane);
@@ -557,7 +557,6 @@ public class AddCheques extends javax.swing.JInternalFrame {
 
     public void recChqTableLoad()
         {           
-            
             try{
             
                 String sql = "SELECT ID,recName,amt,recDate,postDate FROM recievedchq";

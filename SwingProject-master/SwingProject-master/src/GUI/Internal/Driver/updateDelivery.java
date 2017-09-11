@@ -86,6 +86,11 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         buttonGroupStatus.add(completedRB);
         completedRB.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         completedRB.setText("Completed");
+        completedRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                completedRBActionPerformed(evt);
+            }
+        });
 
         cancelledRB.setBackground(new java.awt.Color(255, 0, 51));
         buttonGroupStatus.add(cancelledRB);
@@ -213,6 +218,10 @@ public class updateDelivery extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void completedRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completedRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_completedRBActionPerformed
 
     
     

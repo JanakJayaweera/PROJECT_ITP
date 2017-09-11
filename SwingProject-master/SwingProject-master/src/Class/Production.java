@@ -24,140 +24,158 @@ public class Production
     PreparedStatement ps = null;
     ResultSet rt = null;
     
-    private javax.swing.JTable ProductionTable;
-    private String Date,Ftype,Btype,Wtype,Etype;
-    private double FQuantity,BQuantity,WQuantity,EQuantity;
-    private Integer PID,Cutters,MachineOperators,PatternMakers,Ironer;
+    private javax.swing.JTable productionTable, orderTable;
+
+    private String date,fType,bType,wType,eTtype,status;
+    private double fQuantity,bQuantity,wQuantity,eQuantity;
+    private Integer pID,cutters,machineOperators,patternMakers,ironer;
     
     public JTable getProductionTable() {
-        return ProductionTable;
+        return productionTable;
     }
 
     public void setProductionTable(JTable ProductionTable) {
-        this.ProductionTable = ProductionTable;
+        this.productionTable = ProductionTable;
+    }
+    
+    public JTable getOrderTable() {
+        return orderTable;
+    }
+
+    public void setOrderTable(JTable OrderTable) {
+        this.orderTable = OrderTable;
     }
 
     public int getPID() {
-        return PID;
+        return pID;
     }
 
     public void setPID(int PID) {
-        this.PID = PID;
+        this.pID = PID;
     }
 
     public String getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(String Date) {
-        this.Date = Date;
+        this.date = Date;
     }
 
     public String getFtype() {
-        return Ftype;
+        return fType;
     }
 
     public void setFtype(String Ftype) {
-        this.Ftype = Ftype;
+        this.fType = Ftype;
     }
 
     public double getFQuantity() {
-        return FQuantity;
+        return fQuantity;
     }
 
     public void setFQuantity(double FQuantity) {
-        this.FQuantity = FQuantity;
+        this.fQuantity = FQuantity;
     }
 
     public String getBtype() {
-        return Btype;
+        return bType;
     }
 
     public void setBtype(String Btype) {
-        this.Btype = Btype;
+        this.bType = Btype;
     }
 
     public double getBQuantity() {
-        return BQuantity;
+        return bQuantity;
     }
 
     public void setBQuantity(double BQuantity) {
-        this.BQuantity = BQuantity;
+        this.bQuantity = BQuantity;
     }
 
     public String getWtype() {
-        return Wtype;
+        return wType;
     }
 
     public void setWtype(String Wtype) {
-        this.Wtype = Wtype;
+        this.wType = Wtype;
     }
 
     public double getWQuantity() {
-        return WQuantity;
+        return wQuantity;
     }
 
     public void setWQuantity(double WQuantity) {
-        this.WQuantity = WQuantity;
+        this.wQuantity = WQuantity;
     }
 
     public String getEtype() {
-        return Etype;
+        return eTtype;
     }
 
     public void setEtype(String Etype) {
-        this.Etype = Etype;
+        this.eTtype = Etype;
     }
 
     public double getEQuantity() {
-        return EQuantity;
+        return eQuantity;
     }
 
     public void setEQuantity(double EQuantity) {
-        this.EQuantity = EQuantity;
+        this.eQuantity = EQuantity;
     }
 
     public int getCutters() {
-        return Cutters;
+        return cutters;
     }
 
     public void setCutters(int Cutters) {
-        this.Cutters = Cutters;
+        this.cutters = Cutters;
     }
 
     public int getMachineOperators() {
-        return MachineOperators;
+        return machineOperators;
     }
 
     public void setMachineOperators(int MachineOperators) {
-        this.MachineOperators = MachineOperators;
+        this.machineOperators = MachineOperators;
     }
 
     public int getPatternMakers() {
-        return PatternMakers;
+        return patternMakers;
     }
 
     public void setPatternMakers(int PatternMakers) {
-        this.PatternMakers = PatternMakers;
+        this.patternMakers = PatternMakers;
     }
 
     public int getIroner() {
-        return Ironer;
+        return ironer;
     }
 
     public void setIroner(int Ironer) {
-        this.Ironer = Ironer;
+        this.ironer = Ironer;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
 
     public Production() {
     }
 
-    public void createnewProduction()
+    public void createnewProduction()//add new production details to DB
     {
         con = DBconnect.connect();
         try 
         {
-            String s  = "INSERT INTO dbproduction(Date, FType, Fquantity, BType, Bquantity, WType, Wquantity, EType, Equantity, Cutters, MachineOperators, PatternMaker, Ironer) values ('"+ getDate() +"',"+ getFtype() +"','"+ getFQuantity() +"','"+ getBtype() +"','"+ getBQuantity() +"','"+ getWtype() +"','"+ getWQuantity() +"','"+ getEtype() +"','"+ getEQuantity() +"','"+ getCutters() +"','"+ getMachineOperators() +"','"+ getPatternMakers() +"','"+ getIroner() +"');";
+            String s  = "INSERT INTO dbproduction(Date, FType, Fquantity, BType, Bquantity, WType, Wquantity, EType, Equantity, Cutters, MachineOperator, PatternMaker, Ironer, Status) values ('"+ getDate() +"', '"+ getFtype() +"', '"+ getFQuantity() +"', '"+ getBtype() +"', '"+ getBQuantity() +"', '"+ getWtype() +"', '"+ getWQuantity() +"', '"+ getEtype() +"', '"+ getEQuantity() +"', '"+ getCutters() +"', '"+ getMachineOperators() +"', '"+ getPatternMakers() +"', '"+ getIroner() +"', '"+ getStatus()+"');";
             ps = con.prepareStatement(s);
             ps.execute();
                   
@@ -169,21 +187,41 @@ public class Production
         }
     }
     
-    public void CreateProTableLoad()
+    public void productionTableload()//load data into production table from DB
         {           
-            con = DBconnect.connect();
             try
             { 
-                String sql = "SELECT PID,Pname,PType,SizeofP,NumberofP,Color,Ftype,FQuantity,BType,BQuantity,WType,WQuantity,Elastic,EQuantity FROM createproduct";
+                con = DBconnect.connect();
+                
+                String sql = "SELECT PID,Date,FType,Fquantity,BType,Bquantity,WType,Wquantity,EType,Equantity,Cutters,MachineOperator,PatternMaker,Ironer,Status FROM dbproduction";
                 ps = con.prepareStatement(sql);
                 rt = ps.executeQuery();
-                ProductionTable.setModel(DbUtils.resultSetToTableModel(rt));
+                productionTable.setModel(DbUtils.resultSetToTableModel(rt));
             }
             
             catch(SQLException e)
             {
+                System.out.println();
                 System.out.println("Could not load from production");
             }
         }   
     
+    
+    public void orderTableload()//load data into ordertable from db
+        {           
+            try
+            { 
+                String sql = "SELECT orderID,ordername,otype,size,numberofp,color FROM ordertable";
+                ps = con.prepareStatement(sql);
+                rt = ps.executeQuery();
+                orderTable.setModel(DbUtils.resultSetToTableModel(rt));
+            }
+            
+            catch(SQLException e)
+            {
+                System.out.println(e);
+                System.out.println("Could not load from ordertable");
+            }
+        }
+
 }
