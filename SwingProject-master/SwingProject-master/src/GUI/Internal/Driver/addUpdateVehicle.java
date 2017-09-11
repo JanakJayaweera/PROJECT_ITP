@@ -117,7 +117,7 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(204, 204, 204));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        setTitle("Add Driver");
+        setTitle("Add / Update Vehicle");
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));

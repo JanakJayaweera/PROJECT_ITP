@@ -40,7 +40,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
     //Load data to Order table
         try{
         
-            String sql1 = "SELECT orderID,customer,product,quantity,destination,distance FROM orders";
+            String sql1 = "SELECT orderID,customer,product,quantity,destination,distance FROM orders WHERE status = 'finished'";
             pst = con.prepareStatement(sql1);
             rs = pst.executeQuery();
             orderTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -51,7 +51,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
     //Load data to Driver table
         try{
         
-            String sql2 = "SELECT driverID,fname,lname,telephone,address FROM driver WHERE employment = 1";
+            String sql2 = "SELECT driverID,fname,lname,telephone,address FROM driver WHERE employment = 1 AND availability = 'available'";
             pst = con.prepareStatement(sql2);
             rs = pst.executeQuery();
             driverTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -62,7 +62,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
     //Load data to Vehicle table
         try{
             
-            String sql3 = "SELECT vehicleID, name, number, type, fuelConsumption FROM vehicle WHERE status = 1 ORDER BY type";
+            String sql3 = "SELECT vehicleID, name, number, type, fuelConsumption FROM vehicle WHERE status = 1 AND availability = 'available' ORDER BY type";
             pst = con.prepareStatement(sql3);
             rs = pst.executeQuery();
             vehicleTable.setModel(DbUtils.resultSetToTableModel(rs));
@@ -117,6 +117,8 @@ public class doDelivery extends javax.swing.JInternalFrame {
         dNamelbl = new javax.swing.JLabel();
         dtplbl = new javax.swing.JLabel();
         vnumberlbl = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        distancelbl = new javax.swing.JLabel();
 
         setTitle("Do a Delivery");
         setMaximumSize(new java.awt.Dimension(1280, 720));
@@ -234,7 +236,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
         jLabel9.setText("Fuel Consumption");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel15.setText("Fuel price (per Litre)");
+        jLabel15.setText("Fuel price (Rs. per Litre)");
 
         fpricetxt.setText("Enter current appx fuel price(without decimals)");
         fpricetxt.setMaximumSize(new java.awt.Dimension(234, 20));
@@ -250,7 +252,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
         costlbl.setText("Click calculate button to see the cost ");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel13.setText("Appx. Cost for fuel");
+        jLabel13.setText("Appx. Cost for fuel (Rs.)");
 
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -309,6 +311,12 @@ public class doDelivery extends javax.swing.JInternalFrame {
         vnumberlbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         vnumberlbl.setText("Number");
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Distance(km)");
+
+        distancelbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        distancelbl.setText("Select an order from the table");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -317,29 +325,37 @@ public class doDelivery extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12))
+                        .addGap(61, 61, 61)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addresslbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel7))
-                                .addGap(61, 61, 61)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addresslbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(driverIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(dNamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(productlbl)
-                                            .addComponent(customerlbl)
-                                            .addComponent(quantitylbl)
-                                            .addComponent(dtplbl, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 13, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(productlbl)
+                                    .addComponent(customerlbl)
+                                    .addComponent(quantitylbl))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel13)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(108, 108, 108)
+                                .addComponent(orderIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(41, 41, 41)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,28 +365,22 @@ public class doDelivery extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(vnumberlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(fpricetxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fConsumptionlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(23, 23, 23))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel13))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(108, 108, 108)
-                                .addComponent(orderIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(fConsumptionlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel9)
-                            .addComponent(jLabel15))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel15)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel14))
+                                .addGap(61, 61, 61)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(distancelbl)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(driverIDlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(dNamelbl, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(dtplbl, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 36, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -385,7 +395,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(orderIDlbl)
                     .addComponent(jLabel5))
@@ -406,6 +416,10 @@ public class doDelivery extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addresslbl))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(distancelbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(driverIDlbl)
@@ -441,7 +455,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addGap(8, 8, 8)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(410, Short.MAX_VALUE)))
+                    .addContainerGap(438, Short.MAX_VALUE)))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
@@ -453,29 +467,28 @@ public class doDelivery extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
-                                    .addGap(474, 474, 474))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane2))
-                                    .addGap(63, 63, 63)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
-                                .addGap(80, 80, 80)))
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(142, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2))
+                                .addGap(63, 63, 63))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(159, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,7 +514,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
                         .addGap(2, 2, 2)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
+                        .addGap(107, 107, 107)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -565,20 +578,24 @@ public class doDelivery extends javax.swing.JInternalFrame {
         String customerName = orderTable.getValueAt(row, 1).toString();
         String productName = orderTable.getValueAt(row, 2).toString();
         String quantity = orderTable.getValueAt(row, 3).toString();
+        String distance = orderTable.getValueAt(row, 5).toString();
         
         orderIDlbl.setText(orderID);
         addresslbl.setText(orderAddress);
         customerlbl.setText(customerName);
         productlbl.setText(productName);
         quantitylbl.setText(quantity);
+        distancelbl.setText(distance);
     }//GEN-LAST:event_orderTableMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int price = Integer.parseInt(fpricetxt.getText());
-        int fConsumption = Integer.parseInt(fConsumptionlbl.getText());
-        int cost = price * fConsumption;
+        double price = Integer.parseInt(fpricetxt.getText());
+        double fConsumption = Integer.parseInt(fConsumptionlbl.getText());
+        double distance = Integer.parseInt(distancelbl.getText());
+        
+        double cost = (distance/fConsumption)*price;
                
-        costlbl.setText(Integer.toString(cost));
+        costlbl.setText(Double.toString(cost));
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -599,7 +616,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         int result = JOptionPane.showConfirmDialog(null, "Are you sure the details entered are correct?\nIf 'yes' click 'ok'\nIf 'no' click 'cancel'");
-        Delivery d = new Delivery(Integer.parseInt(orderIDlbl.getText()),customerlbl.getText(),productlbl.getText(),Integer.parseInt(quantitylbl.getText()),addresslbl.getText(),dNamelbl.getText(),Integer.parseInt(dtplbl.getText()),vnumberlbl.getText(),result);
+        Delivery d = new Delivery(Integer.parseInt(orderIDlbl.getText()),customerlbl.getText(),productlbl.getText(),Integer.parseInt(quantitylbl.getText()),addresslbl.getText(),dNamelbl.getText(),Integer.parseInt(dtplbl.getText()),vnumberlbl.getText(),Integer.parseInt(driverIDlbl.getText()),Integer.parseInt(vehicleIDlbl.getText()),result);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -608,6 +625,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
     private javax.swing.JLabel costlbl;
     private javax.swing.JLabel customerlbl;
     private javax.swing.JLabel dNamelbl;
+    private javax.swing.JLabel distancelbl;
     private javax.swing.JLabel driverIDlbl;
     private javax.swing.JTable driverTable;
     private javax.swing.JLabel dtplbl;
@@ -621,6 +639,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
