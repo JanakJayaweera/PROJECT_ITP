@@ -74,7 +74,7 @@ public class updateDelivery extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Delivery ID", "Order ID", "Customer Name", "Product", "Qantity", "Destination", "Driver Name", "Driver TP No.", "Vehicle Number"
+                "Delivery ID", "Order ID", "Customer Name", "Product", "Quantity", "Address", "Driver Name", "Driver TP No.", "Vehicle Number"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
