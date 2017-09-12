@@ -2,12 +2,14 @@
 
 package GUI.Internal.Driver;
 
+import Class.Delivery;
 import DB.DBconnect;
 import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
 
@@ -81,7 +83,7 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         metertxt = new javax.swing.JTextField();
-        fcosttxt = new javax.swing.JTextField();
+        fCosttxt = new javax.swing.JTextField();
         idLabel = new javax.swing.JLabel();
         orderidLabel = new javax.swing.JLabel();
         deliveryIDlbl = new javax.swing.JLabel();
@@ -167,11 +169,21 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         Reset.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Reset.setForeground(new java.awt.Color(255, 255, 255));
         Reset.setText("Reset");
+        Reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResetActionPerformed(evt);
+            }
+        });
 
         Update.setBackground(new java.awt.Color(102, 102, 102));
         Update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         Update.setForeground(new java.awt.Color(255, 255, 255));
         Update.setText("Update");
+        Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Order ID");
@@ -217,7 +229,7 @@ public class updateDelivery extends javax.swing.JInternalFrame {
                                 .addComponent(completedRB, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
                                 .addComponent(cancelledRB))
-                            .addComponent(fcosttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fCosttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(metertxt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +285,7 @@ public class updateDelivery extends javax.swing.JInternalFrame {
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(fcosttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(fCosttxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
@@ -333,6 +345,30 @@ public class updateDelivery extends javax.swing.JInternalFrame {
         tableLoad2(dID);
     }//GEN-LAST:event_searchActionPerformed
 
+    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
+        dIDtxt.setText("");
+        metertxt.setText("");
+        fCosttxt.setText("");
+        deliveryIDlbl.setText("Select an ongoing delivery from the table");
+        orderIDlbl.setText("Select an ongoing delivery from the table");
+        driverIDlbl.setText("Select an ongoing delivery from the table");
+        vehicleIDlbl.setText("Select an ongoing delivery from the table");
+    }//GEN-LAST:event_ResetActionPerformed
+
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+        
+        completedRB.setActionCommand("Delivered");
+        cancelledRB.setActionCommand("Cancelled");
+        String dStatus = buttonGroupStatus.getSelection().getActionCommand();
+        
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure the details entered are correct?\nIf 'yes' click 'ok'\nIf 'no' click 'cancel'");
+        
+        
+        Delivery updateD = new Delivery(Integer.parseInt(deliveryIDlbl.getText()),Integer.parseInt(orderIDlbl.getText()),Integer.parseInt(driverIDlbl.getText()),Integer.parseInt(vehicleIDlbl.getText()),result,Integer.parseInt(fCosttxt.getText()),Integer.parseInt(metertxt.getText()),dStatus);
+            
+        tableLoad();
+    }//GEN-LAST:event_UpdateActionPerformed
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -345,7 +381,7 @@ public class updateDelivery extends javax.swing.JInternalFrame {
     private javax.swing.JTextField dIDtxt;
     private javax.swing.JLabel deliveryIDlbl;
     private javax.swing.JLabel driverIDlbl;
-    private javax.swing.JTextField fcosttxt;
+    private javax.swing.JTextField fCosttxt;
     private javax.swing.JLabel idLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
