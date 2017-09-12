@@ -15,6 +15,9 @@ import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 import DB.DBconnect;
 import java.awt.event.MouseListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -102,9 +105,6 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         tptxt = new javax.swing.JTextField();
         addresstxt = new javax.swing.JTextField();
         emailtxt = new javax.swing.JTextField();
-        daybox = new javax.swing.JComboBox<>();
-        monthbox = new javax.swing.JComboBox<>();
-        yearbox = new javax.swing.JComboBox<>();
         addBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -117,12 +117,13 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
         searchBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        dob = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table1 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        setTitle("Add Driver");
+        setTitle("Add / Update Driver");
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -170,18 +171,6 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
                 NICtxtActionPerformed(evt);
             }
         });
-
-        daybox.setBackground(new java.awt.Color(102, 102, 102));
-        daybox.setForeground(new java.awt.Color(255, 255, 255));
-        daybox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Day", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-
-        monthbox.setBackground(new java.awt.Color(102, 102, 102));
-        monthbox.setForeground(new java.awt.Color(255, 255, 255));
-        monthbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-
-        yearbox.setBackground(new java.awt.Color(102, 102, 102));
-        yearbox.setForeground(new java.awt.Color(255, 255, 255));
-        yearbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", " " }));
 
         addBtn.setBackground(new java.awt.Color(102, 102, 102));
         addBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -292,6 +281,8 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, searchBtn});
 
+        dob.setBackground(new java.awt.Color(153, 153, 153));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -318,18 +309,6 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
                         .addGap(45, 45, 45)
                         .addComponent(drvlicencetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(74, 74, 74)
-                        .addComponent(daybox, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(monthbox, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(yearbox, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(62, 62, 62)
-                        .addComponent(tptxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(87, 87, 87)
                         .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -347,7 +326,15 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tptxt, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                            .addComponent(dob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -380,45 +367,41 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel2))
                             .addComponent(lnametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel3))
                             .addComponent(NICtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel4))
                             .addComponent(drvlicencetxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel7))
-                            .addComponent(daybox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(monthbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(yearbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
+                            .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel5))
                             .addComponent(tptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel8))
                             .addComponent(addresstxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel6))
                             .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -477,8 +460,8 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_NICtxtActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        
-        Driver driver = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,daybox.getSelectedItem().toString()+"-"+monthbox.getSelectedItem().toString()+"-"+ yearbox.getSelectedItem().toString() , tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(),Table1 );
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+        Driver driver = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()) , tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(),Table1 );
         tableLoad();
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -510,7 +493,7 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         String lname = Table1.getValueAt(row, 2).toString();
         String nic = Table1.getValueAt(row, 3).toString();
         String licenceno = Table1.getValueAt(row, 4).toString();
-        String DOB = Table1.getValueAt(row, 5).toString();
+        //String DOB = Table1.getValueAt(row, 5).toString();
         String telephone = Table1.getValueAt(row, 6).toString();
         String address = Table1.getValueAt(row, 7).toString();
         String email = Table1.getValueAt(row, 8).toString();
@@ -523,15 +506,25 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         tptxt.setText(telephone);
         addresstxt.setText(address);
         emailtxt.setText(email);
-        daybox.setSelectedItem(DOB.subSequence(0, 2));
+        dob.getDate();
+        
+       try {
+           Date DOB = new SimpleDateFormat("dd-MM-yyyy").parse(Table1.getValueAt(row, 5).toString());
+           dob.setDate(DOB);
+       } catch (ParseException ex) {
+           Logger.getLogger(addUpdateDriver.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
+        /*daybox.setSelectedItem(DOB.subSequence(0, 2));
         monthbox.setSelectedItem(DOB.subSequence(3, 5));
         yearbox.setSelectedItem(DOB.subSequence(6, 10));
-        
+        */
     }//GEN-LAST:event_Table1MouseClicked
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         int result = JOptionPane.showConfirmDialog(null, "Are you sure updating with new details?");
-        Driver d1 = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,daybox.getSelectedItem().toString()+"-"+monthbox.getSelectedItem().toString()+"-"+ yearbox.getSelectedItem().toString() , tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(), Integer.parseInt(idLabel.getText()), result);
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+        Driver d1 = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()), tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(), Integer.parseInt(idLabel.getText()), result);
         tableLoad();
         
     }//GEN-LAST:event_updateBtnActionPerformed
@@ -552,7 +545,7 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
     private javax.swing.JButton addBtn;
     private javax.swing.JTextField addresstxt;
     private javax.swing.JButton clearBtn;
-    private javax.swing.JComboBox<String> daybox;
+    private com.toedter.calendar.JDateChooser dob;
     private javax.swing.JTextField drvlicencetxt;
     private javax.swing.JTextField emailtxt;
     private javax.swing.JTextField fnametxt;
@@ -576,11 +569,9 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField lnametxt;
-    private javax.swing.JComboBox<String> monthbox;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchtxt;
     private javax.swing.JTextField tptxt;
     private javax.swing.JButton updateBtn;
-    private javax.swing.JComboBox<String> yearbox;
     // End of variables declaration//GEN-END:variables
 }
