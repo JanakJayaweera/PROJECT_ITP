@@ -24,11 +24,11 @@ public class Production
     PreparedStatement ps = null;
     ResultSet rt = null;
     
-    private javax.swing.JTable productionTable, orderTable;
+     private javax.swing.JTable productionTable, orderTable;
 
     private String date,fType,bType,wType,eTtype,status;
     private double fQuantity,bQuantity,wQuantity,eQuantity;
-    private Integer pID,cutters,machineOperators,patternMakers,ironer;
+    private Integer pID,cutters,machineOperators,supervisor,ironer,helper;
     
     public JTable getProductionTable() {
         return productionTable;
@@ -142,17 +142,26 @@ public class Production
         this.machineOperators = MachineOperators;
     }
 
-    public int getPatternMakers() {
-        return patternMakers;
-    }
-
-    public void setPatternMakers(int PatternMakers) {
-        this.patternMakers = PatternMakers;
-    }
-
     public int getIroner() {
         return ironer;
     }
+
+    public Integer getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Integer supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public Integer getHelper() {
+        return helper;
+    }
+
+    public void setHelper(Integer helper) {
+        this.helper = helper;
+    }
+    
 
     public void setIroner(int Ironer) {
         this.ironer = Ironer;
@@ -166,16 +175,16 @@ public class Production
         this.status = status;
     }
     
-
     public Production() {
     }
+    
 
     public void createnewProduction()//add new production details to DB
     {
         con = DBconnect.connect();
         try 
         {
-            String s  = "INSERT INTO dbproduction(Date, FType, Fquantity, BType, Bquantity, WType, Wquantity, EType, Equantity, Cutters, MachineOperator, PatternMaker, Ironer, Status) values ('"+ getDate() +"', '"+ getFtype() +"', '"+ getFQuantity() +"', '"+ getBtype() +"', '"+ getBQuantity() +"', '"+ getWtype() +"', '"+ getWQuantity() +"', '"+ getEtype() +"', '"+ getEQuantity() +"', '"+ getCutters() +"', '"+ getMachineOperators() +"', '"+ getPatternMakers() +"', '"+ getIroner() +"', '"+ getStatus()+"');";
+            String s  = "INSERT INTO dbproduction(Date, FType, Fquantity, BType, Bquantity, WType, Wquantity, EType, Equantity, Cutters, MachineOperator, Supervisor, Ironer, Helper, Status) values ('"+ getDate() +"','"+ getFtype() +"','"+ getFQuantity() +"','"+ getBtype() +"','"+ getBQuantity() +"','"+ getWtype() +"','"+ getWQuantity() +"','"+ getEtype() +"','"+ getEQuantity() +"','"+ getCutters() +"','"+ getMachineOperators() +"','"+ getSupervisor() +"','"+ getIroner() +"','"+ getHelper() +"','"+ getStatus() +"');";
             ps = con.prepareStatement(s);
             ps.execute();
                   
@@ -193,7 +202,7 @@ public class Production
             { 
                 con = DBconnect.connect();
                 
-                String sql = "SELECT PID,Date,FType,Fquantity,BType,Bquantity,WType,Wquantity,EType,Equantity,Cutters,MachineOperator,PatternMaker,Ironer,Status FROM dbproduction";
+                String sql = "SELECT PID,Date,FType,Fquantity,BType,Bquantity,WType,Wquantity,EType,Equantity,Cutters,MachineOperator,Supervisor,Ironer,Helper,Status FROM dbproduction";
                 ps = con.prepareStatement(sql);
                 rt = ps.executeQuery();
                 productionTable.setModel(DbUtils.resultSetToTableModel(rt));
@@ -204,13 +213,13 @@ public class Production
                 System.out.println();
                 System.out.println("Could not load from production");
             }
-        }   
+        }  
     
-    
-    public void orderTableload()//load data into ordertable from db
+     public void orderTableload()//load data into ordertable from db
         {           
             try
             { 
+                con = DBconnect.connect();
                 String sql = "SELECT orderID,ordername,otype,size,numberofp,color FROM ordertable";
                 ps = con.prepareStatement(sql);
                 rt = ps.executeQuery();
@@ -223,5 +232,5 @@ public class Production
                 System.out.println("Could not load from ordertable");
             }
         }
-
+    
 }

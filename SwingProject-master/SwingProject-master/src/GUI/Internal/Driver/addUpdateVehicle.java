@@ -117,7 +117,7 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(204, 204, 204));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        setTitle("Add Driver");
+        setTitle("Add / Update Vehicle");
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
@@ -272,7 +272,7 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, searchBtn});
 
-        vtypebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select vehicle type", "Car", "Van", "Lorry" }));
+        vtypebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select vehicle type", "Bike", "Car", "Van", "Lorry" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

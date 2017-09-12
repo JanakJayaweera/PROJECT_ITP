@@ -251,6 +251,7 @@ public class mainFunctions extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         loginScreen ls = new loginScreen();
+        ls.setExtendedState(loginScreen.MAXIMIZED_BOTH);
         ls.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
