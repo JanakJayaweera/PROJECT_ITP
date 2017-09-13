@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
+import Class.Cheques;
 
 /**
  *
@@ -37,6 +38,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
     Statement st = null;
+    Date systemDate = new Date();
     
     public AddCheques() {
         con = DBconnect.connect();
@@ -44,6 +46,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
         nonMove();
         showDate();
         recChqTableLoad();
+        
     }
 
     /**
@@ -104,11 +107,11 @@ public class AddCheques extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -203,6 +206,11 @@ public class AddCheques extends javax.swing.JInternalFrame {
         });
 
         recDate.setDateFormatString("yyyy-MM-d");
+        recDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                recDatePropertyChange(evt);
+            }
+        });
 
         postDate.setDateFormatString("yyyy-MM-d");
 
@@ -501,30 +509,17 @@ public class AddCheques extends javax.swing.JInternalFrame {
         String recName = recChqTable.getValueAt(row, 1).toString();
         String amt = recChqTable.getValueAt(row, 2).toString();
         
-//        try {
-//            Date rcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 3).toString());
-//            Date pcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 4).toString());
-//            
-//            recDate.setDate(rcDate);
-//            postDate.setDate(pcDate);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
-//            System.out.println("Couldn't get the dates from jtable to the fields");
-//        }
-
-        String sql = "SELECT recDate FROM recievedchq WHERE ID = '"+ id +"'; ";
         try {
-            rs= pst.executeQuery(sql);
-            String rc = rs.toString();
+            Date rcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 3).toString());
+            Date pcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 4).toString());
             
-            Date rcDate = new SimpleDateFormat("yyyy-MM-dd").parse(rc);
             recDate.setDate(rcDate);
-        } catch (SQLException ex) {
-            Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
+            postDate.setDate(pcDate);
         } catch (ParseException ex) {
             Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Couldn't get the dates from jtable to the fields");
         }
-        
+    
         idLbl.setText(id);
         recFromTF.setText(recName);
         amtTF.setText(amt);     
@@ -535,15 +530,18 @@ public class AddCheques extends javax.swing.JInternalFrame {
         
         if(x == 0)
         {
+            String recName = null;
             int id = Integer.parseInt(idLbl.getText());
-            String recName = recFromTF.getText();
+            recName = recFromTF.getText();
             double amt = Double.parseDouble(amtTF.getText());
             
             SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
             String recDate1 = formatDate.format(recDate.getDate());
             String postDate1 = formatDate.format(postDate.getDate());
             
-            String sql = "UPDATE recievedchq SET recName = '"+ recName +"', amt = '"+ amt +"', recDate = '"+ recDate1 +"', postDate = '"+ postDate1 +"' WHERE ID = '"+ id +"'";
+            if(recName != null)
+            {
+            String sql = "UPDATE recievedchq SET recName = '"+ recName +"', amt = '"+ amt +"', recDate = '"+ recDate1 +"', postDate = '"+ postDate1 +"' WHERE ID = '"+ id +"' AND '"+ recName +"' IS NOT NULL ";
             
             try { 
                 pst = con.prepareStatement(sql);
@@ -551,6 +549,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("Couldn't update values to recievedchq");
+            }
             }
         }
         recChqTableLoad();
@@ -572,6 +571,10 @@ public class AddCheques extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_clearBtn2ActionPerformed
 
+    private void recDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_recDatePropertyChange
+        postDate.setDate(recDate.getDate());
+    }//GEN-LAST:event_recDatePropertyChange
+
     public final void nonMove()
         {
             //make the jframe non-movable
@@ -584,9 +587,8 @@ public class AddCheques extends javax.swing.JInternalFrame {
     
     public void showDate()
     {
-        Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-d");
-        dateLbl.setText(sdf.format(d));
+        dateLbl.setText(sdf.format(systemDate));
     }
 
     public void recChqTableLoad()
@@ -603,9 +605,8 @@ public class AddCheques extends javax.swing.JInternalFrame {
             catch(SQLException e){
                 System.out.println("Could not load from recievedchq");
             }
-    }   
-
-    
+    }
+      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JButton addBtn2;

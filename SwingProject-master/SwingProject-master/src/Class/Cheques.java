@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class Cheques {
     private int ID;
-    private String recName, recDate, postDate;
+    private String recName = null, recDate, postDate;
     private double amt;
 
     Connection conn = null;
