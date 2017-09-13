@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,6 +36,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
     static String x;
     PreparedStatement pst = null;
     ResultSet rs = null;
+    Statement st = null;
     
     public AddCheques() {
         con = DBconnect.connect();
@@ -52,6 +54,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDayChooser1 = new com.toedter.calendar.JDayChooser();
+        jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         recievedChqPane = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -93,7 +96,26 @@ public class AddCheques extends javax.swing.JInternalFrame {
         setBorder(null);
         setTitle("Cheques");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(1279, 720));
+        setMaximumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jTabbedPane1.setMaximumSize(new java.awt.Dimension(1280, 720));
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(1280, 720));
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Cheque ID");
@@ -189,59 +211,61 @@ public class AddCheques extends javax.swing.JInternalFrame {
         recievedChqPaneLayout.setHorizontalGroup(
             recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
                 .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(recievedChqPaneLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
                         .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addGap(56, 56, 56)
-                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(postDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(recDate, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(amtTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(42, 42, 42)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(recievedChqPaneLayout.createSequentialGroup()
+                                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8))
+                                .addGap(56, 56, 56)
+                                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(postDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(recDate, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(amtTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(recievedChqPaneLayout.createSequentialGroup()
+                                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(139, 139, 139)
+                                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(recFromTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(idLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(recievedChqPaneLayout.createSequentialGroup()
+                                .addGap(758, 758, 758)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(recievedChqPaneLayout.createSequentialGroup()
+                        .addGap(186, 186, 186)
                         .addComponent(addBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(updateBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(clearBtn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                        .addGap(560, 560, 560)
-                        .addComponent(jLabel7)
-                        .addGap(14, 14, 14)
-                        .addComponent(dateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(139, 139, 139)
-                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(recFromTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(229, 229, 229))
         );
         recievedChqPaneLayout.setVerticalGroup(
             recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(dateLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(dateLbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(recievedChqPaneLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(recDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recievedChqPaneLayout.createSequentialGroup()
                         .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(idLbl))
-                        .addGap(12, 12, 12)
+                        .addGap(18, 18, 18)
                         .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(recievedChqPaneLayout.createSequentialGroup()
                                 .addGap(2, 2, 2)
@@ -254,22 +278,19 @@ public class AddCheques extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel5))
                             .addComponent(amtTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8))
-                    .addComponent(recDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel8)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(recievedChqPaneLayout.createSequentialGroup()
-                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(postDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, recievedChqPaneLayout.createSequentialGroup()
-                        .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addBtn)
-                            .addComponent(updateBtn)
-                            .addComponent(clearBtn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(postDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(recievedChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addBtn)
+                    .addComponent(updateBtn)
+                    .addComponent(clearBtn))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Recieved Cheques", recievedChqPane);
@@ -480,15 +501,28 @@ public class AddCheques extends javax.swing.JInternalFrame {
         String recName = recChqTable.getValueAt(row, 1).toString();
         String amt = recChqTable.getValueAt(row, 2).toString();
         
+//        try {
+//            Date rcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 3).toString());
+//            Date pcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 4).toString());
+//            
+//            recDate.setDate(rcDate);
+//            postDate.setDate(pcDate);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
+//            System.out.println("Couldn't get the dates from jtable to the fields");
+//        }
+
+        String sql = "SELECT recDate FROM recievedchq WHERE ID = '"+ id +"'; ";
         try {
-            Date rcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 3).toString());
-            Date pcDate = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(row, 4).toString());
+            rs= pst.executeQuery(sql);
+            String rc = rs.toString();
             
+            Date rcDate = new SimpleDateFormat("yyyy-MM-dd").parse(rc);
             recDate.setDate(rcDate);
-            postDate.setDate(pcDate);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(AddCheques.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Couldn't get the dates from jtable to the fields");
         }
         
         idLbl.setText(id);
@@ -556,7 +590,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
     }
 
     public void recChqTableLoad()
-        {           
+    {           
             
             try{
             
@@ -569,7 +603,8 @@ public class AddCheques extends javax.swing.JInternalFrame {
             catch(SQLException e){
                 System.out.println("Could not load from recievedchq");
             }
-        }   
+    }   
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
@@ -595,6 +630,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
