@@ -42,6 +42,10 @@ public class vehicleService {
             pst = con.prepareStatement(sql);
             pst.execute();
             
+            String sql2 = "UPDATE vehicle SET cMeterReading = '"+meterReading+"' WHERE vehicleID = '"+vehicleID+"' ";
+            pst = con.prepareStatement(sql2);
+            pst.execute();
+            
         } catch (SQLException ex) {
             Logger.getLogger(vehicleService.class.getName()).log(Level.SEVERE, null, ex);
         }

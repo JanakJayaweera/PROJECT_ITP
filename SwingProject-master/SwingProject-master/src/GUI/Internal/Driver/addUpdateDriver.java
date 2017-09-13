@@ -6,6 +6,7 @@
 package GUI.Internal.Driver;
 
 import Class.Driver;
+import Class.deliveryValidation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 import DB.DBconnect;
+import java.awt.Color;
 import java.awt.event.MouseListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -166,9 +168,31 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setText("Register Driver to the system");
 
+        NICtxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NICtxtMouseClicked(evt);
+            }
+        });
         NICtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NICtxtActionPerformed(evt);
+            }
+        });
+
+        tptxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tptxtMouseClicked(evt);
+            }
+        });
+        tptxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tptxtActionPerformed(evt);
+            }
+        });
+
+        emailtxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                emailtxtMouseClicked(evt);
             }
         });
 
@@ -461,8 +485,35 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
-        Driver driver = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()) , tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(),Table1 );
-        tableLoad();
+        deliveryValidation dV = new deliveryValidation();
+                
+        if(dV.emailValidation(emailtxt.getText()) && (dV.nicValidation(NICtxt.getText())) && (dV.tpValidation(tptxt.getText()))){
+            Driver driver = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()) , tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(),Table1 );
+            JOptionPane.showMessageDialog(null, "Driver added successfully! ");
+            tableLoad();
+        
+        }
+        else {
+            if(dV.emailValidation(emailtxt.getText())==false){
+                emailtxt.setForeground(Color.red);
+                emailtxt.setText("Invalid email address!");
+            }
+            
+            if (dV.nicValidation(NICtxt.getText())==false){
+                NICtxt.setForeground(Color.red);
+                NICtxt.setText("Invalid NIC number!");
+            }
+            
+            
+            if (dV.tpValidation(tptxt.getText())==false){
+                tptxt.setForeground(Color.red);
+                tptxt.setText("Invalid telephone number!");
+            }
+            
+        
+        }
+        
+        
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
@@ -524,8 +575,34 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         int result = JOptionPane.showConfirmDialog(null, "Are you sure updating with new details?");
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
-        Driver d1 = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()), tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(), Integer.parseInt(idLabel.getText()), result);
-        tableLoad();
+        deliveryValidation dV = new deliveryValidation();
+        
+        if(dV.emailValidation(emailtxt.getText()) && (dV.nicValidation(NICtxt.getText())) && (dV.tpValidation(tptxt.getText()))){
+            Driver d1 = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()), tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(), Integer.parseInt(idLabel.getText()), result);
+            JOptionPane.showMessageDialog(null, "Driver added successfully! ");
+            tableLoad();
+        
+        }
+        else {
+            if(dV.emailValidation(emailtxt.getText())==false){
+                emailtxt.setForeground(Color.red);
+                emailtxt.setText("Invalid email address!");
+            }
+            
+            if (dV.nicValidation(NICtxt.getText())==false){
+                NICtxt.setForeground(Color.red);
+                NICtxt.setText("Invalid NIC number!");
+            }
+            
+            
+            if (dV.tpValidation(tptxt.getText())==false){
+                tptxt.setForeground(Color.red);
+                tptxt.setText("Invalid telephone number!");
+            }
+            
+        
+        }
+        
         
     }//GEN-LAST:event_updateBtnActionPerformed
 
@@ -537,6 +614,25 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tableLoad();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void NICtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NICtxtMouseClicked
+
+        NICtxt.setText("");
+    }//GEN-LAST:event_NICtxtMouseClicked
+
+    private void tptxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tptxtActionPerformed
+
+        
+    }//GEN-LAST:event_tptxtActionPerformed
+
+    private void emailtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailtxtMouseClicked
+
+        emailtxt.setText("");
+    }//GEN-LAST:event_emailtxtMouseClicked
+
+    private void tptxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tptxtMouseClicked
+        tptxt.setText("");
+    }//GEN-LAST:event_tptxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

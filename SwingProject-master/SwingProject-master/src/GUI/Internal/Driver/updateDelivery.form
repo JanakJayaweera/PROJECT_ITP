@@ -93,7 +93,7 @@
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                   <Component id="cancelledRB" linkSize="4" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="fcosttxt" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
+                              <Component id="fCosttxt" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                               <Component id="metertxt" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -159,7 +159,7 @@
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fcosttxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="fCosttxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -272,6 +272,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Completed"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="completedRBActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="cancelledRB">
           <Properties>
@@ -305,7 +308,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="metertxt">
         </Component>
-        <Component class="javax.swing.JTextField" name="fcosttxt">
+        <Component class="javax.swing.JTextField" name="fCosttxt">
         </Component>
         <Component class="javax.swing.JLabel" name="idLabel">
           <Properties>
@@ -344,6 +347,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ResetActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Update">
           <Properties>
@@ -358,6 +364,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Update"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>

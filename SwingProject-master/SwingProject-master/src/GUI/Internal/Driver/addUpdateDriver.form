@@ -338,16 +338,24 @@
         </Component>
         <Component class="javax.swing.JTextField" name="NICtxt">
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="NICtxtMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NICtxtActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="drvlicencetxt">
         </Component>
         <Component class="javax.swing.JTextField" name="tptxt">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tptxtMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tptxtActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="addresstxt">
         </Component>
         <Component class="javax.swing.JTextField" name="emailtxt">
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="emailtxtMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="addBtn">
           <Properties>

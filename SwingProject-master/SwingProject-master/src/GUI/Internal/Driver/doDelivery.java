@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
@@ -71,6 +72,8 @@ public class doDelivery extends javax.swing.JInternalFrame {
             System.out.println(e);
         }
     }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -241,6 +244,11 @@ public class doDelivery extends javax.swing.JInternalFrame {
         fpricetxt.setText("Enter current appx fuel price(without decimals)");
         fpricetxt.setMaximumSize(new java.awt.Dimension(234, 20));
         fpricetxt.setMinimumSize(new java.awt.Dimension(234, 20));
+        fpricetxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fpricetxtMouseClicked(evt);
+            }
+        });
         fpricetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fpricetxtActionPerformed(evt);
@@ -589,13 +597,10 @@ public class doDelivery extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_orderTableMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        double price = Integer.parseInt(fpricetxt.getText());
-        double fConsumption = Integer.parseInt(fConsumptionlbl.getText());
-        double distance = Integer.parseInt(distancelbl.getText());
         
-        double cost = (distance/fConsumption)*price;
-               
-        costlbl.setText(Double.toString(cost));
+        Delivery calAppx = new Delivery(Double.parseDouble(fpricetxt.getText()),Double.parseDouble(fConsumptionlbl.getText()),Double.parseDouble(distancelbl.getText()));
+        costlbl.setText(calAppx.calAppx());
+
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -618,6 +623,10 @@ public class doDelivery extends javax.swing.JInternalFrame {
         int result = JOptionPane.showConfirmDialog(null, "Are you sure the details entered are correct?\nIf 'yes' click 'ok'\nIf 'no' click 'cancel'");
         Delivery d = new Delivery(Integer.parseInt(orderIDlbl.getText()),customerlbl.getText(),productlbl.getText(),Integer.parseInt(quantitylbl.getText()),addresslbl.getText(),dNamelbl.getText(),Integer.parseInt(dtplbl.getText()),vnumberlbl.getText(),Integer.parseInt(driverIDlbl.getText()),Integer.parseInt(vehicleIDlbl.getText()),result);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void fpricetxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fpricetxtMouseClicked
+        fpricetxt.setText("");
+    }//GEN-LAST:event_fpricetxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
