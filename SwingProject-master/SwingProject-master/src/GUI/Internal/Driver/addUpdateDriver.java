@@ -179,6 +179,11 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
             }
         });
 
+        tptxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tptxtMouseClicked(evt);
+            }
+        });
         tptxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tptxtActionPerformed(evt);
@@ -617,13 +622,17 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
 
     private void tptxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tptxtActionPerformed
 
-        tptxt.setText("");
+        
     }//GEN-LAST:event_tptxtActionPerformed
 
     private void emailtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailtxtMouseClicked
 
         emailtxt.setText("");
     }//GEN-LAST:event_emailtxtMouseClicked
+
+    private void tptxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tptxtMouseClicked
+        tptxt.setText("");
+    }//GEN-LAST:event_tptxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
