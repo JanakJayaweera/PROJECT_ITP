@@ -2,9 +2,11 @@
 package Class;
 
 import DB.DBconnect;
+import GUI.Internal.Driver.doDelivery;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 
@@ -12,6 +14,8 @@ public class Delivery {
     
     String cName, product, address, dName, vnumber, dStatus ;
     int quantity, dtp, orderID, driverID, vehicleID, fCost, meter, deliveryID ;
+    
+    double price, fConsumption, distance;
     
     Connection con = null;
     PreparedStatement pst = null;
@@ -121,6 +125,21 @@ public class Delivery {
         }
     }
     
+    public Delivery(double pprice, double pfConsumption, double pdistance){
+    //Constructor for cal appx fuel cost in doDelivery interface
+        price = pprice;
+        fConsumption = pfConsumption;
+        distance = pdistance;
+     
+    }
+    
+    public String calAppx(){
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
+        String cost = numberFormat.format((distance/fConsumption)*price);
+        
+        return cost;
+        
+    }
     
     
     
