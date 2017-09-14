@@ -50,7 +50,7 @@ public class Vehicle {
                 int vehicleID = Integer.parseInt(rs.getString(1));
                 String n = "NEW";
                 
-                String sql2 = "INSERT INTO serviceinfo (vehicleID,meterReading,serviceCost,serviceDate) VALUES ('"+vehicleID+"','"+meterReading+"','"+0+"','"+n+"')";
+                String sql2 = "INSERT INTO servicedetails (vehicleID,meterReading,serviceCost,serviceDate) VALUES ('"+vehicleID+"','"+meterReading+"','"+0+"','"+n+"')";
                 pst = con.prepareStatement(sql2);
                 pst.execute();
             } 

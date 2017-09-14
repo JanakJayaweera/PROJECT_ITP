@@ -50,7 +50,7 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
             
             try{
             
-                String sql = "SELECT v.vehicleID, v.name, v.type, v.number, s.serviceDate, v.serviceKM FROM vehicle v,serviceinfo s WHERE v.vehicleID = s.vehicleID AND v.status = 1 GROUP BY s.vehicleID ";
+                String sql = "SELECT v.vehicleID, v.name, v.type, v.number, s.serviceDate, v.serviceKM FROM vehicle v,servicedetails s WHERE v.vehicleID = s.vehicleID AND v.status = 1 GROUP BY s.vehicleID ";
                 pst = con.prepareStatement(sql);
                 rs = pst.executeQuery();
                 Table1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -64,7 +64,7 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
     public void tableLoad2(int pvid){
     //For search part    
         try {
-                String sql = "SELECT v.vehicleID, v.name, v.type, v.number, s.serviceDate, v.serviceKM FROM vehicle v,serviceinfo s WHERE v.vehicleID = s.vehicleID AND v.status = 1 AND v.vehicleID='"+pvid+"' ";
+                String sql = "SELECT v.vehicleID, v.name, v.type, v.number, s.serviceDate, v.serviceKM FROM vehicle v,servicedetails s WHERE v.vehicleID = s.vehicleID AND v.status = 1 AND v.vehicleID='"+pvid+"' ";
                 pst = con.prepareStatement(sql);
                 rs = pst.executeQuery();
                 Table1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -77,7 +77,7 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
     public void distanceAfterService(int pid){
     
         try {
-                String sql = "SELECT v.cMeterReading - s.meterReading FROM vehicle v, serviceinfo s WHERE v.vehicleID = s.vehicleID AND v.vehicleID = '"+pid+"' ";
+                String sql = "SELECT v.cMeterReading - s.meterReading FROM vehicle v, servicedetails s WHERE v.vehicleID = s.vehicleID AND v.vehicleID = '"+pid+"' ";
                 pst = con.prepareStatement(sql);
                 ResultSet rs = pst.executeQuery();
                //to get the last record of the query results

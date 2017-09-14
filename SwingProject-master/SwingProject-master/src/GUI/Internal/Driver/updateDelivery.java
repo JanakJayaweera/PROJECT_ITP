@@ -3,7 +3,10 @@
 package GUI.Internal.Driver;
 
 import Class.Delivery;
+import Class.Vehicle;
 import DB.DBconnect;
+import Validation.deliveryValidation;
+import java.awt.Color;
 import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -356,17 +359,40 @@ public class updateDelivery extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ResetActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+        int vehicleID = Integer.parseInt(vehicleIDlbl.getText());
+        Vehicle v = new Vehicle(vehicleID);
         
-        completedRB.setActionCommand("Delivered");
-        cancelledRB.setActionCommand("Cancelled");
-        String dStatus = buttonGroupStatus.getSelection().getActionCommand();
+        deliveryValidation dV = new deliveryValidation();
         
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure the details entered are correct?\nIf 'yes' click 'ok'\nIf 'no' click 'cancel'");
+        if(v.getMeterRead()>0 && dV.meterValidation(metertxt.getText()) && dV.numberTextBox(fCosttxt.getText())){
+           int meterRead = Integer.parseInt(metertxt.getText());
+           
+            if(dV.meterReadValidation(v.getMeterRead() ,meterRead)){
+                completedRB.setActionCommand("Delivered");
+                cancelledRB.setActionCommand("Cancelled");
+                String dStatus = buttonGroupStatus.getSelection().getActionCommand();
         
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure the details entered are correct?\nIf 'yes' click 'ok'\nIf 'no' click 'cancel'");
         
-        Delivery updateD = new Delivery(Integer.parseInt(deliveryIDlbl.getText()),Integer.parseInt(orderIDlbl.getText()),Integer.parseInt(driverIDlbl.getText()),Integer.parseInt(vehicleIDlbl.getText()),result,Integer.parseInt(fCosttxt.getText()),Integer.parseInt(metertxt.getText()),dStatus);
-            
-        tableLoad();
+                Delivery updateD = new Delivery(Integer.parseInt(deliveryIDlbl.getText()),Integer.parseInt(orderIDlbl.getText()),Integer.parseInt(driverIDlbl.getText()),Integer.parseInt(vehicleIDlbl.getText()),result,Integer.parseInt(fCosttxt.getText()),Integer.parseInt(metertxt.getText()),dStatus);
+                JOptionPane.showMessageDialog(null, "Delivery details Successfully updated!");
+                tableLoad();
+            }
+            else{
+                metertxt.setForeground(Color.red);
+                metertxt.setText("Meter read is less than previous read!");
+            }
+        }
+        else{
+            if(dV.meterValidation(metertxt.getText()) == false){
+                metertxt.setForeground(Color.red);
+                metertxt.setText("Invalid value!");
+            }
+            if(dV.numberTextBox(fCosttxt.getText()) == false){
+                fCosttxt.setForeground(Color.red);
+                fCosttxt.setText("Invalid value!");
+            }
+        }
     }//GEN-LAST:event_UpdateActionPerformed
 
     
