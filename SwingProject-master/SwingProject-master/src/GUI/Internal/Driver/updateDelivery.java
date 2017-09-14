@@ -42,7 +42,7 @@ public class updateDelivery extends javax.swing.JInternalFrame {
     public void tableLoad(){
     //Initial Load table method 
         try{
-            String sql = "SELECT deliveryID,orderID,driverID,customer,product,quantity,address,driverName,driverTP,vehicleID,vehicleNumber FROM delivery WHERE status = 'Delivering'";
+            String sql = "SELECT deliveryID,orderID,driverID,customer,product,quantity,address,driverName,driverTP,vehicleID,vehicleNumber FROM deliveryallocation WHERE status = 'Delivering'";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery();
             Table1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -56,7 +56,7 @@ public class updateDelivery extends javax.swing.JInternalFrame {
     //For Search button act
         
         try{
-            String sql2 = "SELECT deliveryID,orderID,driverID,customer,product,quantity,address,driverName,driverTP,vehicleID,vehicleNumber FROM delivery WHERE status = 'Delivering' AND deliveryID = '"+pid+"' ";
+            String sql2 = "SELECT deliveryID,orderID,driverID,customer,product,quantity,address,driverName,driverTP,vehicleID,vehicleNumber FROM deliveryallocation WHERE status = 'Delivering' AND deliveryID = '"+pid+"' ";
             pst = con.prepareStatement(sql2);
             rs = pst.executeQuery();
             Table1.setModel(DbUtils.resultSetToTableModel(rs));

@@ -1,5 +1,5 @@
 
-package Class;
+package Validation;
 
 
 public class deliveryValidation {
@@ -62,4 +62,36 @@ public class deliveryValidation {
     
     }
     
-}
+    public boolean meterValidation(String meter){
+    
+        char meterArray[] = meter.toCharArray();
+        int whiteSpace = 0, letter =0, test=0, number=0;
+        
+        for(char ch:meterArray){
+            test = (Character.isWhitespace(ch)? whiteSpace++ : (Character.isDigit(ch))? number++ :letter++ );
+        }
+        
+        if(whiteSpace==0 && letter==0){
+            result = true;
+        }
+        else{
+            result = false;
+        }
+    return result;    
+    }
+    
+    public boolean meterReadValidation(int cMeterRead, int enteredRead){
+            
+            if(enteredRead > cMeterRead){
+                return true;
+            }
+            else{
+                return false;
+            }
+    
+    
+        }
+    
+    }
+    
+

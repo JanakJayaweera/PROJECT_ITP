@@ -6,7 +6,7 @@
 package GUI.Internal.Driver;
 
 import Class.Driver;
-import Class.deliveryValidation;
+import Validation.deliveryValidation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

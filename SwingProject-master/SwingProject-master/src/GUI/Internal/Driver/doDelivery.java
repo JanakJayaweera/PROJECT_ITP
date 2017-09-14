@@ -41,7 +41,7 @@ public class doDelivery extends javax.swing.JInternalFrame {
     //Load data to Order table
         try{
         
-            String sql1 = "SELECT orderID,customer,product,quantity,destination,distance FROM orders WHERE status = 'finished'";
+            String sql1 = "SELECT orderID,customer,product,quantity,destination,distance FROM deliverydetails WHERE status = 'finished'";
             pst = con.prepareStatement(sql1);
             rs = pst.executeQuery();
             orderTable.setModel(DbUtils.resultSetToTableModel(rs));
