@@ -92,6 +92,24 @@ public class deliveryValidation {
     
         }
     
+    public boolean numberTextBox(String inserted){
+        char insertedArray[] = inserted.toCharArray();
+        int whiteSpace = 0, number=0, letter=0, test;
+        
+        for(char ch:insertedArray){
+            test = (Character.isWhitespace(ch)? whiteSpace++ : Character.isDigit(ch)? number++ : letter++);
+        }
+        
+        if(whiteSpace==0 && letter==0 && number!=0){
+            result = true;
+        }
+        else{
+            result = false;
+        }
+    return result;    
+    
     }
+    
+}
     
 

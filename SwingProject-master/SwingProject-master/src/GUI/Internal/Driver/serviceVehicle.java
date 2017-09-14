@@ -175,6 +175,12 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
         vidlbl.setForeground(new java.awt.Color(51, 51, 51));
         vidlbl.setText("Selected Vehicle's ID will appear here");
 
+        costtxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                costtxtMouseDragged(evt);
+            }
+        });
+
         meterReadtxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 meterReadtxtMouseDragged(evt);
@@ -482,26 +488,26 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int vehicleID = Integer.parseInt(vidlbl.getText());
-        
-        int serviceCost = Integer.parseInt(costtxt.getText());
+       
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         String serviceDate = formatDate.format(datechoose.getDate());
         
         deliveryValidation dV = new deliveryValidation();
         Vehicle v = new Vehicle(vehicleID);
         
-        if(v.getMeterRead()>0){
-            System.out.println("1"); 
+        if(v.getMeterRead()>0 && dV.numberTextBox(costtxt.getText())){
+            
             
             if(dV.meterValidation(meterReadtxt.getText()) ){
-                System.out.println("2");
+                
                 int meterReading = Integer.parseInt(meterReadtxt.getText());
+                int serviceCost = Integer.parseInt(costtxt.getText());
                 if(dV.meterReadValidation(v.getMeterRead(), meterReading)){
                     
                     vehicleService vs = new vehicleService(vehicleID,meterReading,serviceCost,serviceDate);
                     JOptionPane.showMessageDialog(null, "Service Record Successfully added!");
                     tableLoad();
-                    System.out.println("3");
+                    
                 }
                 else{
                     meterReadtxt.setForeground(Color.red);
@@ -509,20 +515,20 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
                 }
             }
             else{
-                System.out.println("4");
+                
                 if(dV.meterValidation(meterReadtxt.getText())==false){
                 meterReadtxt.setForeground(Color.red);
                 meterReadtxt.setText("Invalid meter read!");
-                    System.out.println("5");
+                    
                 }
             }
             
         }
         else{
-            System.out.println("6");
+            
             meterReadtxt.setForeground(Color.red);
             meterReadtxt.setText("Invalid vehicle ID!");
-            System.out.println("7");
+            
         }
         
       
@@ -531,6 +537,10 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
     private void meterReadtxtMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_meterReadtxtMouseDragged
         meterReadtxt.setText("");
     }//GEN-LAST:event_meterReadtxtMouseDragged
+
+    private void costtxtMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_costtxtMouseDragged
+        costtxt.setText("");
+    }//GEN-LAST:event_costtxtMouseDragged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

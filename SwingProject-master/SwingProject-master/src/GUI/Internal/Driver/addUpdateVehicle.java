@@ -272,6 +272,8 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, searchBtn});
 
+        vtypebox.setBackground(new java.awt.Color(102, 102, 102));
+        vtypebox.setForeground(new java.awt.Color(255, 255, 255));
         vtypebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select vehicle type", "Bike", "Car", "Van", "Lorry" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
