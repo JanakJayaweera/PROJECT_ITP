@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
-import Class.Cheques;
+import Class.PaidChq;
 
 /**
  *
@@ -88,21 +88,21 @@ public class AddCheques extends javax.swing.JInternalFrame {
         paidChqPane = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        recFromTF1 = new javax.swing.JTextField();
-        idLbl1 = new javax.swing.JLabel();
+        paidChqRecFromTF = new javax.swing.JTextField();
+        paidChqIdLbl = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        amtTF1 = new javax.swing.JTextField();
+        paidChqAmtTF = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         paidChqDateLbl = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         recChqTable1 = new javax.swing.JTable();
-        addBtn1 = new javax.swing.JButton();
+        PaidChqAddBtn = new javax.swing.JButton();
         updateBtn1 = new javax.swing.JButton();
         clearBtn1 = new javax.swing.JButton();
-        recDate1 = new com.toedter.calendar.JDateChooser();
-        postDate1 = new com.toedter.calendar.JDateChooser();
+        paidChqRecDate = new com.toedter.calendar.JDateChooser();
+        paidChqPostDate = new com.toedter.calendar.JDateChooser();
         jLabel22 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel23 = new javax.swing.JLabel();
@@ -111,8 +111,6 @@ public class AddCheques extends javax.swing.JInternalFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jOptionPane1 = new javax.swing.JOptionPane();
 
         setBackground(new java.awt.Color(76, 77, 78));
         setBorder(null);
@@ -351,8 +349,8 @@ public class AddCheques extends javax.swing.JInternalFrame {
                     .addComponent(updateBtn)
                     .addComponent(clearBtn))
                 .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
 
         jTabbedPane1.addTab("Recieved Cheques", recievedChqPane);
@@ -363,8 +361,8 @@ public class AddCheques extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("Recieved From*");
 
-        idLbl1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        idLbl1.setText("Cheque ID will assign automatically");
+        paidChqIdLbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        paidChqIdLbl.setText("Cheque ID will assign automatically");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("Amount*");
@@ -412,13 +410,13 @@ public class AddCheques extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(recChqTable1);
 
-        addBtn1.setBackground(new java.awt.Color(102, 102, 102));
-        addBtn1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        addBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        addBtn1.setText("Add");
-        addBtn1.addActionListener(new java.awt.event.ActionListener() {
+        PaidChqAddBtn.setBackground(new java.awt.Color(102, 102, 102));
+        PaidChqAddBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        PaidChqAddBtn.setForeground(new java.awt.Color(255, 255, 255));
+        PaidChqAddBtn.setText("Add");
+        PaidChqAddBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtn1ActionPerformed(evt);
+                PaidChqAddBtnActionPerformed(evt);
             }
         });
 
@@ -442,14 +440,14 @@ public class AddCheques extends javax.swing.JInternalFrame {
             }
         });
 
-        recDate1.setDateFormatString("yyyy-MM-d");
-        recDate1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        paidChqRecDate.setDateFormatString("yyyy-MM-d");
+        paidChqRecDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                recDate1PropertyChange(evt);
+                paidChqRecDatePropertyChange(evt);
             }
         });
 
-        postDate1.setDateFormatString("yyyy-MM-d");
+        paidChqPostDate.setDateFormatString("yyyy-MM-d");
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(51, 51, 51));
@@ -489,10 +487,10 @@ public class AddCheques extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel21))
                                 .addGap(56, 56, 56)
                                 .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(postDate1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(paidChqPostDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(recDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(amtTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(paidChqRecDate, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(paidChqAmtTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(paidChqPaneLayout.createSequentialGroup()
                                 .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
@@ -500,11 +498,11 @@ public class AddCheques extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel22))
                                 .addGap(29, 29, 29)
                                 .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(recFromTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(idLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(paidChqRecFromTF, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(paidChqIdLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(paidChqPaneLayout.createSequentialGroup()
                                 .addGap(126, 126, 126)
-                                .addComponent(addBtn1)
+                                .addComponent(PaidChqAddBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(updateBtn1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -550,18 +548,18 @@ public class AddCheques extends javax.swing.JInternalFrame {
                 .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(paidChqPaneLayout.createSequentialGroup()
                         .addGap(125, 125, 125)
-                        .addComponent(recDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(paidChqRecDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paidChqPaneLayout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idLbl1)
+                            .addComponent(paidChqIdLbl)
                             .addComponent(jLabel24)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
                         .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(recFromTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(paidChqRecFromTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3)
                             .addComponent(jButton4))
                         .addGap(9, 9, 9)
@@ -569,43 +567,24 @@ public class AddCheques extends javax.swing.JInternalFrame {
                             .addGroup(paidChqPaneLayout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel13))
-                            .addComponent(amtTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(paidChqAmtTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel21)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel19)
-                    .addComponent(postDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(paidChqPostDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(paidChqPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBtn1)
+                    .addComponent(PaidChqAddBtn)
                     .addComponent(updateBtn1)
                     .addComponent(clearBtn1))
                 .addGap(35, 35, 35)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Paid Cheques", paidChqPane);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(jOptionPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(820, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jOptionPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(510, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("tab3", jPanel2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -613,7 +592,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -721,9 +700,28 @@ public class AddCheques extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_recChqTable1MouseClicked
 
-    private void addBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addBtn1ActionPerformed
+    private void PaidChqAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaidChqAddBtnActionPerformed
+        PaidChq pc = new PaidChq();
+        
+        try
+        {
+            double num = Double.parseDouble(paidChqAmtTF.getText());
+            
+            pc.setRecName(paidChqRecFromTF.getText());
+            pc.setAmt(num);
+        
+            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+            pc.setRecDate(formatDate.format(paidChqRecDate.getDate()));
+            pc.setPostDate(formatDate.format(paidChqPostDate.getDate()));
+        
+            pc.addPaidChq();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Please fill-in required fields");
+        }
+        recChqTableLoad();
+    }//GEN-LAST:event_PaidChqAddBtnActionPerformed
 
     private void updateBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtn1ActionPerformed
         // TODO add your handling code here:
@@ -733,9 +731,9 @@ public class AddCheques extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_clearBtn1ActionPerformed
 
-    private void recDate1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_recDate1PropertyChange
+    private void paidChqRecDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_paidChqRecDatePropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_recDate1PropertyChange
+    }//GEN-LAST:event_paidChqRecDatePropertyChange
 
     public final void nonMove()
         {
@@ -771,15 +769,13 @@ public class AddCheques extends javax.swing.JInternalFrame {
     }
       
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton PaidChqAddBtn;
     private javax.swing.JButton addBtn;
-    private javax.swing.JButton addBtn1;
     private javax.swing.JTextField amtTF;
-    private javax.swing.JTextField amtTF1;
     private javax.swing.JButton clearBtn;
     private javax.swing.JButton clearBtn1;
     private javax.swing.JLabel dateLbl;
     private javax.swing.JLabel idLbl;
-    private javax.swing.JLabel idLbl1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -803,9 +799,7 @@ public class AddCheques extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
@@ -815,16 +809,18 @@ public class AddCheques extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField paidChqAmtTF;
     private javax.swing.JLabel paidChqDateLbl;
+    private javax.swing.JLabel paidChqIdLbl;
     private javax.swing.JPanel paidChqPane;
+    private com.toedter.calendar.JDateChooser paidChqPostDate;
+    private com.toedter.calendar.JDateChooser paidChqRecDate;
+    private javax.swing.JTextField paidChqRecFromTF;
     private com.toedter.calendar.JDateChooser postDate;
-    private com.toedter.calendar.JDateChooser postDate1;
     private javax.swing.JTable recChqTable;
     private javax.swing.JTable recChqTable1;
     private com.toedter.calendar.JDateChooser recDate;
-    private com.toedter.calendar.JDateChooser recDate1;
     private javax.swing.JTextField recFromTF;
-    private javax.swing.JTextField recFromTF1;
     private javax.swing.JPanel recievedChqPane;
     private javax.swing.JButton updateBtn;
     private javax.swing.JButton updateBtn1;

@@ -56,7 +56,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -234,8 +234,8 @@
                               <Component id="clearBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="314" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="280" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -518,10 +518,10 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="postDate1" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
+                                              <Component id="paidChqPostDate" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
                                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                  <Component id="recDate1" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
-                                                  <Component id="amtTF1" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
+                                                  <Component id="paidChqRecDate" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
+                                                  <Component id="paidChqAmtTF" alignment="1" min="-2" pref="202" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -533,13 +533,13 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="recFromTF1" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
-                                              <Component id="idLbl1" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
+                                              <Component id="paidChqRecFromTF" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
+                                              <Component id="paidChqIdLbl" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                                          <Component id="addBtn1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="PaidChqAddBtn" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="updateBtn1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -600,20 +600,20 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
-                                  <Component id="recDate1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="paidChqRecDate" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel11" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="idLbl1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="paidChqIdLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="recFromTF1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="paidChqRecFromTF" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -623,7 +623,7 @@
                                           <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="amtTF1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="paidChqAmtTF" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
@@ -632,16 +632,16 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="postDate1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="paidChqPostDate" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="addBtn1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PaidChqAddBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="updateBtn1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="clearBtn1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="314" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" min="-2" pref="266" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -664,9 +664,9 @@
                     <Property name="text" type="java.lang.String" value="Recieved From*"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="recFromTF1">
+                <Component class="javax.swing.JTextField" name="paidChqRecFromTF">
                 </Component>
-                <Component class="javax.swing.JLabel" name="idLbl1">
+                <Component class="javax.swing.JLabel" name="paidChqIdLbl">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
@@ -682,7 +682,7 @@
                     <Property name="text" type="java.lang.String" value="Amount*"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="amtTF1">
+                <Component class="javax.swing.JTextField" name="paidChqAmtTF">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel19">
                   <Properties>
@@ -769,7 +769,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="addBtn1">
+                <Component class="javax.swing.JButton" name="PaidChqAddBtn">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="66" red="66" type="rgb"/>
@@ -783,7 +783,7 @@
                     <Property name="text" type="java.lang.String" value="Add"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtn1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PaidChqAddBtnActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="updateBtn1">
@@ -820,15 +820,15 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearBtn1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="recDate1">
+                <Component class="com.toedter.calendar.JDateChooser" name="paidChqRecDate">
                   <Properties>
                     <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-d"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="recDate1PropertyChange"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="paidChqRecDatePropertyChange"/>
                   </Events>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="postDate1">
+                <Component class="com.toedter.calendar.JDateChooser" name="paidChqPostDate">
                   <Properties>
                     <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-d"/>
                   </Properties>
@@ -896,40 +896,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Clear"/>
                   </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="jPanel2">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="tab3">
-                    <Property name="tabTitle" type="java.lang.String" value="tab3"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                          <Component id="jOptionPane1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="820" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                          <Component id="jOptionPane1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="510" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JOptionPane" name="jOptionPane1">
                 </Component>
               </SubComponents>
             </Container>

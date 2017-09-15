@@ -11,12 +11,12 @@ import java.sql.SQLException;
  *
  * @author lahir
  */
+public class PaidChq extends Cheques{
 
-//@Entity //telling the hibernate to treat this class as an entity
-
-public class RecievedChq extends Cheques {
-
-    public void addRecChq()
+    /**
+     *
+     */
+    public void addPaidChq()
     {
         try
         {
@@ -25,7 +25,7 @@ public class RecievedChq extends Cheques {
 
             if(getRecName() != null)
             {
-            sql = "INSERT INTO recievedchq(recName, amt, recDate, postDate) values (?,?,?,?); ";
+            sql = "INSERT INTO paidchq(Name, Amount, IsdDate, PostDate) values (?,?,?,?); ";
             pst = conn.prepareStatement(sql);
             
             pst.setString(1, getRecName());
