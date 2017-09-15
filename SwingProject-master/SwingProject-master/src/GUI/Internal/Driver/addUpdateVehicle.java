@@ -14,6 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 import DB.DBconnect;
+import Validation.deliveryValidation;
+import java.awt.Color;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -158,6 +160,18 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
             }
         });
 
+        vFconsumptiontxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vFconsumptiontxtMouseClicked(evt);
+            }
+        });
+
+        vSdistancetxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vSdistancetxtMouseClicked(evt);
+            }
+        });
+
         addBtn.setBackground(new java.awt.Color(102, 102, 102));
         addBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -272,6 +286,14 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, searchBtn});
 
+        vmeterRtxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vmeterRtxtMouseClicked(evt);
+            }
+        });
+
+        vtypebox.setBackground(new java.awt.Color(102, 102, 102));
+        vtypebox.setForeground(new java.awt.Color(255, 255, 255));
         vtypebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select vehicle type", "Bike", "Car", "Van", "Lorry" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -426,9 +448,28 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_vnumbertxtActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        deliveryValidation dV = new deliveryValidation();
         
-        Vehicle v1 = new Vehicle(vnametxt.getText(),vtypebox.getSelectedItem().toString(), vnumbertxt.getText() ,vFconsumptiontxt.getText() ,vmeterRtxt.getText(), vSdistancetxt.getText() ,Table1 );
-        tableLoad();
+        if(dV.numberTextBox(vFconsumptiontxt.getText()) && dV.numberTextBox(vmeterRtxt.getText()) && dV.numberTextBox(vSdistancetxt.getText())){
+            
+            Vehicle v1 = new Vehicle(vnametxt.getText(),vtypebox.getSelectedItem().toString(), vnumbertxt.getText() ,vFconsumptiontxt.getText() ,vmeterRtxt.getText(), vSdistancetxt.getText() ,Table1 );
+            JOptionPane.showMessageDialog(null, "Vehicle Successfully added!");
+            tableLoad();
+        }
+        else{
+            if(dV.numberTextBox(vFconsumptiontxt.getText()) == false){
+                vFconsumptiontxt.setForeground(Color.red);
+                vFconsumptiontxt.setText("Invalid value!");
+            }
+            if(dV.numberTextBox(vmeterRtxt.getText()) == false){
+                vmeterRtxt.setForeground(Color.red);
+                vmeterRtxt.setText("Invalid value!");
+            }
+            if(dV.numberTextBox(vSdistancetxt.getText()) == false){
+                vSdistancetxt.setForeground(Color.red);
+                vSdistancetxt.setText("Invalid value!");
+            }
+        }
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
@@ -472,10 +513,28 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_Table1MouseClicked
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure updating with new details?");
-        Vehicle v2 = new Vehicle(vnametxt.getText(),vtypebox.getSelectedItem().toString(),vnumbertxt.getText() ,vFconsumptiontxt.getText(), vmeterRtxt.getText(), vSdistancetxt.getText() , Integer.parseInt(vIDlabel.getText()), result);
-        tableLoad();
+        deliveryValidation dV = new deliveryValidation();
         
+        if(dV.numberTextBox(vFconsumptiontxt.getText()) && dV.numberTextBox(vmeterRtxt.getText()) && dV.numberTextBox(vSdistancetxt.getText())){
+            int result = JOptionPane.showConfirmDialog(null, "Are you sure updating with new details?");
+            Vehicle v2 = new Vehicle(vnametxt.getText(),vtypebox.getSelectedItem().toString(),vnumbertxt.getText() ,vFconsumptiontxt.getText(), vmeterRtxt.getText(), vSdistancetxt.getText() , Integer.parseInt(vIDlabel.getText()), result);
+            JOptionPane.showMessageDialog(null, "Vehicle details Successfully updated!");
+            tableLoad();
+        }
+        else{
+            if(dV.numberTextBox(vFconsumptiontxt.getText()) == false){
+                vFconsumptiontxt.setForeground(Color.red);
+                vFconsumptiontxt.setText("Invalid value!");
+            }
+            if(dV.numberTextBox(vmeterRtxt.getText()) == false){
+                vmeterRtxt.setForeground(Color.red);
+                vmeterRtxt.setText("Invalid value!");
+            }
+            if(dV.numberTextBox(vSdistancetxt.getText()) == false){
+                vSdistancetxt.setForeground(Color.red);
+                vSdistancetxt.setText("Invalid value!");
+            }
+        }
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
@@ -486,6 +545,18 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tableLoad();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void vFconsumptiontxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vFconsumptiontxtMouseClicked
+        vFconsumptiontxt.setText("");
+    }//GEN-LAST:event_vFconsumptiontxtMouseClicked
+
+    private void vmeterRtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vmeterRtxtMouseClicked
+        vmeterRtxt.setText("");
+    }//GEN-LAST:event_vmeterRtxtMouseClicked
+
+    private void vSdistancetxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vSdistancetxtMouseClicked
+        vSdistancetxt.setText("");
+    }//GEN-LAST:event_vSdistancetxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

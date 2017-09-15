@@ -2,8 +2,10 @@
 
 package GUI.Internal.Driver;
 
+import Class.Vehicle;
 import Class.vehicleService;
 import DB.DBconnect;
+import Validation.deliveryValidation;
 import java.awt.Color;
 import java.awt.event.MouseListener;
 import java.sql.Connection;
@@ -15,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
 
@@ -47,7 +50,7 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
             
             try{
             
-                String sql = "SELECT v.vehicleID, v.name, v.type, v.number, s.serviceDate, v.serviceKM FROM vehicle v,serviceinfo s WHERE v.vehicleID = s.vehicleID AND v.status = 1 GROUP BY s.vehicleID ";
+                String sql = "SELECT v.vehicleID, v.name, v.type, v.number, s.serviceDate, v.serviceKM FROM vehicle v,servicedetails s WHERE v.vehicleID = s.vehicleID AND v.status = 1 GROUP BY s.vehicleID ";
                 pst = con.prepareStatement(sql);
                 rs = pst.executeQuery();
                 Table1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -61,7 +64,7 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
     public void tableLoad2(int pvid){
     //For search part    
         try {
-                String sql = "SELECT v.vehicleID, v.name, v.type, v.number, s.serviceDate, v.serviceKM FROM vehicle v,serviceinfo s WHERE v.vehicleID = s.vehicleID AND v.status = 1 AND v.vehicleID='"+pvid+"' ";
+                String sql = "SELECT v.vehicleID, v.name, v.type, v.number, s.serviceDate, v.serviceKM FROM vehicle v,servicedetails s WHERE v.vehicleID = s.vehicleID AND v.status = 1 AND v.vehicleID='"+pvid+"' ";
                 pst = con.prepareStatement(sql);
                 rs = pst.executeQuery();
                 Table1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -74,10 +77,12 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
     public void distanceAfterService(int pid){
     
         try {
-                String sql = "SELECT v.cMeterReading - s.meterReading FROM vehicle v, serviceinfo s WHERE v.vehicleID = s.vehicleID AND v.vehicleID = '"+pid+"' ";
+                String sql = "SELECT v.cMeterReading - s.meterReading FROM vehicle v, servicedetails s WHERE v.vehicleID = s.vehicleID AND v.vehicleID = '"+pid+"' ";
                 pst = con.prepareStatement(sql);
                 ResultSet rs = pst.executeQuery();
-                rs.next();
+               //to get the last record of the query results
+                rs.afterLast();
+                rs.previous();
                 dkmlbl.setText(rs.getString(1));
                 
             } catch (SQLException ex) {
@@ -169,6 +174,18 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
         vidlbl.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         vidlbl.setForeground(new java.awt.Color(51, 51, 51));
         vidlbl.setText("Selected Vehicle's ID will appear here");
+
+        costtxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                costtxtMouseDragged(evt);
+            }
+        });
+
+        meterReadtxt.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                meterReadtxtMouseDragged(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Distance travelled after previous service");
@@ -305,7 +322,7 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
                 .addComponent(vnamelbl))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(21, 21, 21)
@@ -323,7 +340,7 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(158, 158, 158)
-                        .addComponent(meterReadtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(meterReadtxt))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(211, 211, 211)
@@ -471,14 +488,59 @@ public class serviceVehicle extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int vehicleID = Integer.parseInt(vidlbl.getText());
-        int meterReading = Integer.parseInt(meterReadtxt.getText());
-        int serviceCost = Integer.parseInt(costtxt.getText());
+       
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         String serviceDate = formatDate.format(datechoose.getDate());
         
-        vehicleService vs = new vehicleService(vehicleID,meterReading,serviceCost,serviceDate);
-        tableLoad();
+        deliveryValidation dV = new deliveryValidation();
+        Vehicle v = new Vehicle(vehicleID);
+        
+        if(v.getMeterRead()>0 && dV.numberTextBox(costtxt.getText())){
+            
+            
+            if(dV.meterValidation(meterReadtxt.getText()) ){
+                
+                int meterReading = Integer.parseInt(meterReadtxt.getText());
+                int serviceCost = Integer.parseInt(costtxt.getText());
+                if(dV.meterReadValidation(v.getMeterRead(), meterReading)){
+                    
+                    vehicleService vs = new vehicleService(vehicleID,meterReading,serviceCost,serviceDate);
+                    JOptionPane.showMessageDialog(null, "Service Record Successfully added!");
+                    tableLoad();
+                    
+                }
+                else{
+                    meterReadtxt.setForeground(Color.red);
+                    meterReadtxt.setText("Meter read is less than previous read!");
+                }
+            }
+            else{
+                
+                if(dV.meterValidation(meterReadtxt.getText())==false){
+                meterReadtxt.setForeground(Color.red);
+                meterReadtxt.setText("Invalid meter read!");
+                    
+                }
+            }
+            
+        }
+        else{
+            
+            meterReadtxt.setForeground(Color.red);
+            meterReadtxt.setText("Invalid vehicle ID!");
+            
+        }
+        
+      
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void meterReadtxtMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_meterReadtxtMouseDragged
+        meterReadtxt.setText("");
+    }//GEN-LAST:event_meterReadtxtMouseDragged
+
+    private void costtxtMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_costtxtMouseDragged
+        costtxt.setText("");
+    }//GEN-LAST:event_costtxtMouseDragged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

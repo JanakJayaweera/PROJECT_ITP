@@ -43,12 +43,12 @@ public class Delivery {
     
         if(presult==0){
         try{
-            String sql = "INSERT INTO delivery (orderID,customer,product,quantity,address,driverName,driverTP,vehicleNumber,driverID,vehicleID) VALUES ('"+orderID+"','"+cName+"','"+product+"','"+quantity+"','"+address+"','"+dName+"','"+dtp+"','"+vnumber+"','"+driverID+"','"+vehicleID+"')";
+            String sql = "INSERT INTO deliveryallocation (orderID,customer,product,quantity,address,driverName,driverTP,vehicleNumber,driverID,vehicleID) VALUES ('"+orderID+"','"+cName+"','"+product+"','"+quantity+"','"+address+"','"+dName+"','"+dtp+"','"+vnumber+"','"+driverID+"','"+vehicleID+"')";
             pst = con.prepareStatement(sql);
             pst.execute();
             
     //To get the newly added record's ID
-            String sql2 = "SELECT deliveryID FROM delivery WHERE orderID = '"+orderID+"' AND quantity = '"+quantity+"'";
+            String sql2 = "SELECT deliveryID FROM deliveryAllocation WHERE orderID = '"+orderID+"' AND quantity = '"+quantity+"'";
             pst = con.prepareStatement(sql2);
             rs = pst.executeQuery();
             rs.next();
@@ -69,7 +69,7 @@ public class Delivery {
     
     //Set order status to Delivering
             
-            String sql5 = "UPDATE orders SET status = 'Delivering' WHERE orderID = '"+orderID+"' ";
+            String sql5 = "UPDATE deliverydetails SET status = 'Delivering' WHERE orderID = '"+orderID+"' ";
             pst = con.prepareStatement(sql5);
             pst.execute();
         }
@@ -98,7 +98,7 @@ public class Delivery {
     public void updateDelivery(int presult){
         try{
     //Update delivery table        
-        String sql1 = "UPDATE delivery SET status = '"+dStatus+"', fuelCost = '"+fCost+"' WHERE deliveryID = '"+deliveryID+"' AND orderID = '"+orderID+"' ";
+        String sql1 = "UPDATE deliveryallocation SET status = '"+dStatus+"', fuelCost = '"+fCost+"' WHERE deliveryID = '"+deliveryID+"' AND orderID = '"+orderID+"' ";
         pst = con.prepareStatement(sql1);
         pst.execute();
         

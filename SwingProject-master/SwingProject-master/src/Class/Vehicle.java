@@ -22,6 +22,7 @@ public class Vehicle {
  
     public Vehicle(String pvname,String pvtype,String pvnumber,String pfuelConsumption, String pmeterReading,String pserviceDistance, javax.swing.JTable pTable1)
     {
+//add Vehicle constructor        
         con = DBconnect.connect();
         
         vname = pvname;
@@ -49,7 +50,7 @@ public class Vehicle {
                 int vehicleID = Integer.parseInt(rs.getString(1));
                 String n = "NEW";
                 
-                String sql2 = "INSERT INTO serviceinfo (vehicleID,meterReading,serviceCost,serviceDate) VALUES ('"+vehicleID+"','"+meterReading+"','"+0+"','"+n+"')";
+                String sql2 = "INSERT INTO servicedetails (vehicleID,meterReading,serviceCost,serviceDate) VALUES ('"+vehicleID+"','"+meterReading+"','"+0+"','"+n+"')";
                 pst = con.prepareStatement(sql2);
                 pst.execute();
             } 
@@ -61,7 +62,7 @@ public class Vehicle {
     }
     
     public Vehicle(String pvname, String pvtype, String pvnumber, String pfuelConsumption, String pmeterReading, String pServiceDistance, int pvid, int presult) {
-            
+//update vehicle constructor            
              con = DBconnect.connect();
              
              vid = pvid;
@@ -99,10 +100,10 @@ public class Vehicle {
             vid = pvid;
             vname = pvname;
             vnumber = pvnumber;
-            removeDriver(pvid);
+            removeVehicle(pvid);
         }
     
-    public void removeDriver(int pvid){
+    public void removeVehicle(int pvid){
         
             try 
             {
@@ -116,6 +117,29 @@ public class Vehicle {
             }
                 
         }
+    public Vehicle(int pvehicleID){
+//Constructor to get current meter read of a vehicle        
+        con = DBconnect.connect();
+        
+        vid = pvehicleID;
+        getMeterRead();
+    }
+    
+    public int getMeterRead(){
+        try{
+            String sql = "SELECT cMeterReading FROM vehicle WHERE vehicleID = '"+vid+"' ";
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            rs.next();
+            int meterRead = Integer.parseInt(rs.getString(1));
+            
+            return meterRead;
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return -999;
+        }
+    }
         
         
 }

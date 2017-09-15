@@ -6,7 +6,7 @@
 package GUI.Internal.Driver;
 
 import Class.Driver;
-import Class.deliveryValidation;
+import Validation.deliveryValidation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -469,10 +469,10 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(21, 21, 21)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -579,7 +579,7 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         
         if(dV.emailValidation(emailtxt.getText()) && (dV.nicValidation(NICtxt.getText())) && (dV.tpValidation(tptxt.getText()))){
             Driver d1 = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()), tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(), Integer.parseInt(idLabel.getText()), result);
-            JOptionPane.showMessageDialog(null, "Driver added successfully! ");
+            JOptionPane.showMessageDialog(null, "Driver details Successfully updated! ");
             tableLoad();
         
         }

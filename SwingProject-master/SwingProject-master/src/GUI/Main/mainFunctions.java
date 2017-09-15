@@ -39,7 +39,7 @@ public class mainFunctions extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         salesNmarketing = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        OrderHandling = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -186,13 +186,18 @@ public class mainFunctions extends javax.swing.JFrame {
         salesNmarketing.setBackground(new java.awt.Color(76, 77, 78));
         salesNmarketing.setLayout(new java.awt.GridBagLayout());
 
-        jButton6.setBackground(new java.awt.Color(0, 153, 153));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Order Handling");
-        jButton6.setMaximumSize(new java.awt.Dimension(139, 23));
-        jButton6.setMinimumSize(new java.awt.Dimension(139, 23));
-        jButton6.setPreferredSize(new java.awt.Dimension(139, 23));
+        OrderHandling.setBackground(new java.awt.Color(0, 153, 153));
+        OrderHandling.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        OrderHandling.setForeground(new java.awt.Color(255, 255, 255));
+        OrderHandling.setText("Order Handling");
+        OrderHandling.setMaximumSize(new java.awt.Dimension(139, 23));
+        OrderHandling.setMinimumSize(new java.awt.Dimension(139, 23));
+        OrderHandling.setPreferredSize(new java.awt.Dimension(139, 23));
+        OrderHandling.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrderHandlingActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -200,7 +205,7 @@ public class mainFunctions extends javax.swing.JFrame {
         gridBagConstraints.ipady = 40;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(140, 165, 0, 0);
-        salesNmarketing.add(jButton6, gridBagConstraints);
+        salesNmarketing.add(OrderHandling, gridBagConstraints);
 
         jButton7.setBackground(new java.awt.Color(0, 153, 102));
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -243,7 +248,7 @@ public class mainFunctions extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 519, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
         );
 
         pack();
@@ -298,6 +303,12 @@ public class mainFunctions extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void OrderHandlingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderHandlingActionPerformed
+        OrderHandling OH = new OrderHandling();
+        OH.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_OrderHandlingActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,12 +345,12 @@ public class mainFunctions extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton OrderHandling;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

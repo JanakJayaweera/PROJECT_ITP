@@ -65,7 +65,7 @@
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="71" pref="71" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
@@ -85,8 +85,8 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="158" pref="158" max="-2" attributes="0"/>
-                          <Component id="meterReadtxt" min="-2" pref="308" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="meterReadtxt" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
@@ -265,8 +265,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="costtxt">
+          <Events>
+            <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="costtxtMouseDragged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="meterReadtxt">
+          <Events>
+            <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="meterReadtxtMouseDragged"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>

@@ -38,7 +38,7 @@ public class vehicleService {
     public void addService(){
         
         try {
-            String sql = "INSERT INTO serviceinfo (vehicleID,meterReading,serviceCost,serviceDate) VALUES ('"+vehicleID +"','"+meterReading +"','"+serviceCost+"','"+serviceDate+"')";
+            String sql = "INSERT INTO servicedetails (vehicleID,meterReading,serviceCost,serviceDate) VALUES ('"+vehicleID +"','"+meterReading +"','"+serviceCost+"','"+serviceDate+"')";
             pst = con.prepareStatement(sql);
             pst.execute();
             
