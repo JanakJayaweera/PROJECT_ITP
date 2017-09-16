@@ -27,13 +27,13 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author USER
  */
-public class addUpdateDriver extends javax.swing.JInternalFrame {
+public class addEditDriver extends javax.swing.JInternalFrame {
 
    Connection con = null;
    PreparedStatement pst = null;
    ResultSet rs = null;
     
-    public addUpdateDriver() {
+    public addEditDriver() {
         con = DBconnect.connect();
         initComponents();
         tableLoad();
@@ -83,7 +83,16 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
             frame.getNorthPane().removeMouseListener(listener);
         }
         }
-
+    public boolean checkEmptyBoxes(){
+        if(fnametxt.getText().equals("")||lnametxt.getText().equals("")||drvlicencetxt.getText().equals("")||dob.getDate()==null||addresstxt.getText().equals("")){ 
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -225,7 +234,7 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         updateBtn.setBackground(new java.awt.Color(102, 102, 102));
         updateBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(255, 255, 255));
-        updateBtn.setText("Update");
+        updateBtn.setText("Edit");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtnActionPerformed(evt);
@@ -233,6 +242,12 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         });
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+
+        searchtxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchtxtMouseClicked(evt);
+            }
+        });
 
         jLabel11.setText("Driver ID");
 
@@ -486,8 +501,9 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         deliveryValidation dV = new deliveryValidation();
-                
-        if(dV.emailValidation(emailtxt.getText()) && (dV.nicValidation(NICtxt.getText())) && (dV.tpValidation(tptxt.getText()))){
+    
+                   
+        if(dV.emailValidation(emailtxt.getText()) && (dV.nicValidation(NICtxt.getText())) && (dV.tpValidation(tptxt.getText())) && checkEmptyBoxes()){
             Driver driver = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()) , tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(),Table1 );
             JOptionPane.showMessageDialog(null, "Driver added successfully! ");
             tableLoad();
@@ -509,11 +525,29 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
                 tptxt.setForeground(Color.red);
                 tptxt.setText("Invalid telephone number!");
             }
+            if  (fnametxt.getText().equals("")){
+                fnametxt.setForeground(Color.red);
+                fnametxt.setText("Enter first name!");
+            }
+            if(lnametxt.getText().equals("")){
+                lnametxt.setForeground(Color.red);
+                lnametxt.setText("Enter last name!");
+            }
+            if(drvlicencetxt.getText().equals("")){
+                drvlicencetxt.setForeground(Color.red);
+                drvlicencetxt.setText("Enter licence no!");
+            }
+            
+            if(dob.getDate()==null){
+                JOptionPane.showMessageDialog(null, "Select DOB from date chooser!", "Error: Uncompleted form details",JOptionPane.ERROR_MESSAGE);
+            }
+            
+            
             
         
-        }
         
         
+    }   
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
@@ -563,8 +597,12 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
            Date DOB = new SimpleDateFormat("dd-MM-yyyy").parse(Table1.getValueAt(row, 5).toString());
            dob.setDate(DOB);
        } catch (ParseException ex) {
-           Logger.getLogger(addUpdateDriver.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(addEditDriver.class.getName()).log(Level.SEVERE, null, ex);
        }
+        
+        /*daybox.setSelectedItem(DOB.subSequence(0, 2));
+        monthbox.setSelectedItem(DOB.subSequence(3, 5));
+        yearbox.setSelectedItem(DOB.subSequence(6, 10));
         
         /*daybox.setSelectedItem(DOB.subSequence(0, 2));
         monthbox.setSelectedItem(DOB.subSequence(3, 5));
@@ -577,7 +615,7 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
         SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         deliveryValidation dV = new deliveryValidation();
         
-        if(dV.emailValidation(emailtxt.getText()) && (dV.nicValidation(NICtxt.getText())) && (dV.tpValidation(tptxt.getText()))){
+        if(dV.emailValidation(emailtxt.getText()) && (dV.nicValidation(NICtxt.getText())) && (dV.tpValidation(tptxt.getText())) && checkEmptyBoxes()){
             Driver d1 = new Driver(fnametxt.getText(),lnametxt.getText(),NICtxt.getText() ,drvlicencetxt.getText() ,formatDate.format(dob.getDate()), tptxt.getText() ,addresstxt.getText() ,emailtxt.getText(), Integer.parseInt(idLabel.getText()), result);
             JOptionPane.showMessageDialog(null, "Driver details Successfully updated! ");
             tableLoad();
@@ -599,6 +637,22 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
                 tptxt.setForeground(Color.red);
                 tptxt.setText("Invalid telephone number!");
             }
+            if  (fnametxt.getText().equals("")){
+                fnametxt.setForeground(Color.red);
+                fnametxt.setText("Enter first name!");
+            }
+            if(lnametxt.getText().equals("")){
+                lnametxt.setForeground(Color.red);
+                lnametxt.setText("Enter last name!");
+            }
+            if(drvlicencetxt.getText().equals("")){
+                drvlicencetxt.setForeground(Color.red);
+                drvlicencetxt.setText("Enter licence no!");
+            }
+            
+            if(dob.getDate()==null){
+                JOptionPane.showMessageDialog(null, "Select DOB from date chooser!", "Error: Uncompleted form details",JOptionPane.ERROR_MESSAGE);
+            }
             
         
         }
@@ -607,11 +661,26 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        deliveryValidation dV = new deliveryValidation();
+        
+        if(searchtxt.getText().equals("")||dV.numberTextBox(searchtxt.getText())==false){
+            if(searchtxt.getText().equals("")){
+                searchtxt.setForeground(Color.red);
+                searchtxt.setText("Enter driver id!");
+            }
+            if(dV.numberTextBox(searchtxt.getText())==false){
+                searchtxt.setForeground(Color.red);
+                searchtxt.setText("Enter valid driver id!");
+            }
+        }
+        else{
         int id = Integer.parseInt(searchtxt.getText());
         tableLoad2(id);
+        }
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        searchtxt.setText("");
         tableLoad();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -633,6 +702,10 @@ public class addUpdateDriver extends javax.swing.JInternalFrame {
     private void tptxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tptxtMouseClicked
         tptxt.setText("");
     }//GEN-LAST:event_tptxtMouseClicked
+
+    private void searchtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchtxtMouseClicked
+        searchtxt.setText("");
+    }//GEN-LAST:event_searchtxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

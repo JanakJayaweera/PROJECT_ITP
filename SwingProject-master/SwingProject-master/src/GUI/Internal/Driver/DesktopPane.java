@@ -11,7 +11,7 @@ package GUI.Internal.Driver;
  */
 class DesktopPane {
 
-    static Object add(addUpdateDriver addD) {
+    static Object add(addEditDriver addD) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

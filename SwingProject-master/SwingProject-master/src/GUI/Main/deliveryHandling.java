@@ -5,8 +5,8 @@
  */
 package GUI.Main;
 
-import GUI.Internal.Driver.addUpdateDriver;
-import GUI.Internal.Driver.addUpdateVehicle;
+import GUI.Internal.Driver.addEditDriver;
+import GUI.Internal.Driver.addEditVehicle;
 import GUI.Internal.Driver.doDelivery;
 import GUI.Internal.Driver.serviceVehicle;
 import GUI.Internal.Driver.updateDelivery;
@@ -377,7 +377,7 @@ public class deliveryHandling extends javax.swing.JFrame {
     private void addDriverBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDriverBtnMouseClicked
         
             DesktopPane.removeAll();
-            addUpdateDriver addD = new addUpdateDriver();
+            addEditDriver addD = new addEditDriver();
             DesktopPane.add(addD).setVisible(true);
             
             
@@ -395,7 +395,7 @@ public class deliveryHandling extends javax.swing.JFrame {
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
             DesktopPane.removeAll();
-            addUpdateVehicle addV = new addUpdateVehicle();
+            addEditVehicle addV = new addEditVehicle();
             DesktopPane.add(addV).setVisible(true);
     }//GEN-LAST:event_jButton5MouseClicked
 

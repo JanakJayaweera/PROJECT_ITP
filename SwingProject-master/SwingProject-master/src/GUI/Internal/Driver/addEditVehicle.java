@@ -24,13 +24,13 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author USER
  */
-public class addUpdateVehicle extends javax.swing.JInternalFrame {
+public class addEditVehicle extends javax.swing.JInternalFrame {
 
    Connection con = null;
    PreparedStatement pst = null;
    ResultSet rs = null;
     
-    public addUpdateVehicle() {
+    public addEditVehicle() {
         con = DBconnect.connect();
         initComponents();
         tableLoad();
@@ -81,6 +81,15 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
             frame.getNorthPane().removeMouseListener(listener);
         }
         }
+    
+    public boolean checkEmptyBoxes(){
+        if(vnametxt.getText().equals("")||vnumbertxt.getText().equals("")||vtypebox.getSelectedItem().equals("Select vehicle type")||vtypebox.getSelectedItem()==null){ 
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 
     
     @SuppressWarnings("unchecked")
@@ -201,7 +210,7 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
         updateBtn.setBackground(new java.awt.Color(102, 102, 102));
         updateBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(255, 255, 255));
-        updateBtn.setText("Update");
+        updateBtn.setText("Edit");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtnActionPerformed(evt);
@@ -223,6 +232,12 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        searchtxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchtxtMouseClicked(evt);
             }
         });
 
@@ -450,7 +465,7 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         deliveryValidation dV = new deliveryValidation();
         
-        if(dV.numberTextBox(vFconsumptiontxt.getText()) && dV.numberTextBox(vmeterRtxt.getText()) && dV.numberTextBox(vSdistancetxt.getText())){
+        if(dV.numberTextBox(vFconsumptiontxt.getText()) && dV.numberTextBox(vmeterRtxt.getText()) && dV.numberTextBox(vSdistancetxt.getText()) && checkEmptyBoxes()==false){
             
             Vehicle v1 = new Vehicle(vnametxt.getText(),vtypebox.getSelectedItem().toString(), vnumbertxt.getText() ,vFconsumptiontxt.getText() ,vmeterRtxt.getText(), vSdistancetxt.getText() ,Table1 );
             JOptionPane.showMessageDialog(null, "Vehicle Successfully added!");
@@ -468,6 +483,20 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
             if(dV.numberTextBox(vSdistancetxt.getText()) == false){
                 vSdistancetxt.setForeground(Color.red);
                 vSdistancetxt.setText("Invalid value!");
+            }
+            if(vnametxt.getText().equals("")){
+                vnametxt.setForeground(Color.red);
+                vnametxt.setText("Enter vahicle name!");
+            }
+            if(vnumbertxt.getText().equals("")){
+                vnumbertxt.setForeground(Color.red);
+                vnumbertxt.setText("Enter vehicle number");
+            }
+            if(vtypebox.getSelectedItem().equals("Select vehicle type")){
+                JOptionPane.showMessageDialog(null, "Select vehicle type!", "Error: uncompleted form", JOptionPane.ERROR_MESSAGE);
+            }
+            if(vtypebox.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Select vehicle type!", "Error: uncompleted form", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_addBtnActionPerformed
@@ -515,7 +544,7 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         deliveryValidation dV = new deliveryValidation();
         
-        if(dV.numberTextBox(vFconsumptiontxt.getText()) && dV.numberTextBox(vmeterRtxt.getText()) && dV.numberTextBox(vSdistancetxt.getText())){
+        if(dV.numberTextBox(vFconsumptiontxt.getText()) && dV.numberTextBox(vmeterRtxt.getText()) && dV.numberTextBox(vSdistancetxt.getText()) && checkEmptyBoxes()==false){
             int result = JOptionPane.showConfirmDialog(null, "Are you sure updating with new details?");
             Vehicle v2 = new Vehicle(vnametxt.getText(),vtypebox.getSelectedItem().toString(),vnumbertxt.getText() ,vFconsumptiontxt.getText(), vmeterRtxt.getText(), vSdistancetxt.getText() , Integer.parseInt(vIDlabel.getText()), result);
             JOptionPane.showMessageDialog(null, "Vehicle details Successfully updated!");
@@ -534,15 +563,44 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
                 vSdistancetxt.setForeground(Color.red);
                 vSdistancetxt.setText("Invalid value!");
             }
+            if(vnametxt.getText().equals("")){
+                vnametxt.setForeground(Color.red);
+                vnametxt.setText("Enter vahicle name!");
+            }
+            if(vnumbertxt.getText().equals("")){
+                vnumbertxt.setForeground(Color.red);
+                vnumbertxt.setText("Enter vehicle number");
+            }
+            if(vtypebox.getSelectedItem().equals("Select vehicle type")){
+                JOptionPane.showMessageDialog(null, "Select vehicle type!", "Error: uncompleted form", JOptionPane.ERROR_MESSAGE);
+            }
+            if(vtypebox.getSelectedItem()==null){
+                JOptionPane.showMessageDialog(null, "Select vehicle type!", "Error: uncompleted form", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        int id = Integer.parseInt(searchtxt.getText());
-        tableLoad2(id);
+        deliveryValidation dV = new deliveryValidation();
+        
+        if(searchtxt.getText().equals("")||dV.numberTextBox(searchtxt.getText()) == false){
+            if(searchtxt.getText().equals("")){
+                searchtxt.setForeground(Color.red);
+                searchtxt.setText("Enter vehicle ID!");
+            }
+            else if(dV.numberTextBox(searchtxt.getText())==false){
+                searchtxt.setForeground(Color.red);
+                searchtxt.setText("Enter valid vehicle ID!");
+            }
+        }
+        else if(searchtxt.getText()!=null && dV.numberTextBox(searchtxt.getText())==true){
+            int id = Integer.parseInt(searchtxt.getText());
+            tableLoad2(id);
+        }
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        searchtxt.setText("");
         tableLoad();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -557,6 +615,10 @@ public class addUpdateVehicle extends javax.swing.JInternalFrame {
     private void vSdistancetxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vSdistancetxtMouseClicked
         vSdistancetxt.setText("");
     }//GEN-LAST:event_vSdistancetxtMouseClicked
+
+    private void searchtxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchtxtMouseClicked
+        searchtxt.setText("");
+    }//GEN-LAST:event_searchtxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
