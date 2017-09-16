@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
 
@@ -179,7 +180,7 @@ public class Production
     }
     
 
-    public void createnewProduction()//add new production details to DB
+    public void addNewproduction()//add new production details to DB
     {
         con = DBconnect.connect();
         try 
@@ -232,5 +233,25 @@ public class Production
                 System.out.println("Could not load from ordertable");
             }
         }
+     
+     public void editTabledata(int comfresult)//to edit the table data
+     {
+         if(comfresult==0)
+         {
+             try
+             {
+                 con = DBconnect.connect();
+                 String sql = "UPDATE dbproduction SET Date = '"+date+"', FType = '"+fType+"', Fquantity = '"+fQuantity+"', BType = '"+bType+"', Bquantity = '"+bQuantity+"', WType = '"+wType+"' , Wquantity = '"+wQuantity+"', EType = '"+eTtype+"', Equantity = '"+eQuantity+"', Cutters = '"+cutters+"', MachineOperator = '"+machineOperators+"', Supervisor = '"+supervisor+"', Ironer = '"+ironer+"', Helper = '"+helper+"' where PID = '"+pID+"' "; 
+                 ps = con.prepareStatement(sql);
+                 ps.execute();
+                 
+             } 
+             catch (Exception e)
+             {
+                 System.out.println(e);
+                 System.out.println("this is edit table data method");
+             }
+         }
+     }
     
 }
