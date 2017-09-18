@@ -218,7 +218,7 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Order ID", "Order Name", "Type of Product", "Size of Product", "Number of Products", "Color"
+                "Order ID", "Retailer ID", "Designer ID", "", "Number of Products", "Color"
             }
         ));
         OrderTable.addMouseListener(new java.awt.event.MouseAdapter() {

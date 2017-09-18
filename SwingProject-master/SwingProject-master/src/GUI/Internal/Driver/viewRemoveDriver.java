@@ -131,7 +131,7 @@ public class viewRemoveDriver extends javax.swing.JInternalFrame {
         donebtn.setBackground(new java.awt.Color(102, 102, 102));
         donebtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         donebtn.setForeground(new java.awt.Color(255, 255, 255));
-        donebtn.setText("Done");
+        donebtn.setText("Remove Driver");
         donebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 donebtnActionPerformed(evt);
