@@ -7,6 +7,8 @@ package GUI.Main;
 
 import GUI.Internal.Driver.addEditDriver;
 import GUI.Internal.Production.CreateNewProduction;
+import GUI.Internal.Production.UpdateProduction;
+import GUI.Internal.Production.ViewRemoveProduction;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -45,6 +47,7 @@ public class ProductionHandling extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        ViewProduction1 = new javax.swing.JButton();
         DesktopPane = new javax.swing.JDesktopPane();
         backgroundImage = new javax.swing.JLabel();
 
@@ -86,6 +89,11 @@ public class ProductionHandling extends javax.swing.JFrame {
         ViewProduction.setMaximumSize(new java.awt.Dimension(53, 25));
         ViewProduction.setMinimumSize(new java.awt.Dimension(53, 25));
         ViewProduction.setPreferredSize(new java.awt.Dimension(53, 25));
+        ViewProduction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewProductionActionPerformed(evt);
+            }
+        });
 
         jButton12.setBackground(new java.awt.Color(153, 102, 255));
         jButton12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -121,6 +129,20 @@ public class ProductionHandling extends javax.swing.JFrame {
 
         jSeparator4.setBackground(new java.awt.Color(102, 102, 102));
 
+        ViewProduction1.setBackground(new java.awt.Color(153, 102, 255));
+        ViewProduction1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ViewProduction1.setForeground(new java.awt.Color(51, 51, 51));
+        ViewProduction1.setText("Update Production");
+        ViewProduction1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        ViewProduction1.setMaximumSize(new java.awt.Dimension(53, 25));
+        ViewProduction1.setMinimumSize(new java.awt.Dimension(53, 25));
+        ViewProduction1.setPreferredSize(new java.awt.Dimension(53, 25));
+        ViewProduction1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewProduction1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(
@@ -138,7 +160,8 @@ public class ProductionHandling extends javax.swing.JFrame {
                         .addComponent(jSeparator1)
                         .addComponent(jSeparator2)
                         .addComponent(jSeparator3)
-                        .addComponent(jSeparator4))
+                        .addComponent(jSeparator4)
+                        .addComponent(ViewProduction1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(sidePanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,17 +181,19 @@ public class ProductionHandling extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(CreateNewProduction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ViewProduction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ViewProduction1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel5)
                 .addGap(5, 5, 5)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105)
+                .addGap(98, 98, 98)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,13 +261,31 @@ public class ProductionHandling extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void CreateNewProductionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateNewProductionMouseClicked
-        if(windowCount==0)
-        {
+
+            DesktopPane.removeAll();
             CreateNewProduction cnp = new CreateNewProduction();
             DesktopPane.add(cnp).setVisible(true);
             windowCount++;
-        }
+        
     }//GEN-LAST:event_CreateNewProductionMouseClicked
+
+    private void ViewProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProductionActionPerformed
+
+            DesktopPane.removeAll();
+            ViewRemoveProduction  vrp = new ViewRemoveProduction();
+            DesktopPane.add(vrp).setVisible(true);
+            windowCount++;
+        
+    }//GEN-LAST:event_ViewProductionActionPerformed
+
+    private void ViewProduction1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProduction1ActionPerformed
+
+            DesktopPane.removeAll();
+            UpdateProduction up = new UpdateProduction();
+            DesktopPane.add(up).setVisible(true);
+            windowCount++;
+        
+    }//GEN-LAST:event_ViewProduction1ActionPerformed
 
     public void setColor(JPanel panel)
     {
@@ -314,6 +357,7 @@ public class ProductionHandling extends javax.swing.JFrame {
     private javax.swing.JButton CreateNewProduction;
     private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JButton ViewProduction;
+    private javax.swing.JButton ViewProduction1;
     private javax.swing.JPanel background;
     private javax.swing.JLabel backgroundImage;
     private javax.swing.JButton jButton12;
