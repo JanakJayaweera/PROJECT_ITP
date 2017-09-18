@@ -5,9 +5,7 @@
  */
 package Main;
 
-import GUI.Main.deliveryHandling;
 import GUI.Main.welcome1;
-import java.awt.IllegalComponentStateException;
 
 /**
  *
@@ -21,9 +19,8 @@ public class Main {
     public static void main(String[] args)
     {
         welcome1 wl = new welcome1();
-       wl.setExtendedState(welcome1.MAXIMIZED_BOTH);
-       wl.setVisible(true);
-        
+        wl.setExtendedState(welcome1.MAXIMIZED_BOTH);
+        wl.setVisible(true);    
     }
     
 }
