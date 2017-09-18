@@ -33,7 +33,6 @@ public class Finance extends javax.swing.JFrame {
 
         pane = new javax.swing.JPanel();
         chequeBtn = new javax.swing.JButton();
-        logoutLabel = new javax.swing.JLabel();
         isBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -50,94 +49,120 @@ public class Finance extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pane.setBackground(new java.awt.Color(0, 153, 153));
         pane.setPreferredSize(new java.awt.Dimension(284, 597));
+        pane.setLayout(null);
 
         chequeBtn.setBackground(new java.awt.Color(30, 232, 232));
         chequeBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         chequeBtn.setForeground(new java.awt.Color(51, 51, 51));
         chequeBtn.setText("Add/Update Cheques");
+        chequeBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         chequeBtn.setPreferredSize(new java.awt.Dimension(53, 25));
         chequeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chequeBtnActionPerformed(evt);
             }
         });
-
-        logoutLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        logoutLabel.setForeground(new java.awt.Color(51, 51, 51));
-        logoutLabel.setText("Log out");
-        logoutLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        logoutLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutLabelMouseClicked(evt);
-            }
-        });
+        pane.add(chequeBtn);
+        chequeBtn.setBounds(0, 157, 290, 25);
 
         isBtn.setBackground(new java.awt.Color(30, 232, 232));
         isBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         isBtn.setForeground(new java.awt.Color(51, 51, 51));
         isBtn.setText("Income Statement");
+        isBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        isBtn.setMaximumSize(new java.awt.Dimension(53, 25));
+        isBtn.setMinimumSize(new java.awt.Dimension(53, 25));
         isBtn.setPreferredSize(new java.awt.Dimension(53, 25));
         isBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 isBtnActionPerformed(evt);
             }
         });
+        pane.add(isBtn);
+        isBtn.setBounds(0, 353, 290, 25);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Manage Cheques");
+        pane.add(jLabel1);
+        jLabel1.setBounds(10, 120, 93, 15);
+
+        jSeparator1.setBackground(new java.awt.Color(102, 102, 102));
+        pane.add(jSeparator1);
+        jSeparator1.setBounds(12, 141, 266, 10);
 
         chequeBtn2.setBackground(new java.awt.Color(30, 232, 232));
         chequeBtn2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         chequeBtn2.setForeground(new java.awt.Color(51, 51, 51));
         chequeBtn2.setText("Cheque Notifications");
+        chequeBtn2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        chequeBtn2.setMaximumSize(new java.awt.Dimension(53, 25));
+        chequeBtn2.setMinimumSize(new java.awt.Dimension(53, 25));
         chequeBtn2.setPreferredSize(new java.awt.Dimension(53, 25));
         chequeBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chequeBtn2ActionPerformed(evt);
             }
         });
+        pane.add(chequeBtn2);
+        chequeBtn2.setBounds(0, 180, 290, 25);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Statements and Reports");
+        pane.add(jLabel2);
+        jLabel2.setBounds(12, 306, 134, 15);
+
+        jSeparator2.setBackground(new java.awt.Color(102, 102, 102));
+        pane.add(jSeparator2);
+        jSeparator2.setBounds(12, 325, 266, 10);
 
         chequeBtn3.setBackground(new java.awt.Color(30, 232, 232));
         chequeBtn3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         chequeBtn3.setForeground(new java.awt.Color(51, 51, 51));
         chequeBtn3.setText("Balance Sheet");
+        chequeBtn3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        chequeBtn3.setMaximumSize(new java.awt.Dimension(53, 25));
+        chequeBtn3.setMinimumSize(new java.awt.Dimension(53, 25));
         chequeBtn3.setPreferredSize(new java.awt.Dimension(53, 25));
         chequeBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chequeBtn3ActionPerformed(evt);
             }
         });
+        pane.add(chequeBtn3);
+        chequeBtn3.setBounds(0, 378, 290, 27);
 
         chequeBtn4.setBackground(new java.awt.Color(30, 232, 232));
         chequeBtn4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         chequeBtn4.setForeground(new java.awt.Color(51, 51, 51));
         chequeBtn4.setText("Finance Report");
+        chequeBtn4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         chequeBtn4.setPreferredSize(new java.awt.Dimension(53, 25));
         chequeBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chequeBtn4ActionPerformed(evt);
             }
         });
+        pane.add(chequeBtn4);
+        chequeBtn4.setBounds(0, 405, 290, 27);
 
         chequeBtn5.setBackground(new java.awt.Color(30, 232, 232));
         chequeBtn5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         chequeBtn5.setForeground(new java.awt.Color(51, 51, 51));
         chequeBtn5.setText("Profit-Loss Report");
+        chequeBtn5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         chequeBtn5.setPreferredSize(new java.awt.Dimension(53, 25));
         chequeBtn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chequeBtn5ActionPerformed(evt);
             }
         });
+        pane.add(chequeBtn5);
+        chequeBtn5.setBounds(0, 432, 290, 27);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
@@ -148,68 +173,8 @@ public class Finance extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout paneLayout = new javax.swing.GroupLayout(pane);
-        pane.setLayout(paneLayout);
-        paneLayout.setHorizontalGroup(
-            paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneLayout.createSequentialGroup()
-                .addGroup(paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(paneLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1))
-                    .addComponent(isBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(paneLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(logoutLabel))
-                    .addComponent(chequeBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chequeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chequeBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chequeBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chequeBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(paneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addComponent(jSeparator2)
-                    .addGroup(paneLayout.createSequentialGroup()
-                        .addGroup(paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        paneLayout.setVerticalGroup(
-            paneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneLayout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chequeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chequeBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addComponent(jLabel2)
-                .addGap(4, 4, 4)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(isBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(chequeBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chequeBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chequeBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(209, 209, 209)
-                .addComponent(jLabel3)
-                .addGap(48, 48, 48)
-                .addComponent(logoutLabel))
-        );
-
-        getContentPane().add(pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 720));
+        pane.add(jLabel3);
+        jLabel3.setBounds(12, 685, 182, 15);
 
         bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FirstInterface.jpg"))); // NOI18N
 
@@ -219,7 +184,7 @@ public class Finance extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1290, Short.MAX_VALUE)
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -228,7 +193,7 @@ public class Finance extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
             .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jDesktopPane1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -236,7 +201,20 @@ public class Finance extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 0, 1280, 720));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pane, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pane, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,13 +223,6 @@ public class Finance extends javax.swing.JFrame {
         AddCheques ch = new AddCheques();
         jDesktopPane1.add(ch).setVisible(true);
     }//GEN-LAST:event_chequeBtnActionPerformed
-
-    private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMouseClicked
-        this.dispose();
-        loginScreen ls = new loginScreen();
-        ls.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
-        ls.setVisible(true);
-    }//GEN-LAST:event_logoutLabelMouseClicked
 
     private void isBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isBtnActionPerformed
         // TODO add your handling code here:
@@ -346,7 +317,6 @@ public class Finance extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel pane;
     // End of variables declaration//GEN-END:variables
 }

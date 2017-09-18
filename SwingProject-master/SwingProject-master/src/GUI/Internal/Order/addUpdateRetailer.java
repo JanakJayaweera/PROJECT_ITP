@@ -78,6 +78,7 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
         TelephoneNo1Box = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         FaxNoBox = new javax.swing.JTextField();
+        SearchTypeV1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         RetailerDetails = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -88,7 +89,6 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         SearchTypeBox = new javax.swing.JComboBox<String>();
         SearchTypeV = new javax.swing.JLabel();
-        SearchBoxV = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
 
@@ -151,7 +151,7 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
 
         TypeBox.setBackground(new java.awt.Color(102, 102, 102));
         TypeBox.setForeground(new java.awt.Color(255, 255, 255));
-        TypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select the Type", "Company", "Person" }));
+        TypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select the retailer type", "Company", "Person" }));
 
         AddRetailer.setBackground(new java.awt.Color(102, 102, 102));
         AddRetailer.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -224,10 +224,13 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel10))
                         .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(idLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(SearchTypeV1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(AddRetailer, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27)
@@ -243,13 +246,12 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
                                         .addComponent(TelephoneNo2Box, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(NameBox, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TypeBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(40, 40, 40)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(40, 52, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(52, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,10 +265,12 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10)
                     .addComponent(idLabel))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(TypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SearchTypeV1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NameBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -369,9 +373,8 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addGap(28, 28, 28)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SearchBoxV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SearchTypeBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SearchBox)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -388,13 +391,11 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(SearchTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(SearchTypeV, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SearchBoxV, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -489,58 +490,197 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_TelephoneNo1BoxMouseClicked
 
     private void UpdateRetailerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateRetailerActionPerformed
-        Retailer retailer2 = new Retailer(Integer.parseInt(idLabel.getText()), NameBox.getText(), (TypeBox.getSelectedItem()).toString(), Integer.parseInt(TelephoneNo1Box.getText()), Integer.parseInt(TelephoneNo2Box.getText()), Integer.parseInt(FaxNoBox.getText()), AddressBox.getText(), EmailBox.getText());
-        retailer2.updateRetailer();
-        Retailer retailer = new Retailer(RetailerDetails);
-        retailer.tableLoad();
+        
+        
+        OrderHandlingValidation OHV = new OrderHandlingValidation();
+        SearchTypeV1.setText("");
+        NameBox.setForeground(Color.black);
+        TelephoneNo1Box.setForeground(Color.black);
+        TelephoneNo2Box.setForeground(Color.black);
+        FaxNoBox.setForeground(Color.black);
+        AddressBox.setForeground(Color.black);
+        EmailBox.setForeground(Color.black);
+        
+        
+        if(NameBox.getText().equals("")||TypeBox.getSelectedItem() == "Select the retailer type"||TelephoneNo1Box.getText().equals("")||TelephoneNo2Box.getText().equals("")||FaxNoBox.getText().equals("")||AddressBox.getText().equals("")||EmailBox.getText().equals("")  ||NameBox.getText().equals("*Enter name")||TelephoneNo1Box.getText().equals("*Enter telephone no")||TelephoneNo2Box.getText().equals("*Enter telephone no")||FaxNoBox.getText().equals("*Enter fax no")||AddressBox.getText().equals("*Enter address")||EmailBox.getText().equals("*Enter email")){
+            if(NameBox.getText().equals("")||NameBox.getText().equals("*Enter name")){
+                NameBox.setForeground(Color.red);
+                NameBox.setText("*Enter name");
+            }
+            if(TypeBox.getSelectedItem() == "Select the retailer type"){
+                SearchTypeV1.setForeground(Color.red);
+                SearchTypeV1.setText("*Enter the search type");
+            }
+            if(TelephoneNo1Box.getText().equals("")||TelephoneNo1Box.getText().equals("*Enter telephone no")){
+                TelephoneNo1Box.setForeground(Color.red);
+                TelephoneNo1Box.setText("*Enter telephone no");
+            }
+            if(TelephoneNo2Box.getText().equals("")||TelephoneNo2Box.getText().equals("*Enter telephone no")){
+                TelephoneNo2Box.setForeground(Color.red);
+                TelephoneNo2Box.setText("*Enter telephone no");
+            }
+            if(FaxNoBox.getText().equals("")||FaxNoBox.getText().equals("*Enter fax no")){
+                FaxNoBox.setForeground(Color.red);
+                FaxNoBox.setText("*Enter fax no");
+            }
+            if(AddressBox.getText().equals("")||AddressBox.getText().equals("*Enter address")){
+                AddressBox.setForeground(Color.red);
+                AddressBox.setText("*Enter address");
+            }
+            if(EmailBox.getText().equals("")||EmailBox.getText().equals("*Enter email")){
+                EmailBox.setForeground(Color.red);
+                EmailBox.setText("*Enter email");
+            }
+            
+        }else{
+            
+            NameBox.setForeground(Color.black);
+            TelephoneNo1Box.setForeground(Color.black);
+            TelephoneNo2Box.setForeground(Color.black);
+            FaxNoBox.setForeground(Color.black);
+            AddressBox.setForeground(Color.black);
+            EmailBox.setForeground(Color.black);
+            
+            if(OHV.telephoneValidation(TelephoneNo1Box.getText()) && OHV.telephoneValidation(TelephoneNo2Box.getText()) && OHV.telephoneValidation(FaxNoBox.getText()) && OHV.emailValidation(EmailBox.getText())){
+        
+                Retailer retailer2 = new Retailer(Integer.parseInt(idLabel.getText()), NameBox.getText(), (TypeBox.getSelectedItem()).toString(), TelephoneNo1Box.getText(), TelephoneNo2Box.getText(), FaxNoBox.getText(), AddressBox.getText(), EmailBox.getText());
+                retailer2.updateRetailer();
+                Retailer retailer = new Retailer(RetailerDetails);
+                retailer.tableLoad();
+                TelephoneNo1Box.setForeground(Color.black);
+                TelephoneNo2Box.setForeground(Color.black);
+                FaxNoBox.setForeground(Color.black);
+                EmailBox.setForeground(Color.black);
+        
+            }else{
+                if (OHV.telephoneValidation(TelephoneNo1Box.getText())==false){
+                    TelephoneNo1Box.setForeground(Color.red);
+                    TelephoneNo1Box.setText("Invalid telephone number!");
+                }
+            
+                if (OHV.telephoneValidation(TelephoneNo2Box.getText())==false){
+                    TelephoneNo2Box.setForeground(Color.red);
+                    TelephoneNo2Box.setText("Invalid telephone number!");
+                }
+            
+                if (OHV.telephoneValidation(FaxNoBox.getText())==false){
+                    FaxNoBox.setForeground(Color.red);
+                    FaxNoBox.setText("Invalid fax number!");
+                }
+            
+                if (OHV.emailValidation(EmailBox.getText())==false){
+                    EmailBox.setForeground(Color.red);
+                    EmailBox.setText("Invalid email address!");
+                }
+            }
+        }
+        
     }//GEN-LAST:event_UpdateRetailerActionPerformed
 
     private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
         setidLabel("Retailer ID will assign automatically");
         setNameBox("");
-        setTypeBox("Select the Type");
+        setTypeBox("Select the retailer type");
         setTelephoneNo1Box("");
         setTelephoneNo2Box("");
         setFaxNoBox("");
         setAddressBox("");
         setEmailBox("");
-        TelephoneNo1Box.setForeground(Color.BLACK);
-        TelephoneNo2Box.setForeground(Color.BLACK);
-        FaxNoBox.setForeground(Color.BLACK);
-        EmailBox.setForeground(Color.BLACK);
+        SearchTypeV1.setText("");
+        
+        NameBox.setForeground(Color.black);
+        TelephoneNo1Box.setForeground(Color.black);
+        TelephoneNo2Box.setForeground(Color.black);
+        FaxNoBox.setForeground(Color.black);
+        AddressBox.setForeground(Color.black);
+        EmailBox.setForeground(Color.black);
     }//GEN-LAST:event_ClearActionPerformed
 
     private void AddRetailerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRetailerActionPerformed
         OrderHandlingValidation OHV = new OrderHandlingValidation();
+        SearchTypeV1.setText("");
+        NameBox.setForeground(Color.black);
+        TelephoneNo1Box.setForeground(Color.black);
+        TelephoneNo2Box.setForeground(Color.black);
+        FaxNoBox.setForeground(Color.black);
+        AddressBox.setForeground(Color.black);
+        EmailBox.setForeground(Color.black);
         
-        if(OHV.telephoneValidation(TelephoneNo1Box.getText()) && OHV.telephoneValidation(TelephoneNo2Box.getText()) && OHV.telephoneValidation(FaxNoBox.getText()) && OHV.emailValidation(EmailBox.getText())){
         
-            Retailer retailer1 =new Retailer(NameBox.getText(), (TypeBox.getSelectedItem()).toString(), Integer.parseInt(TelephoneNo1Box.getText()), Integer.parseInt(TelephoneNo2Box.getText()), Integer.parseInt(FaxNoBox.getText()), AddressBox.getText(), EmailBox.getText());
-            retailer1.addRetailer();
-            Retailer retailer = new Retailer(RetailerDetails);
-            retailer.tableLoad();
-        
-        }else{
-            if (OHV.telephoneValidation(TelephoneNo1Box.getText())==false){
+        if(NameBox.getText().equals("")||TypeBox.getSelectedItem() == "Select the retailer type"||TelephoneNo1Box.getText().equals("")||TelephoneNo2Box.getText().equals("")||FaxNoBox.getText().equals("")||AddressBox.getText().equals("")||EmailBox.getText().equals("")  ||NameBox.getText().equals("*Enter name")||TelephoneNo1Box.getText().equals("*Enter telephone no")||TelephoneNo2Box.getText().equals("*Enter telephone no")||FaxNoBox.getText().equals("*Enter fax no")||AddressBox.getText().equals("*Enter address")||EmailBox.getText().equals("*Enter email")){
+            if(NameBox.getText().equals("")||NameBox.getText().equals("*Enter name")){
+                NameBox.setForeground(Color.red);
+                NameBox.setText("*Enter name");
+            }
+            if(TypeBox.getSelectedItem() == "Select the retailer type"){
+                SearchTypeV1.setForeground(Color.red);
+                SearchTypeV1.setText("*Enter the search type");
+            }
+            if(TelephoneNo1Box.getText().equals("")||TelephoneNo1Box.getText().equals("*Enter telephone no")){
                 TelephoneNo1Box.setForeground(Color.red);
-                TelephoneNo1Box.setText("Invalid telephone number!");
+                TelephoneNo1Box.setText("*Enter telephone no");
             }
-            
-            if (OHV.telephoneValidation(TelephoneNo2Box.getText())==false){
+            if(TelephoneNo2Box.getText().equals("")||TelephoneNo2Box.getText().equals("*Enter telephone no")){
                 TelephoneNo2Box.setForeground(Color.red);
-                TelephoneNo2Box.setText("Invalid telephone number!");
+                TelephoneNo2Box.setText("*Enter telephone no");
             }
-            
-            if (OHV.telephoneValidation(FaxNoBox.getText())==false){
+            if(FaxNoBox.getText().equals("")||FaxNoBox.getText().equals("*Enter fax no")){
                 FaxNoBox.setForeground(Color.red);
-                FaxNoBox.setText("Invalid fax number!");
+                FaxNoBox.setText("*Enter fax no");
+            }
+            if(AddressBox.getText().equals("")||AddressBox.getText().equals("*Enter address")){
+                AddressBox.setForeground(Color.red);
+                AddressBox.setText("*Enter address");
+            }
+            if(EmailBox.getText().equals("")||EmailBox.getText().equals("*Enter email")){
+                EmailBox.setForeground(Color.red);
+                EmailBox.setText("*Enter email");
             }
             
-            if (OHV.emailValidation(EmailBox.getText())==false){
-                EmailBox.setForeground(Color.red);
-                EmailBox.setText("Invalid email address!");
+        }else{
+            
+            NameBox.setForeground(Color.black);
+            TelephoneNo1Box.setForeground(Color.black);
+            TelephoneNo2Box.setForeground(Color.black);
+            FaxNoBox.setForeground(Color.black);
+            AddressBox.setForeground(Color.black);
+            EmailBox.setForeground(Color.black);
+            
+            if(OHV.telephoneValidation(TelephoneNo1Box.getText()) && OHV.telephoneValidation(TelephoneNo2Box.getText()) && OHV.telephoneValidation(FaxNoBox.getText()) && OHV.emailValidation(EmailBox.getText())){
+        
+                Retailer retailer1 =new Retailer(NameBox.getText(), (TypeBox.getSelectedItem()).toString(), TelephoneNo1Box.getText(), TelephoneNo2Box.getText(), FaxNoBox.getText(), AddressBox.getText(), EmailBox.getText());
+                retailer1.addRetailer();
+                Retailer retailer = new Retailer(RetailerDetails);
+                retailer.tableLoad();
+                TelephoneNo1Box.setForeground(Color.black);
+                TelephoneNo2Box.setForeground(Color.black);
+                FaxNoBox.setForeground(Color.black);
+                EmailBox.setForeground(Color.black);
+        
+            }else{
+                if (OHV.telephoneValidation(TelephoneNo1Box.getText())==false){
+                    TelephoneNo1Box.setForeground(Color.red);
+                    TelephoneNo1Box.setText("Invalid telephone number!");
+                }
+            
+                if (OHV.telephoneValidation(TelephoneNo2Box.getText())==false){
+                    TelephoneNo2Box.setForeground(Color.red);
+                    TelephoneNo2Box.setText("Invalid telephone number!");
+                }
+            
+                if (OHV.telephoneValidation(FaxNoBox.getText())==false){
+                    FaxNoBox.setForeground(Color.red);
+                    FaxNoBox.setText("Invalid fax number!");
+                }
+            
+                if (OHV.emailValidation(EmailBox.getText())==false){
+                    EmailBox.setForeground(Color.red);
+                    EmailBox.setText("Invalid email address!");
+                }
             }
         }
+        
+        
         
         
     }//GEN-LAST:event_AddRetailerActionPerformed
@@ -566,24 +706,28 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_SearchBoxMouseClicked
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
-        SearchTypeV.setText("");
-        SearchBoxV.setText("");
+        if(SearchBox.getText().equals("*Enter the search key")){
+                SearchBox.setText("");
+        }
+        
         if(SearchTypeBox.getSelectedItem()== "Select Search Type" || SearchBox.getText().equals("")){
+            SearchTypeV.setText("");
+            SearchBox.setForeground(Color.BLACK);
             if(SearchTypeBox.getSelectedItem()== "Select Search Type"){
                 SearchTypeV.setForeground(Color.red);
                 SearchTypeV.setText("*Select the search type");
             }
             
             if(SearchBox.getText().equals("")){
-                SearchBoxV.setForeground(Color.red);
-                SearchBoxV.setText("*Enter the search key");
+                SearchBox.setForeground(Color.red);
+                SearchBox.setText("*Enter the search key");
             }
             
         }else{
             Retailer r1 = new Retailer();
             r1.searchRetailer(RetailerDetails, (SearchTypeBox.getSelectedItem()=="Retailer Name")?1:2, SearchBox.getText());
             SearchTypeV.setText("");
-            SearchBoxV.setText("");
+            SearchBox.setForeground(Color.BLACK);
         }
     }//GEN-LAST:event_SearchActionPerformed
 
@@ -592,6 +736,7 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
         retailer.tableLoad();
         SearchTypeBox.setSelectedItem("Select Search Type");
         SearchBox.setText("");
+        SearchTypeV.setText("");
     }//GEN-LAST:event_ResetActionPerformed
 
 
@@ -606,9 +751,9 @@ public class addUpdateRetailer extends javax.swing.JInternalFrame {
     private javax.swing.JTable RetailerDetails;
     private javax.swing.JButton Search;
     private javax.swing.JTextField SearchBox;
-    private javax.swing.JLabel SearchBoxV;
     private javax.swing.JComboBox<String> SearchTypeBox;
     private javax.swing.JLabel SearchTypeV;
+    private javax.swing.JLabel SearchTypeV1;
     private javax.swing.JTextField TelephoneNo1Box;
     private javax.swing.JTextField TelephoneNo2Box;
     private javax.swing.JComboBox<String> TypeBox;

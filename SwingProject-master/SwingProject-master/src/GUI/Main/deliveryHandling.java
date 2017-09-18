@@ -79,7 +79,7 @@ public class deliveryHandling extends javax.swing.JFrame {
         addDriverBtn.setBackground(new java.awt.Color(7, 191, 145));
         addDriverBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addDriverBtn.setForeground(new java.awt.Color(51, 51, 51));
-        addDriverBtn.setText("Add / Update Driver");
+        addDriverBtn.setText("Add / Edit Driver");
         addDriverBtn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         addDriverBtn.setMaximumSize(new java.awt.Dimension(53, 25));
         addDriverBtn.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -112,7 +112,7 @@ public class deliveryHandling extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(7, 191, 145));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton5.setForeground(new java.awt.Color(51, 51, 51));
-        jButton5.setText("Add / Update Vehicle");
+        jButton5.setText("Add / Edit Vehicle");
         jButton5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton5.setMaximumSize(new java.awt.Dimension(53, 25));
         jButton5.setMinimumSize(new java.awt.Dimension(53, 25));
