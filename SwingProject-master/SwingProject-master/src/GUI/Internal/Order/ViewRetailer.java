@@ -51,7 +51,6 @@ public class ViewRetailer extends javax.swing.JInternalFrame {
         Reset1 = new javax.swing.JButton();
         Search1 = new javax.swing.JButton();
         SearchTypeV = new javax.swing.JLabel();
-        SearchBoxV = new javax.swing.JLabel();
 
         Reset.setBackground(new java.awt.Color(102, 102, 102));
         Reset.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -142,7 +141,7 @@ public class ViewRetailer extends javax.swing.JInternalFrame {
             xLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(xLayout.createSequentialGroup()
                 .addGap(80, 80, 80)
-                .addGroup(xLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(xLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
                     .addGroup(xLayout.createSequentialGroup()
                         .addGroup(xLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,8 +164,8 @@ public class ViewRetailer extends javax.swing.JInternalFrame {
                             .addComponent(RetailerName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RetailerEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RetailerID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jSeparator2))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         xLayout.setVerticalGroup(
             xLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,21 +285,21 @@ public class ViewRetailer extends javax.swing.JInternalFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel16)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(SearchTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel15)
-                                    .addGap(224, 224, 224)))
+                                    .addGap(224, 224, 224))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(SearchTypeBox, 0, 230, Short.MAX_VALUE)
+                                        .addComponent(SearchTypeV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(Reset1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(Search1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(SearchBox)
-                                .addComponent(SearchTypeV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(SearchBoxV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(SearchBox)))))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -314,13 +313,11 @@ public class ViewRetailer extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(SearchTypeV, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SearchBoxV, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Reset1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Search1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -385,27 +382,28 @@ public class ViewRetailer extends javax.swing.JInternalFrame {
         retailer.tableLoad();
         SearchTypeBox.setSelectedItem("Select Search Type");
         SearchBox.setText("");
+        SearchTypeV.setText("");
     }//GEN-LAST:event_Reset1ActionPerformed
 
     private void Search1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search1ActionPerformed
         if(SearchTypeBox.getSelectedItem()== "Select Search Type" || SearchBox.getText().equals("")){
             SearchTypeV.setText("");
-            SearchBoxV.setText("");
+            SearchBox.setForeground(Color.BLACK);
             if(SearchTypeBox.getSelectedItem()== "Select Search Type"){
                 SearchTypeV.setForeground(Color.red);
                 SearchTypeV.setText("*Select the search type");
             }
             
             if(SearchBox.getText().equals("")){
-                SearchBoxV.setForeground(Color.red);
-                SearchBoxV.setText("*Enter the search key");
+                SearchBox.setForeground(Color.red);
+                SearchBox.setText("*Enter the search key");
             }
             
         }else{
             Retailer r1 = new Retailer();
             r1.searchRetailer(RetailerDetails, (SearchTypeBox.getSelectedItem()=="Retailer Name")?1:2, SearchBox.getText());
             SearchTypeV.setText("");
-            SearchBoxV.setText("");
+            SearchBox.setForeground(Color.BLACK);
         }
         
     }//GEN-LAST:event_Search1ActionPerformed
@@ -430,7 +428,6 @@ public class ViewRetailer extends javax.swing.JInternalFrame {
     private javax.swing.JButton Search;
     private javax.swing.JButton Search1;
     private javax.swing.JTextField SearchBox;
-    private javax.swing.JLabel SearchBoxV;
     private javax.swing.JComboBox<String> SearchTypeBox;
     private javax.swing.JLabel SearchTypeV;
     private javax.swing.JLabel jLabel1;

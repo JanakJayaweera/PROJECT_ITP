@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.proteanit.sql.DbUtils;
-import GUI.Internal.Driver.addUpdateDriver;
+import GUI.Internal.Driver.addEditDriver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

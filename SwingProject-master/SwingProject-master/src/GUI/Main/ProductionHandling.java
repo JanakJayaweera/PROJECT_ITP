@@ -5,7 +5,7 @@
  */
 package GUI.Main;
 
-import GUI.Internal.Driver.addUpdateDriver;
+import GUI.Internal.Driver.addEditDriver;
 import GUI.Internal.Production.CreateNewProduction;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -67,7 +67,7 @@ public class ProductionHandling extends javax.swing.JFrame {
         CreateNewProduction.setBackground(new java.awt.Color(153, 102, 255));
         CreateNewProduction.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         CreateNewProduction.setForeground(new java.awt.Color(51, 51, 51));
-        CreateNewProduction.setText("Create new production");
+        CreateNewProduction.setText("Add / Edit production");
         CreateNewProduction.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         CreateNewProduction.setMaximumSize(new java.awt.Dimension(53, 25));
         CreateNewProduction.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -81,7 +81,7 @@ public class ProductionHandling extends javax.swing.JFrame {
         ViewProduction.setBackground(new java.awt.Color(153, 102, 255));
         ViewProduction.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ViewProduction.setForeground(new java.awt.Color(51, 51, 51));
-        ViewProduction.setText("View / Edit / Remove Production");
+        ViewProduction.setText("View / Remove Production");
         ViewProduction.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ViewProduction.setMaximumSize(new java.awt.Dimension(53, 25));
         ViewProduction.setMinimumSize(new java.awt.Dimension(53, 25));
@@ -168,7 +168,7 @@ public class ProductionHandling extends javax.swing.JFrame {
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117)
+                .addGap(105, 105, 105)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -101,10 +102,10 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
         WTcombo = new javax.swing.JComboBox<>();
         ETcombo = new javax.swing.JComboBox<>();
         pIDtxt = new javax.swing.JLabel();
-        radioNotstarted = new javax.swing.JRadioButton();
-        radioOngoing = new javax.swing.JRadioButton();
-        radioFinished = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        rbNotstart = new javax.swing.JRadioButton();
+        rbOngoing = new javax.swing.JRadioButton();
+        rbFinished = new javax.swing.JRadioButton();
+        editBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         helperTxt = new javax.swing.JTextField();
 
@@ -217,7 +218,7 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Order ID", "Order Name", "Type of Product", "Size of Product", "Number of Products", "Color"
+                "Order ID", "Retailer ID", "Designer ID", "", "Number of Products", "Color"
             }
         ));
         OrderTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,7 +236,7 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "PID", "Date", "Fabric Type", "F Quantity", "Button Type", "B Quantity", "Wool Type", "W Quantity", "Elastic Type", "E Quantity", "Cutters", "Supervisor", "Pattern Maker", "Ironer", "Helper", "Status"
+                "PID", "Date", "Fabric Type", "F Quantity", "Button Type", "B Quantity", "Wool Type", "W Quantity", "Elastic Type", "E Quantity", "Cutters", "Machine Operator", "Supervisor", "Ironer", "Helper", "Status"
             }
         ));
         ProductionTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -262,25 +263,25 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
 
         pIDtxt.setText("PID");
 
-        radioNotstarted.setBackground(new java.awt.Color(255, 0, 51));
-        buttonGroup1.add(radioNotstarted);
-        radioNotstarted.setText("Not Started");
+        rbNotstart.setBackground(new java.awt.Color(255, 0, 51));
+        buttonGroup1.add(rbNotstart);
+        rbNotstart.setText("Not Started");
 
-        radioOngoing.setBackground(new java.awt.Color(255, 255, 51));
-        buttonGroup1.add(radioOngoing);
-        radioOngoing.setText("Ongoing");
-        radioOngoing.setPreferredSize(new java.awt.Dimension(93, 25));
+        rbOngoing.setBackground(new java.awt.Color(255, 255, 51));
+        buttonGroup1.add(rbOngoing);
+        rbOngoing.setText("Ongoing");
+        rbOngoing.setPreferredSize(new java.awt.Dimension(93, 25));
 
-        radioFinished.setBackground(new java.awt.Color(0, 255, 51));
-        buttonGroup1.add(radioFinished);
-        radioFinished.setText("Finished");
+        rbFinished.setBackground(new java.awt.Color(0, 255, 51));
+        buttonGroup1.add(rbFinished);
+        rbFinished.setText("Finished");
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Update");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        editBtn.setBackground(new java.awt.Color(102, 102, 102));
+        editBtn.setForeground(new java.awt.Color(255, 255, 255));
+        editBtn.setText("Edit");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                editBtnActionPerformed(evt);
             }
         });
 
@@ -381,16 +382,6 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
                         .addGap(17, 17, 17)
                         .addComponent(CuttetTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(908, 908, 908)
-                        .addComponent(jLabel20)
-                        .addGap(18, 18, 18)
-                        .addComponent(MachineOTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(899, 899, 899)
-                        .addComponent(jLabel21)
-                        .addGap(68, 68, 68)
-                        .addComponent(superviTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(899, 899, 899)
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -400,7 +391,7 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
                         .addGap(181, 181, 181)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioNotstarted)
+                            .addComponent(rbNotstart)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -410,15 +401,26 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
                                 .addGap(4, 4, 4)
                                 .addComponent(helperTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(radioOngoing, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rbOngoing, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
-                                .addComponent(radioFinished, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(rbFinished, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(JScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(899, 899, 899)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(27, 27, 27)
+                                .addComponent(MachineOTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(68, 68, 68)
+                                .addComponent(superviTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(390, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -525,11 +527,9 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
                         .addComponent(jLabel18))
                     .addComponent(CuttetTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel20))
-                    .addComponent(MachineOTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MachineOTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -549,18 +549,18 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jLabel1)
                         .addGap(37, 37, 37)
-                        .addComponent(radioNotstarted)
+                        .addComponent(rbNotstart)
                         .addGap(28, 28, 28)
                         .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(helperTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radioOngoing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(radioFinished))
+                            .addComponent(rbOngoing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbFinished))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(JScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -601,17 +601,12 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
         p.setSupervisor(Integer.parseInt(superviTxt.getText()));
         p.setIroner(Integer.parseInt(IronerTxt.getText()));
         p.setHelper(Integer.parseInt(helperTxt.getText()));
-        if(radioNotstarted.isSelected())
-        {
-            p.setStatus(radioNotstarted.toString());
-        }
-        else if(radioOngoing.isSelected())
-        {
-            p.setStatus(radioOngoing.toString());
-        }
-        
+        rbNotstart.setActionCommand("Not Started");
+        rbOngoing.setActionCommand("Ongoing");
+        rbFinished.setActionCommand("Finished");
+        p.setStatus(buttonGroup1.getSelection().getActionCommand());
 
-        p.createnewProduction();
+        p.addNewproduction();
         p.productionTableload();
     }//GEN-LAST:event_addBtnActionPerformed
 
@@ -667,9 +662,33 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FquantitytxtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        
+        Production p = new Production();
+        SimpleDateFormat d = new SimpleDateFormat("YYYY-MM-dd");
+        
+        p.setProductionTable(ProductionTable);
+        p.setPID(Integer.parseInt(pIDtxt.getText()));
+        p.setDate(d.format(dateTxt.getDate()));
+        p.setFtype(FTcombo.getSelectedItem().toString());
+        p.setFQuantity(Double.parseDouble(Fquantitytxt.getText()));
+        p.setBtype(BTcombo.getSelectedItem().toString());
+        p.setBQuantity(Double.parseDouble(Bquantitytxt.getText()));
+        p.setWtype(WTcombo.getSelectedItem().toString());
+        p.setWQuantity(Double.parseDouble(Wquantitytxt.getText()));
+        p.setEtype(ETcombo.getSelectedItem().toString());
+        p.setEQuantity(Double.parseDouble(Equantitytxt.getText()));
+        p.setCutters(Integer.parseInt(CuttetTxt.getText()));
+        p.setMachineOperators(Integer.parseInt(MachineOTxt.getText()));
+        p.setSupervisor(Integer.parseInt(superviTxt.getText()));
+        p.setIroner(Integer.parseInt(IronerTxt.getText()));
+        p.setHelper(Integer.parseInt(helperTxt.getText()));
+
+        int comfresult = JOptionPane.showConfirmDialog(null, "Do you really want to edit this data ?");
+        p.editTabledata(comfresult);
+        p.productionTableload();
+        
+    }//GEN-LAST:event_editBtnActionPerformed
 
     private void ProductionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductionTableMouseClicked
         try
@@ -688,7 +707,7 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
             String equantity = ProductionTable.getValueAt(row, 9).toString();
             String cutter = ProductionTable.getValueAt(row, 10).toString();
             String machineO = ProductionTable.getValueAt(row, 11).toString();
-            String patternM = ProductionTable.getValueAt(row, 12).toString();
+            String supervisor = ProductionTable.getValueAt(row, 12).toString();
             String ironer = ProductionTable.getValueAt(row, 13).toString();
             String helper = ProductionTable.getValueAt(row, 14).toString();
             //String Status = ProductionTable.getValueAt(row, 15).toString();
@@ -705,9 +724,11 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
             Equantitytxt.setText(equantity);
             CuttetTxt.setText(cutter);
             MachineOTxt.setText(machineO);
-            superviTxt.setText(patternM);
+            superviTxt.setText(supervisor);
             IronerTxt.setText(ironer);
             helperTxt.setText(helper);
+            //buttonGroup1.getSelection().setActionCommand(Status);
+            
  
        }
        catch(Exception e)
@@ -744,8 +765,8 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton clearBtn;
     private com.toedter.calendar.JDateChooser dateTxt;
+    private javax.swing.JButton editBtn;
     private javax.swing.JTextField helperTxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -773,9 +794,9 @@ public class CreateNewProduction extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel pIDtxt;
-    private javax.swing.JRadioButton radioFinished;
-    private javax.swing.JRadioButton radioNotstarted;
-    private javax.swing.JRadioButton radioOngoing;
+    private javax.swing.JRadioButton rbFinished;
+    private javax.swing.JRadioButton rbNotstart;
+    private javax.swing.JRadioButton rbOngoing;
     private javax.swing.JTextField superviTxt;
     // End of variables declaration//GEN-END:variables
 }
