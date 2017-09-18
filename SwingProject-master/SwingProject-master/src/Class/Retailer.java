@@ -12,9 +12,9 @@ public class Retailer {
     private int RetailerID;
     private String Name;
     private String RetailerType;
-    private int TelephoneNo1;
-    private int TelephoneNo2;
-    private int FaxNo;
+    private String TelephoneNo1;
+    private String TelephoneNo2;
+    private String FaxNo;
     private String Address;
     private String Email;
     private javax.swing.JTable RetailerDetails;
@@ -37,7 +37,7 @@ public class Retailer {
     }
     
     
-    public Retailer(int pRetailerID, String pName, String pRetailerType, int pTelephoneNo1, int pTelephoneNo2, int pFaxNo, String pAddress, String pEmail){
+    public Retailer(int pRetailerID, String pName, String pRetailerType, String pTelephoneNo1, String pTelephoneNo2, String pFaxNo, String pAddress, String pEmail){
         RetailerID = pRetailerID;
         Name = pName;
         RetailerType = pRetailerType;
@@ -51,7 +51,7 @@ public class Retailer {
     }
    
     
-    public Retailer(String pName, String pRetailerType, int pTelephoneNo1, int pTelephoneNo2, int pFaxNo, String pAddress, String pEmail){
+    public Retailer(String pName, String pRetailerType, String pTelephoneNo1, String pTelephoneNo2, String pFaxNo, String pAddress, String pEmail){
         Name = pName;
         RetailerType = pRetailerType;
         TelephoneNo1 = pTelephoneNo1;

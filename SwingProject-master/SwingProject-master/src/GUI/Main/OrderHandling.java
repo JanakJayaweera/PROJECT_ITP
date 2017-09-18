@@ -2,6 +2,8 @@
 package GUI.Main;
 
 
+import GUI.Internal.Order.AddUpdateRemoveDesign;
+import GUI.Internal.Order.ViewDesign;
 import GUI.Internal.Order.ViewRetailer;
 import GUI.Internal.Order.addUpdateRetailer;
 import java.awt.Color;
@@ -51,11 +53,11 @@ public class OrderHandling extends javax.swing.JFrame {
 
         background.setBackground(new java.awt.Color(76, 77, 78));
 
-        sidePanel.setBackground(new java.awt.Color(0, 153, 153));
+        sidePanel.setBackground(new java.awt.Color(0, 185, 185));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Log out");
+        jLabel2.setText("Go to main functions window");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,7 +98,7 @@ public class OrderHandling extends javax.swing.JFrame {
             }
         });
 
-        PlaceUpdateOrder.setBackground(new java.awt.Color(7, 140, 145));
+        PlaceUpdateOrder.setBackground(new java.awt.Color(0, 153, 153));
         PlaceUpdateOrder.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         PlaceUpdateOrder.setForeground(new java.awt.Color(51, 51, 51));
         PlaceUpdateOrder.setText("Place / Update Order");
@@ -110,7 +112,7 @@ public class OrderHandling extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(7, 140, 145));
+        jButton6.setBackground(new java.awt.Color(0, 153, 153));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton6.setForeground(new java.awt.Color(51, 51, 51));
         jButton6.setText("Update Order Status");
@@ -119,7 +121,7 @@ public class OrderHandling extends javax.swing.JFrame {
         jButton6.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton6.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton7.setBackground(new java.awt.Color(7, 140, 145));
+        jButton7.setBackground(new java.awt.Color(0, 153, 153));
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton7.setForeground(new java.awt.Color(51, 51, 51));
         jButton7.setText("Cancel Order");
@@ -129,7 +131,7 @@ public class OrderHandling extends javax.swing.JFrame {
         jButton7.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton7.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton8.setBackground(new java.awt.Color(7, 140, 145));
+        jButton8.setBackground(new java.awt.Color(0, 153, 153));
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton8.setForeground(new java.awt.Color(51, 51, 51));
         jButton8.setText("View Order");
@@ -138,7 +140,7 @@ public class OrderHandling extends javax.swing.JFrame {
         jButton8.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton8.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton9.setBackground(new java.awt.Color(7, 140, 145));
+        jButton9.setBackground(new java.awt.Color(0, 153, 153));
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton9.setForeground(new java.awt.Color(51, 51, 51));
         jButton9.setText("Purchase Order");
@@ -147,7 +149,7 @@ public class OrderHandling extends javax.swing.JFrame {
         jButton9.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton9.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        AddUpdateRemoveDesign.setBackground(new java.awt.Color(7, 140, 145));
+        AddUpdateRemoveDesign.setBackground(new java.awt.Color(0, 153, 153));
         AddUpdateRemoveDesign.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         AddUpdateRemoveDesign.setForeground(new java.awt.Color(51, 51, 51));
         AddUpdateRemoveDesign.setText("Add / Update / Remove Design");
@@ -161,7 +163,7 @@ public class OrderHandling extends javax.swing.JFrame {
             }
         });
 
-        ViewDesign.setBackground(new java.awt.Color(7, 140, 145));
+        ViewDesign.setBackground(new java.awt.Color(0, 153, 153));
         ViewDesign.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ViewDesign.setForeground(new java.awt.Color(51, 51, 51));
         ViewDesign.setText("View Design");
@@ -175,7 +177,7 @@ public class OrderHandling extends javax.swing.JFrame {
             }
         });
 
-        jButton12.setBackground(new java.awt.Color(7, 140, 145));
+        jButton12.setBackground(new java.awt.Color(0, 153, 153));
         jButton12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton12.setForeground(new java.awt.Color(51, 51, 51));
         jButton12.setText("Report 1");
@@ -184,7 +186,7 @@ public class OrderHandling extends javax.swing.JFrame {
         jButton12.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton12.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton13.setBackground(new java.awt.Color(7, 140, 145));
+        jButton13.setBackground(new java.awt.Color(0, 153, 153));
         jButton13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton13.setForeground(new java.awt.Color(51, 51, 51));
         jButton13.setText("Report 2");
@@ -193,7 +195,7 @@ public class OrderHandling extends javax.swing.JFrame {
         jButton13.setMinimumSize(new java.awt.Dimension(53, 25));
         jButton13.setPreferredSize(new java.awt.Dimension(53, 25));
 
-        jButton14.setBackground(new java.awt.Color(7, 140, 145));
+        jButton14.setBackground(new java.awt.Color(0, 153, 153));
         jButton14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton14.setForeground(new java.awt.Color(51, 51, 51));
         jButton14.setText("Report 3");
@@ -363,9 +365,9 @@ public class OrderHandling extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 
-        loginScreen ls = new loginScreen();
-        ls.setExtendedState(loginScreen.MAXIMIZED_BOTH);
-        ls.setVisible(true);
+        mainFunctions mf = new mainFunctions();
+        mf.setExtendedState(mainFunctions.MAXIMIZED_BOTH);
+        mf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
@@ -386,9 +388,9 @@ public class OrderHandling extends javax.swing.JFrame {
     }//GEN-LAST:event_AddUpdateRetailerActionPerformed
 
     private void AddUpdateRemoveDesignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddUpdateRemoveDesignActionPerformed
-            /*DesktopPane.removeAll();
+            DesktopPane.removeAll();
             AddUpdateRemoveDesign AURD = new AddUpdateRemoveDesign();
-            DesktopPane.add(AURD).setVisible(true);*/
+            DesktopPane.add(AURD).setVisible(true);
             
     }//GEN-LAST:event_AddUpdateRemoveDesignActionPerformed
 
@@ -399,9 +401,9 @@ public class OrderHandling extends javax.swing.JFrame {
     }//GEN-LAST:event_PlaceUpdateOrderActionPerformed
 
     private void ViewDesignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewDesignActionPerformed
-            /*DesktopPane.removeAll();
+            DesktopPane.removeAll();
             ViewDesign VD = new ViewDesign();
-            DesktopPane.add(VD).setVisible(true);*/
+            DesktopPane.add(VD).setVisible(true);
     }//GEN-LAST:event_ViewDesignActionPerformed
 
     public void setColor(JPanel panel)
