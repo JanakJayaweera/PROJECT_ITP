@@ -267,7 +267,10 @@ public class mainFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        HRManagement hr = new HRManagement();
+        hr.setExtendedState(HRManagement.MAXIMIZED_BOTH);
+        hr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

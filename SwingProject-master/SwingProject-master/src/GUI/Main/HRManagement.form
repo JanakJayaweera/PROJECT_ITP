@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="background" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="background" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="background">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="4e" green="4d" red="4c" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Component id="sidePanel" min="-2" pref="266" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                  <Component id="DesktopPane" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="sidePanel" max="32767" attributes="0"/>
+              <Component id="DesktopPane" alignment="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="sidePanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="66" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="addEmpBtn" linkSize="1" alignment="1" pref="265" max="32767" attributes="0"/>
+                                  <Component id="viewEmpBtn" linkSize="1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="addJobBtn" linkSize="1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="viewJobBtn" linkSize="1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="addAttendanceBtn" linkSize="1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="viewAttendanceBtn" linkSize="1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="empreportBtn" linkSize="1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="projectBtn" linkSize="1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="attendanceBtn" linkSize="1" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jSeparator2" max="32767" attributes="0"/>
+                                  <Component id="jSeparator3" max="32767" attributes="0"/>
+                                  <Component id="jSeparator4" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Component id="calSalBtn" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jSeparator5" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="addEmpBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="viewEmpBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="addJobBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="viewJobBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="addAttendanceBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="viewAttendanceBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="calSalBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="empreportBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="projectBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="attendanceBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Go to Main functions window"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="addEmpBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add / Update Employee"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addEmpBtnMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addEmpBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="viewEmpBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="View / Remove Employee"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewEmpBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="addJobBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add / Update Job"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addJobBtnMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addJobBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="viewJobBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="View / Remove Job"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewJobBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="addAttendanceBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add / Update Attendance"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addAttendanceBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="viewAttendanceBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="View / Remove Attendance"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewAttendanceBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="empreportBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="List of Employees"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="empreportBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="projectBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Project History of an Employee"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="attendanceBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Attendance &amp; Salary Payment"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Manage Employee"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Manage Job Details"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Manage Attendance"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Generate Reports"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator3">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel6">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Calculate Salary"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator5">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="calSalBtn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="a3" green="76" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Calculate Salary"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder/>
+                  </Border>
+                </Property>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[53, 25]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calSalBtnActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JDesktopPane" name="DesktopPane">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="4e" green="4d" red="4c" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="backgroundImage" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="backgroundImage" alignment="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="backgroundImage">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Images/FirstInterface.jpg"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
