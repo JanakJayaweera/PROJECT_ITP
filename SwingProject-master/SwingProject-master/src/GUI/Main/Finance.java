@@ -6,8 +6,7 @@
 package GUI.Main;
 
 import GUI.Internal.Finance.AddCheques;
-import GUI.Main.loginScreen;
-import GUI.Main.mainFunctions;
+import GUI.Internal.Finance.ViewRemoveChq;
 import java.awt.Color;
 import javax.swing.JPanel;
 
@@ -43,6 +42,7 @@ public class Finance extends javax.swing.JFrame {
         chequeBtn4 = new javax.swing.JButton();
         chequeBtn5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         bgImage = new javax.swing.JLabel();
 
@@ -108,7 +108,7 @@ public class Finance extends javax.swing.JFrame {
             }
         });
         pane.add(chequeBtn2);
-        chequeBtn2.setBounds(0, 180, 290, 25);
+        chequeBtn2.setBounds(0, 207, 290, 25);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -176,6 +176,23 @@ public class Finance extends javax.swing.JFrame {
         pane.add(jLabel3);
         jLabel3.setBounds(12, 685, 182, 15);
 
+        jButton1.setBackground(new java.awt.Color(30, 232, 232));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1.setText("View/Remove Cheques");
+        jButton1.setToolTipText("");
+        jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jButton1.setMaximumSize(new java.awt.Dimension(53, 25));
+        jButton1.setMinimumSize(new java.awt.Dimension(53, 25));
+        jButton1.setPreferredSize(new java.awt.Dimension(53, 25));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        pane.add(jButton1);
+        jButton1.setBounds(0, 182, 290, 25);
+
         bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FirstInterface.jpg"))); // NOI18N
 
         jDesktopPane1.setLayer(bgImage, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -221,6 +238,7 @@ public class Finance extends javax.swing.JFrame {
 
     private void chequeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chequeBtnActionPerformed
         AddCheques ch = new AddCheques();
+        jDesktopPane1.removeAll();
         jDesktopPane1.add(ch).setVisible(true);
     }//GEN-LAST:event_chequeBtnActionPerformed
 
@@ -251,17 +269,12 @@ public class Finance extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    public void setColor(JPanel panel)
-    {
-        panel.setBackground(new Color(54,33,89));
-    }
-    
-    public void reserColor(JPanel panel)
-    {
-        panel.setBackground(new Color(64,43,100));
-    }
-    
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ViewRemoveChq vrc = new ViewRemoveChq();
+        jDesktopPane1.removeAll();
+        jDesktopPane1.add(vrc).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +324,7 @@ public class Finance extends javax.swing.JFrame {
     private javax.swing.JButton chequeBtn4;
     private javax.swing.JButton chequeBtn5;
     private javax.swing.JButton isBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

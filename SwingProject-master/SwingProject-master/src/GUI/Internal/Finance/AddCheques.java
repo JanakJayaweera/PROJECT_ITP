@@ -47,7 +47,9 @@ public class AddCheques extends javax.swing.JInternalFrame {
         showDate();
         recChqTableLoad();
         paidChqTableLoad();
-        
+        this.setTitle("Add/Update Cheques");
+        recChqTable.getTableHeader().setReorderingAllowed(false); //disable user column dragging of jTable
+        paidChqJTable.getTableHeader().setReorderingAllowed(false);
     }
 
     /**
@@ -624,6 +626,8 @@ public class AddCheques extends javax.swing.JInternalFrame {
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        getAccessibleContext().setAccessibleName("Add/Update Cheques");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
