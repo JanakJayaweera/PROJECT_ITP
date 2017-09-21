@@ -413,7 +413,9 @@ public class deliveryHandling extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void addDriverBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDriverBtnActionPerformed
-        // TODO add your handling code here:
+            DesktopPane.removeAll();
+            addEditDriver aeD = new addEditDriver();
+            DesktopPane.add(aeD).setVisible(true);
     }//GEN-LAST:event_addDriverBtnActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed

@@ -15,12 +15,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.proteanit.sql.DbUtils;
 import DB.DBconnect;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.event.MouseListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -39,9 +44,8 @@ public class addEditDriver extends javax.swing.JInternalFrame {
         tableLoad();
         nonMove();        
         
-        
     }
-    
+      
     public void tableLoad()
         {           
             

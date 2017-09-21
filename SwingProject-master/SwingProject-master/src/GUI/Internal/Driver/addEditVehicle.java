@@ -84,10 +84,10 @@ public class addEditVehicle extends javax.swing.JInternalFrame {
     
     public boolean checkEmptyBoxes(){
         if(vnametxt.getText().equals("")||vnumbertxt.getText().equals("")||vtypebox.getSelectedItem().equals("Select vehicle type")||vtypebox.getSelectedItem()==null){ 
-            return false;
+            return true;
         }
         else{
-            return true;
+            return false;
         }
     }
 
@@ -309,7 +309,7 @@ public class addEditVehicle extends javax.swing.JInternalFrame {
 
         vtypebox.setBackground(new java.awt.Color(102, 102, 102));
         vtypebox.setForeground(new java.awt.Color(255, 255, 255));
-        vtypebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select vehicle type", "Bike", "Car", "Van", "Lorry" }));
+        vtypebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select vehicle type", "Bike", "Car", "Van", "Lorry", "SUV" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -472,6 +472,7 @@ public class addEditVehicle extends javax.swing.JInternalFrame {
             tableLoad();
         }
         else{
+            
             if(dV.numberTextBox(vFconsumptiontxt.getText()) == false){
                 vFconsumptiontxt.setForeground(Color.red);
                 vFconsumptiontxt.setText("Invalid value!");
@@ -490,7 +491,7 @@ public class addEditVehicle extends javax.swing.JInternalFrame {
             }
             if(vnumbertxt.getText().equals("")){
                 vnumbertxt.setForeground(Color.red);
-                vnumbertxt.setText("Enter vehicle number");
+                vnumbertxt.setText("Enter vehicle number!");
             }
             if(vtypebox.getSelectedItem().equals("Select vehicle type")){
                 JOptionPane.showMessageDialog(null, "Select vehicle type!", "Error: uncompleted form", JOptionPane.ERROR_MESSAGE);

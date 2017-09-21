@@ -488,12 +488,13 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
+              <StringArray count="6">
                 <StringItem index="0" value="Select vehicle type"/>
                 <StringItem index="1" value="Bike"/>
                 <StringItem index="2" value="Car"/>
                 <StringItem index="3" value="Van"/>
                 <StringItem index="4" value="Lorry"/>
+                <StringItem index="5" value="SUV"/>
               </StringArray>
             </Property>
           </Properties>
